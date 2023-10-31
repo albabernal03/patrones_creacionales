@@ -1,5 +1,6 @@
 import pandas as pd
-mport mathplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 URL = "https://datos.madrid.es/egob/catalogo/212504-0-emergencias-activaciones.csv"
 # Leer CSV desde la URL
