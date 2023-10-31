@@ -29,4 +29,4 @@ plt.figure(figsize=(10,10))
 sns.heatmap(corr,annot=True,cmap="coolwarm")
 plt.show()
 #Guardamos la imagen
-plt.savefig("../images/correlaciónvariables_precio_.png")
+plt.savefig("../imagenes/correlaciónvariables_fecha_.png")
