@@ -1,5 +1,5 @@
 from analisis_factory import Analisisdatos
-from calculos_estadisticos1 import CalculosEstadisticos
+from calculos_estadisticos import CalculosEstadisticos
 from media1 import Mediafecha
 
 

@@ -1,5 +1,5 @@
 from analisis_factory import Analisisdatos
-from graficas1 import Graficas
+from graficas import Graficas
 from graficabarras1 import GraficaBarras
 
 #ConcreteFactory2
