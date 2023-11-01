@@ -6,4 +6,6 @@ import pandas as pd
 class Media(CalculosEstadisticos):
     def calcular(self) -> float:
         datos=pd.read_csv("emergencias.csv")
-        return datos.['FECHA'].mean()
+        datos['FECHA'] = pd.to_datetime(datos['FECHA'], errors='coerce')
+        activaciones_por_dia = datos.groupby(datos['FECHA'].dt.date).size()
+        return activaciones_por_dia.mean()

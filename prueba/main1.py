@@ -10,6 +10,11 @@ def main():
     
     print(f'media: {calcular_media.calcular()}')
 
+    factory2= CrearGrafica()
+    grafica= factory2.crear_graficas()
+
+    print(f'grafica: {grafica.grafica()}')
+
 
 if __name__ == "__main__":
     main()
