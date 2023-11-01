@@ -1,18 +1,19 @@
 from calculosfecha_factory import Calculos_estadistico_fecha
 from graficasfecha_factory import CrearGrafica_fecha
+from elegircal import MMM
+from caculosfecha_provider import Calculosfechaprovider
 
 #Client
 
 def main():
+    elegircal= MMM.MEDIA
 
-    factory = Calculos_estadistico_fecha()
+
+    factory = calculosfecha_provider.create_calculos(elegircal)
     calcular_media= factory.crear_calculos()
  
     
     print(f'media: {calcular_media.calcular()}')
-    
-    calcular_moda = factory.crear_calculos()  # Crear una nueva instancia para calcular la moda
-    print(f'moda: {calcular_moda.calcular()}')
 
     factory2= CrearGrafica_fecha()
     grafica= factory2.crear_graficas()
