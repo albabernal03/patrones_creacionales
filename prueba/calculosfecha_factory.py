@@ -8,7 +8,7 @@ from moda1 import Modafecha
 
 class Calculos_estadistico_fecha(Analisisdatos):
     def crear_calculos(self) -> CalculosEstadisticos:
-        return [Mediafecha(), Modafecha()]
+        return CalculosEstadisticos()
 
     def crear_graficas(self) -> None:
         return None
