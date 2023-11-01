@@ -29,5 +29,8 @@ corr = data.corr()
 plt.figure(figsize=(10,10))
 sns.heatmap(corr,annot=True,cmap="coolwarm")
 plt.show()
-#Guardamos la imagen
-plt.savefig("../imagenes/correlaciónvariables_fecha_.png")
+print(data.columns)
+
+
+
+
