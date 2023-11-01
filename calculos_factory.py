@@ -3,7 +3,7 @@ from calculosestadisticos import CalculosEstadisticos
 from media import Media
 from moda import Moda
 from mediana import Mediana
-
+from graficas import Graficas
 #ConcreteFactory1
 
 class Calculos_estadistico(Estudio):

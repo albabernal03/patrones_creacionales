@@ -6,7 +6,7 @@ import pandas as pd
 #ConcreteProductB1
 
 class GraficaBarras(Graficas):
-    class GraficaBarras(Graficas):
+    
     def grafica(self) -> None:
         # Leer el archivo CSV utilizando pandas
         df = pd.read_csv('emergencias.csv')
