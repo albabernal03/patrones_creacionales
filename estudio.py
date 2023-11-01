@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-fron calculosestadisticos import CalculosEstadisticos
+from calculosestadisticos import CalculosEstadisticos
 from graficas import Graficas
 
 #AbstractFactory

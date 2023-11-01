@@ -1,5 +1,5 @@
 from estudio import Estudio
-from calculos_estadisticos import CalculosEstadisticos
+from calculosestadisticos import CalculosEstadisticos
 from media import Media
 from moda import Moda
 from mediana import Mediana
