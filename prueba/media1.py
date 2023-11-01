@@ -3,7 +3,7 @@ from numpy import mean
 import pandas as pd
 #concreteProductA1
 
-class Media(CalculosEstadisticos):
+class Mediafecha(CalculosEstadisticos):
     def calcular(self) -> float:
         datos=pd.read_csv("emergencias.csv")
         datos['FECHA'] = pd.to_datetime(datos['FECHA'], errors='coerce')
