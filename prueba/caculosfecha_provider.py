@@ -5,7 +5,7 @@ from calculosfecha_factory import Calculos_estadistico_fecha
 
 class Calculosfechaprovider:
     @staticmethod
-    def create_calculos(elegircal: MMM) -> Calculos_estadisticos_fecha:
+    def create_calculos(elegircal: MMM) -> Calculos_estadistico_fecha:
         if elegircal == MMM.MEDIA:
             return Calculos_estadistico_fecha()
         elif elegircal == MMM.MODA:
