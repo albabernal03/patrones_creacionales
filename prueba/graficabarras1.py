@@ -1,4 +1,4 @@
-from graficas1 import Graficas
+from graficas import Graficas
 import pandas as pd
 import matplotlib.pyplot as plt
 
