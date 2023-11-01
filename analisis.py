@@ -24,7 +24,7 @@ mostar la media de activaciones por día luego nuestra columna más relevante
 para ello sería la de FECHA.
 
 """
-
+data.to_csv('emergencias.csv', index=False)
 # Convertir la columna de fecha en formato datetime
 data['FECHA'] = pd.to_datetime(data['FECHA'])
 # Extraer el día de la semana de la columna "FECHA"
