@@ -6,14 +6,14 @@ import pandas as pd
 #ConcreteProductB1
 
 class GraficaBarras(Graficas):
-    
+
     def grafica(self) -> None:
         # Leer el archivo CSV utilizando pandas
         df = pd.read_csv('emergencias.csv')
         
         # Mostrar las opciones disponibles al usuario
         print("Opciones disponibles:")
-        print("1. FECHA_NUM")
+        print("1. FECHA")
         print("2. ID-EVENTO")
         
         # Solicitar al usuario que ingrese el número de la opción deseada
@@ -21,7 +21,7 @@ class GraficaBarras(Graficas):
         
         # Verificar si la opción ingresada por el usuario es válida
         if opcion == 1:
-            columna_seleccionada = 'FECHA_NUM'
+            columna_seleccionada = 'FECHA'
         elif opcion == 2:
             columna_seleccionada = 'ID-EVENTO'
         else:

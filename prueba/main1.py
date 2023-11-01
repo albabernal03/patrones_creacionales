@@ -1,14 +1,15 @@
 from calculos_factory import Calculos_estadistico
-import pandas as pd
+from graficas_factory import CrearGrafica
 
 #Client
+
 def main():
-    df = pd.read_csv('emergencias.csv')
+
     factory = Calculos_estadistico()
-    todos_los_calculos = factory.crear_calculos()
-    print(f'media'{media.})
+    calcular_media= factory.crear_calculos()
+    
+    print(f'media: {calcular_media.calcular()}')
 
 
 if __name__ == "__main__":
     main()
-

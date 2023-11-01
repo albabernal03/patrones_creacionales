@@ -11,7 +11,7 @@ class Moda(CalculosEstadisticos):
 
         # Mostrar las opciones disponibles al usuario
         print("Opciones disponibles:")
-        print("1. FECHA_NUM")
+        print("1. FECHA")
         print("2. ID-EVENTO")
 
         # Solicitar al usuario que ingrese el número de la opción deseada
@@ -19,7 +19,7 @@ class Moda(CalculosEstadisticos):
 
         # Verificar si la opción ingresada por el usuario es válida
         if opcion == 1:
-            columna_seleccionada = 'FECHA_NUM'
+            columna_seleccionada = 'FECHA'
         elif opcion == 2:
             columna_seleccionada = 'ID-EVENTO'
         else:
