@@ -1,4 +1,4 @@
-from calculos_estadisticos1 import CalculosEstadisticos
+from calculos_estadisticos import CalculosEstadisticos
 from numpy import mean
 import pandas as pd
 #concreteProductA1

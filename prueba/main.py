@@ -7,8 +7,10 @@ def main():
 
     factory = Calculos_estadistico_fecha()
     calcular_media= factory.crear_calculos()
+    calcular_moda= factory.crear_calculos()
     
     print(f'media: {calcular_media.calcular()}')
+    print(f'moda: {calcular_moda.calcular()}')
 
     factory2= CrearGrafica_fecha()
     grafica= factory2.crear_graficas()
