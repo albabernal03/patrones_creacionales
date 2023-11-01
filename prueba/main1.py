@@ -1,5 +1,5 @@
 from calculosfecha_factory import Calculos_estadistico_fecha
-from graficas_factory import CrearGrafica
+from graficasfecha_factory import CrearGrafica_fecha
 
 #Client
 
@@ -10,7 +10,7 @@ def main():
     
     print(f'media: {calcular_media.calcular()}')
 
-    factory2= CrearGrafica()
+    factory2= CrearGrafica_fecha()
     grafica= factory2.crear_graficas()
 
     print(f'grafica: {grafica.grafica()}')

@@ -4,7 +4,7 @@ from graficabarras1 import GraficaBarras
 
 #ConcreteFactory2
 
-class CrearGrafica(Analisisdatos):
+class CrearGrafica_fecha(Analisisdatos):
     
         def crear_calculos(self) -> None:
             return None
