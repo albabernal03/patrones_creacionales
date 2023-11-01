@@ -1,4 +1,4 @@
-from analisis1_factory import Analisisdatos
+from analisis_factory import Analisisdatos
 from graficas1 import Graficas
 from graficabarras1 import GraficaBarras
 

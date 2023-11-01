@@ -1,4 +1,4 @@
-from analisis1_factory import Analisisdatos
+from analisis_factory import Analisisdatos
 from calculos_estadisticos1 import CalculosEstadisticos
 from media1 import Mediafecha
 
