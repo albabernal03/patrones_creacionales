@@ -24,6 +24,8 @@ mostar la media de activaciones por día luego nuestra columna más relevante
 para ello sería la de FECHA.
 
 """
+
+
 data.to_csv('emergencias.csv', index=False)
 # Convertir la columna de fecha en formato datetime
 data['FECHA'] = pd.to_datetime(data['FECHA'])
@@ -63,14 +65,5 @@ plt.show()
 # Guardar la imagen de la matriz de correlaciones
 plt.savefig('matriz_correlaciones.png')
 
-# Agrupar por fecha y contar las activaciones por día
-activaciones_por_dia = data.groupby(data['FECHA'].dt.date).size()
 
-# Visualizar el número de activaciones por día
-activaciones_por_dia.plot(kind='bar', figsize=(10, 6))
-plt.xlabel('Fecha')
-plt.ylabel('Número de Activaciones')
-plt.title('Número de Activaciones por Día')
-plt.show()
-# Guardar la imagen del número de activaciones por día
-plt.savefig('activaciones_por_dia.png')
+#LUEGO DEL ANÁLISIS VEMOS QUE LA COLUMNA QUE MAYOR CORRELACION ES LA DE ID-EVENTO, POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS

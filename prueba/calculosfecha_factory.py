@@ -5,7 +5,7 @@ from media1 import Media
 
 #ConcreteFactory1
 
-class Calculos_estadistico(Analisisdatos):
+class Calculos_estadistico_fecha(Analisisdatos):
     def crear_calculos(self) -> CalculosEstadisticos:
         return Media()
 

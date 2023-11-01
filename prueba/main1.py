@@ -1,11 +1,11 @@
-from calculos_factory import Calculos_estadistico
+from calculosfecha_factory import Calculos_estadistico_fecha
 from graficas_factory import CrearGrafica
 
 #Client
 
 def main():
 
-    factory = Calculos_estadistico()
+    factory = Calculos_estadistico_fecha()
     calcular_media= factory.crear_calculos()
     
     print(f'media: {calcular_media.calcular()}')
