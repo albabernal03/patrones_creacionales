@@ -8,3 +8,10 @@ class CalculosEstadisticos(ABC):
         pass
 
     
+class Media(CalculosEstadisticos):
+    def calcular(self) -> float:
+        pass
+
+class Moda(CalculosEstadisticos):
+    def calcular(self) -> float:
+        pass

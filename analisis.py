@@ -14,7 +14,8 @@ data.info() #Esto nos sirve para ver el tipo de datos que tenemos en cada column
 
 ##Ahora vamos a eliminar las columnas que no nos sirven para el análisis (columnas que tienen todos los valores nulos (NaN))
 data.drop(['PRECIO', 'DIAS-EXCLUIDOS', 'DESCRIPCION', 'Unnamed: 29','GRATUITO'], axis=1, inplace=True)
-print(data)
+
+data.to_csv('emergencias2.csv', index=False)
 
 """
 Como el dataset que se nos ha proporcionado contiene información 
@@ -25,10 +26,16 @@ para ello sería la de FECHA.
 
 """
 
-
+'''
 data.to_csv('emergencias.csv', index=False)
+print(data.columns)
+
+
 # Convertir la columna de fecha en formato datetime
 data['FECHA'] = pd.to_datetime(data['FECHA'])
+'''
+
+'''
 # Extraer el día de la semana de la columna "FECHA"
 data['DIA_SEMANA'] = data['FECHA'].dt.dayofweek
 # Crear variables ficticias para el día de la semana y asignar los nombres deseados
@@ -65,5 +72,4 @@ plt.show()
 # Guardar la imagen de la matriz de correlaciones
 plt.savefig('matriz_correlaciones.png')
 
-
-#LUEGO DEL ANÁLISIS VEMOS QUE LA COLUMNA QUE MAYOR CORRELACION ES LA DE ID-EVENTO, POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS
+#LUEGO DEL ANÁLISIS VEMOS QUE LA COLUMNA QUE MAYOR CORRELACION ES LA DE ID-EVENTO, POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS'''
