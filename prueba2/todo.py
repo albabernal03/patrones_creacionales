@@ -47,7 +47,7 @@ class Analisisdatos(ABC):
 
 class Media(CalculosEstadisticos):
     def calcular(self) -> float:
-        datos=pd.read_csv("../prueba/emergencias.csv")
+        datos=pd.read_csv("emergencias.csv")
         datos['FECHA'] = pd.to_datetime(datos['FECHA'], errors='coerce')
         activaciones_por_dia = datos.groupby(datos['FECHA'].dt.date).size()
         return (f'La media es: {activaciones_por_dia.mean()}')
@@ -58,7 +58,7 @@ class Media(CalculosEstadisticos):
 
 class Moda(CalculosEstadisticos):
     def calcular(self) -> float:
-        datos=pd.read_csv("../prueba/emergencias.csv")
+        datos=pd.read_csv("emergencias.csv")
         datos['FECHA'] = pd.to_datetime(datos['FECHA'], errors='coerce')
         activaciones_por_dia = datos.groupby(datos['FECHA'].dt.date).size()
         return (f'La moda es: {mode(activaciones_por_dia)}')
@@ -70,7 +70,7 @@ class Moda(CalculosEstadisticos):
 
 class Mediana(CalculosEstadisticos):
     def calcular(self) -> float:
-        datos=pd.read_csv("../prueba/emergencias.csv")
+        datos=pd.read_csv("emergencias.csv")
         datos['FECHA'] = pd.to_datetime(datos['FECHA'], errors='coerce')
         activaciones_por_dia = datos.groupby(datos['FECHA'].dt.date).size()
         return (f'La mediana es: {activaciones_por_dia.median()}')
@@ -82,7 +82,7 @@ class Mediana(CalculosEstadisticos):
 
 class GraficaBarras(Graficas):
     def grafica(self) -> None:
-        data = pd.read_csv('../prueba/emergencias.csv')
+        data = pd.read_csv('emergencias.csv')
         data['FECHA'] = pd.to_datetime(data['FECHA'], errors='coerce')
         # Agrupar por fecha y contar las activaciones por día
         activaciones_por_dia = data.groupby(data['FECHA'].dt.date).size()
@@ -105,7 +105,6 @@ class Histograma(Graficas):
         data['ID-EVENTO'] = pd.to_datetime(data['FECHA'], errors='coerce')
         # Agrupar por fecha y contar las activaciones por día
         activaciones_por_dia = data.groupby(data['FECHA'].dt.date).size()
-
         # Visualizar el número de activaciones por día
         activaciones_por_dia.plot(kind='hist', figsize=(10, 6))
         plt.xlabel('Fecha')

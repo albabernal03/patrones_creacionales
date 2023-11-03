@@ -35,6 +35,8 @@ para ello sería la de FECHA.
 
 """
 
+data['FECHA'] = pd.to_datetime(data['FECHA'])
+
 #-----------------------------------------
 #lo guardamos en un csv
 #-----------------------------------------
@@ -42,11 +44,6 @@ para ello sería la de FECHA.
 data.to_csv('emergencias.csv', index=False)
 print(data.columns)
 
-#-----------------------------------------
-# Convertir la columna de fecha en formato datetime
-#-----------------------------------------
-
-data['FECHA'] = pd.to_datetime(data['FECHA'])
 
 
 
