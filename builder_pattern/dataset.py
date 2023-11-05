@@ -1,24 +1,18 @@
-import os
 import openai
-import time
 
-os.environ['OPENAI_API_KEY'] = "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"
-openai.api_key = os.environ['OPENAI_API_KEY']
+# Configura tu clave de API de OpenAI
+api_key = "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"
 
-question = 'creates a database with hundreds of wine, beer and cocktail options, with recommendations based on your pizza topping choices.'
+# Define el texto de entrada con los ingredientes de la pizza
+input_text = "Mi pizza tiene pepperoni, champiñones y aceitunas."
 
-# Controla la velocidad de las solicitudes
-def generar_respuesta():
-    completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",
-                                              temperature=0,
-                                              messages=[{"role": "user", "content": question}])
-    respuesta = completion["choices"][0]["message"]["content"]
-    return respuesta
+# Envía una solicitud al modelo para generar recomendaciones
+response = openai.Completion.create(
+    engine="text-davinci-002",  # O el motor que esté disponible en tu momento
+    prompt=input_text,
+    max_tokens=50  # Limita la longitud de la respuesta
+)
 
-if __name__ == "__main__":
-    while True:
-        respuesta = generar_respuesta()
-        print(respuesta)
-
-        # Espera para cumplir con los límites de 3 RPM
-        time.sleep(20)  # Espera 20 segundos entre solicitudes
+# Obtiene la respuesta del modelo
+recommendations = response.choices[0].text
+print(recommendations)
