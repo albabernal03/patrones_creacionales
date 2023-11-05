@@ -101,7 +101,7 @@ class GraficaBarras(Graficas):
 
 class Histograma(Graficas):
     def grafica(self) -> None:
-        data = pd.read_csv('../prueba/emergencias.csv')
+        data = pd.read_csv('emergencias.csv')
         data['ID-EVENTO'] = pd.to_datetime(data['FECHA'], errors='coerce')
         # Agrupar por fecha y contar las activaciones por día
         activaciones_por_dia = data.groupby(data['FECHA'].dt.date).size()
@@ -161,6 +161,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+   
 '''
 # Client
 def main():
