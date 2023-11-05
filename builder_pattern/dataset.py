@@ -1,7 +1,7 @@
-import os 
+import os
 import openai
 import requests
-import os
+import json  # Importa el módulo JSON
 
 # Obtén la clave de API desde la variable de entorno
 api_key = os.getenv("OPENAI_API_KEY")
@@ -9,23 +9,25 @@ api_key = os.getenv("OPENAI_API_KEY")
 # Configura la clave de API de OpenAI
 openai.api_key = api_key
 
-#Definimos el encabezado de la autorización
-
+# Define el encabezado de autorización
 headers = {
-    'Authorization':f'Bearer {api_key}',
+    'Authorization': f'Bearer {api_key}',
 }
 
-#Definimos los datos de la solicitud 
-
+# Define los datos de la solicitud en formato JSON
 data = {
     'prompt': 'Mi pizza tiene pepperoni, champiñones y aceitunas.',
     'max_tokens': 5,
 }
 
-# Realiza la solicitud a la API
-response = requests.post('https://api.openai.com/v1/engines/davinci/completions', headers=headers, data=data)
+# Convierte los datos a formato JSON
+data_json = json.dumps(data)
 
-#Imprimimos la respuesta
+# Realiza la solicitud a la API
+response = requests.post('https://api.openai.com/v1/engines/davinci/completions', headers=headers, data=data_json)
+
+# Imprime la respuesta
 print(response.json())
+
 
 
