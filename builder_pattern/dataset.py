@@ -1,7 +1,9 @@
+
 import os
 import openai
 import requests
 import json  # Importa el módulo JSON
+import logging
 
 # Obtén la clave de API desde la variable de entorno
 api_key = os.getenv("OPENAI_API_KEY")
@@ -25,9 +27,13 @@ data_json = json.dumps(data)
 
 # Realiza la solicitud a la API
 response = requests.post('https://api.openai.com/v1/engines/davinci/completions', headers=headers, data=data_json)
+logging.info(response.text)
 
 # Imprime la respuesta
 print(response.json())
+
+
+
 
 
 
