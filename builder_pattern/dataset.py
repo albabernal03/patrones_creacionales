@@ -1,25 +1,24 @@
+import os
 import openai
+import time
 
-api_key='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'
-openai.api_key = api_key
+os.environ['OPENAI_API_KEY'] = "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"
+openai.api_key = os.environ['OPENAI_API_KEY']
 
-import csv
-import openai
+question = 'creates a database with hundreds of wine, beer and cocktail options, with recommendations based on your pizza topping choices.'
 
-api_key='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'
-openai.api_key = api_key
+# Controla la velocidad de las solicitudes
+def generar_respuesta():
+    completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",
+                                              temperature=0,
+                                              messages=[{"role": "user", "content": question}])
+    respuesta = completion["choices"][0]["message"]["content"]
+    return respuesta
 
-respuesta=openai.Completion.create(
-    engine="davinci", #establecemos el motor, es decir, el modelo que vamos a utilizar
-    prompt='creates a database with hundreds of wine, beer and cocktail options, with recommendations based on your pizza topping choices.',
-    max_tokens=20,
-)
+if __name__ == "__main__":
+    while True:
+        respuesta = generar_respuesta()
+        print(respuesta)
 
-texto_generado = respuesta.choices[0].text
-print(texto_generado)
-
-# Guarda los textos generados en un archivo CSV
-with open('textos_generados.csv', 'w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(["Texto Generado"])  # Escribe la cabecera
-    writer.writerow([texto_generado])
+        # Espera para cumplir con los límites de 3 RPM
+        time.sleep(20)  # Espera 20 segundos entre solicitudes
