@@ -12,7 +12,7 @@ openai.api_key = api_key
 respuesta=openai.Completion.create(
     engine="davinci", #establecemos el motor, es decir, el modelo que vamos a utilizar
     prompt='creates a database with hundreds of wine, beer and cocktail options, with recommendations based on your pizza topping choices.',
-    max_tokens=100,
+    max_tokens=50,
 )
 
 texto_generado = respuesta.choices[0].text
