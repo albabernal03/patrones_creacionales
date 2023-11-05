@@ -1,18 +1,28 @@
+import os 
 import openai
+import requests
 
-# Configura tu clave de API de OpenAI
-api_key = "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"
+api_key = os.getenv("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")
+openai.api_key = api_key
 
-# Define el texto de entrada con los ingredientes de la pizza
-input_text = "Mi pizza tiene pepperoni, champiñones y aceitunas."
+#Definimos el encabezado de la autorización
 
-# Envía una solicitud al modelo para generar recomendaciones
-response = openai.Completion.create(
-    engine="text-davinci-002",  # O el motor que esté disponible en tu momento
-    prompt=input_text,
-    max_tokens=50  # Limita la longitud de la respuesta
-)
+headers = {
+    'Authorization':f'Bearer {api_key}',
+}
 
-# Obtiene la respuesta del modelo
-recommendations = response.choices[0].text
-print(recommendations)
+#Definimos los datos de la solicitud 
+
+data = {
+    'prompt': 'Mi pizza tiene pepperoni, champiñones y aceitunas.',
+    'max_tokens': 5,
+}
+
+# Realiza la solicitud a la API
+response = requests.post('https://api.openai.com/v1/engines/davinci/completions', headers=headers, data=data)
+
+#Imprimimos la respuesta
+print(response.json())
+
+
+
