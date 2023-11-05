@@ -1,8 +1,12 @@
 import os 
 import openai
 import requests
+import os
 
-api_key = os.getenv("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")
+# Obtén la clave de API desde la variable de entorno
+api_key = os.getenv("OPENAI_API_KEY")
+
+# Configura la clave de API de OpenAI
 openai.api_key = api_key
 
 #Definimos el encabezado de la autorización
@@ -23,6 +27,5 @@ response = requests.post('https://api.openai.com/v1/engines/davinci/completions'
 
 #Imprimimos la respuesta
 print(response.json())
-
 
 
