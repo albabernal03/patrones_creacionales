@@ -142,6 +142,7 @@ class Mostrargraficas(Analisisdatos):
 #Client
 #-----------------------------------------
 
+#TODO: Arreglar el fallo que da ahí que no se entiende
 
 def main():
     factory=Calculosmmm()
@@ -162,18 +163,3 @@ def main():
 if __name__ == "__main__":
     main()
    
-'''
-# Client
-def main():
-    factory=Mostrargraficas()
-
-    mostrar=factory.crear_graficas()
-
-    for i in mostrar:
-        i.grafica()
-
-    
-
-if __name__ == "__main__":
-    main()
-'''
