@@ -80,16 +80,12 @@ class Mediana(CalculosEstadisticos):
 #ConcreteProductB1
 #-----------------------------------------
 
-class GraficaBarras(Graficas):
+class Histograma(Graficas):
     def grafica(self) -> None:
         data = pd.read_csv('emergencias.csv')
-        #data['FECHA'] = pd.to_datetime(data['FECHA'], errors='coerce')
-        # Agrupar por fecha y contar las activaciones por día
-        #activaciones_por_dia = data.groupby(data['FECHA'].dt.date).size()
-
-        # Visualizar el número de activaciones por día
         plt.hist(data['TITULO'])
-        plt.xlabel('Fecha')
+        plt.xticks(rotation=90)
+        plt.xlabel('Eventos')
         plt.ylabel('Número de Activaciones')
         plt.title('Número de Activaciones por Día')
         plt.show()
@@ -99,17 +95,17 @@ class GraficaBarras(Graficas):
 #ConcreteProductB2
 #-----------------------------------------
 
-class Histograma(Graficas):
+class GraficaBarras(Graficas):
     def grafica(self) -> None:
         data = pd.read_csv('emergencias.csv')
         #data['FECHA'] = pd.to_datetime(data['FECHA'], errors='coerce')
         # Agrupar por fecha y contar las activaciones por día
-        activaciones_por_dia = data.groupby(data['TITULO']).size()
+        activaciones_por_dia = data.groupby(data['FECHA']).size()
         # Visualizar el número de activaciones por día
-        activaciones_por_dia.plot(kind='hist', figsize=(10, 6))
+        activaciones_por_dia.plot(kind='bar', figsize=(10, 6))
         plt.xlabel('Fecha')
         plt.ylabel('Número de Activaciones')
-        plt.xticks(data['TITULO'])
+
         plt.title('Número de Activaciones por Día')
         plt.show()
      
