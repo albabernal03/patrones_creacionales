@@ -36,7 +36,8 @@ para ello sería la de FECHA.
 
 """
 
-data['FECHA'] = pd.to_datetime(data['FECHA'])
+#data['FECHA'] = pd.to_datetime(data['FECHA'])
+data['FECHA'] = data['FECHA'].apply(lambda x: int("".join(data["FECHA"][0].split(" ")[0].split("-"))))
 
 #-----------------------------------------
 #lo guardamos en un csv
@@ -45,12 +46,29 @@ data['FECHA'] = pd.to_datetime(data['FECHA'])
 data.to_csv('emergencias.csv', index=False)
 print(data.columns)
 
+#-----------------------------------------
+#Hacer matrix de correlacion
+#-----------------------------------------
+
+# Calcular la matriz de correlación entre "FECHA" y otras variables numéricas
+correlation_matrix = data.corrwith(data['FECHA'])
+
+# Visualizar la matriz de correlación
+plt.figure(figsize=(10, 6))
+sns.heatmap(correlation_matrix.to_frame(), annot=True, cmap='coolwarm')
+plt.title('Correlation with FECHA')
+plt.show()
 
 
 
-# Extraer el día de la semana de la columna "FECHA"
+
+
+'''# Extraer el día de la semana de la columna "FECHA"
 data['DIA_SEMANA'] = data['FECHA'].dt.dayofweek
-# Crear variables ficticias para el día de la semana y asignar los nombres deseados
+'''
+
+
+'''# Crear variables ficticias para el día de la semana y asignar los nombres deseados
 variables_ficticias = pd.get_dummies(data['DIA_SEMANA']).rename(columns={
     0: 'Lunes',
     1: 'Martes',
@@ -82,7 +100,7 @@ sns.heatmap(corr,annot=True,cmap="coolwarm")
 plt.show()
 
 # Guardar la imagen de la matriz de correlaciones
-plt.savefig('matriz_correlaciones.png')
+plt.savefig('matriz_correlaciones.png')'''
 
 
 #LUEGO DEL ANÁLISIS VEMOS QUE LA COLUMNA QUE MAYOR CORRELACION ES LA DE ID-EVENTO, POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS
