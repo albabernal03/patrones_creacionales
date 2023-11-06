@@ -36,8 +36,8 @@ para ello sería la de FECHA.
 
 """
 
-#data['FECHA'] = pd.to_datetime(data['FECHA'])
-data['FECHA'] = data['FECHA'].apply(lambda x: int("".join(data["FECHA"][0].split(" ")[0].split("-"))))
+
+data['FECHA'] = data['FECHA'].apply(lambda x: int("".join(x.split(" ")[0].split("-"))))
 
 #-----------------------------------------
 #lo guardamos en un csv
@@ -56,51 +56,13 @@ correlation_matrix = data.corrwith(data['FECHA'])
 # Visualizar la matriz de correlación
 plt.figure(figsize=(10, 6))
 sns.heatmap(correlation_matrix.to_frame(), annot=True, cmap='coolwarm')
-plt.title('Correlation with FECHA')
+plt.title('Correlation con FECHA')
 plt.show()
+plt.savefig('correlation.png')
 
+#-----------------------------------------
+#Conclusiones
+#-----------------------------------------
 
-
-
-
-'''# Extraer el día de la semana de la columna "FECHA"
-data['DIA_SEMANA'] = data['FECHA'].dt.dayofweek
-'''
-
-
-'''# Crear variables ficticias para el día de la semana y asignar los nombres deseados
-variables_ficticias = pd.get_dummies(data['DIA_SEMANA']).rename(columns={
-    0: 'Lunes',
-    1: 'Martes',
-    2: 'Miércoles',
-    3: 'Jueves',
-    4: 'Viernes',
-    5: 'Sábado',
-    6: 'Domingo'
-})
-
-# Concatenar las variables ficticias al dataframe original
-data = pd.concat([data, variables_ficticias], axis=1)
-
-# Calcular la matriz de correlación
-matriz_correlacion = data.corr()
-
-# Mostrar la matriz de correlación
-print(matriz_correlacion)
-
-# Crear una nueva columna numérica con la fecha convertida
-data['FECHA_NUM'] = data['FECHA'].apply(lambda x: x.toordinal())
-
-# Calcular la matriz de correlaciones
-corr = data.corr()
-
-# Visualizar la matriz de correlaciones
-plt.figure(figsize=(10,10)) 
-sns.heatmap(corr,annot=True,cmap="coolwarm")
-plt.show()
-
-# Guardar la imagen de la matriz de correlaciones
-plt.savefig('matriz_correlaciones.png')'''
-
-
-#LUEGO DEL ANÁLISIS VEMOS QUE LA COLUMNA QUE MAYOR CORRELACION ES LA DE ID-EVENTO, POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS
+'''LUEGO DEL ANÁLISIS VEMOS QUE LA COLUMNA QUE MAYOR CORRELACION ES LA DE ID-EVENTO,
+ POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS'''
