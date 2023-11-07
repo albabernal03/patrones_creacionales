@@ -124,7 +124,7 @@ class PizzaCSV:
             fieldnames = ['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extras']
             writer = csv.DictWriter(file, fieldnames=fieldnames)
 
-            # Write the header row if the file is empty or doesn't exist
+            #Si el archivo está vacío o no existe, escribe la fila de encabezado
             if file.tell() == 0:
                 writer.writeheader()
 
