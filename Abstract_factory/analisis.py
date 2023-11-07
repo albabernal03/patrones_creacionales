@@ -19,7 +19,7 @@ data = pd.read_csv(URL, sep=';', encoding='ISO-8859-1')
 #-----------------------------------------
 data.info() #Esto nos sirve para ver el tipo de datos que tenemos en cada columna, y si nos aporta información relevante
 
-data.to_csv('emergenciassucio.csv', index=False)
+
 #-----------------------------------------
 #Ahora vamos a eliminar las columnas que no nos sirven para el análisis (columnas que tienen todos los valores nulos (NaN))
 #-----------------------------------------
@@ -35,7 +35,6 @@ mostar la media de activaciones por día luego nuestra columna más relevante
 para ello sería la de FECHA.
 
 """
-
 
 data['FECHA'] = data['FECHA'].apply(lambda x: int("".join(x.split(" ")[0].split("-"))))
 

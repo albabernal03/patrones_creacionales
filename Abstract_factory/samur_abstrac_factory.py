@@ -139,7 +139,6 @@ class Mostrargraficas(Analisisdatos):
 #Client
 #-----------------------------------------
 
-#TODO: Arreglar el fallo que da ahí que no se entiende
 
 def main():
     factory=Calculosmmm()
