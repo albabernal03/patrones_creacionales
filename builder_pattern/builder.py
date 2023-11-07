@@ -87,8 +87,35 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
         self.pizza.presentacion= input('¿Cómo quieres que se presente? entera o en porciones: ')
 
     def añadir_maridaje_recomendado(self):
-        #TODO
-        pass
+        bebidas={
+            'cerveza': ['pollo', 'bacon', 'salchichas', 'carne picada', 'huevo', 'queso'],
+            'vino blanco': ['gambas', 'atun', 'anchoas','queso', 'champiñones'],
+            'vino_tinto': ['queso', 'aceitunas', 'tomate', 'maiz', 'champiñones', 'pimiento'],
+            'sangria': ['pollo', 'bacon', 'queso', 'salchichas', 'huevo', 'atun', 'jamon', 'carne picada', 'champiñones', 'pimiento'],
+            'cocacola': ['huevo', 'queso', 'jamon', 'bacon', 'champiñones', 'pollo', 'pimiento', 'carne picada', 'salchichas'],
+            'fanta_naranja': ['aceitunas', 'atun', 'anchoas', 'maiz', 'gambas'],
+            'fanta_limon': ['pollo', 'bacon', 'queso', 'salchichas', 'huevo', 'atun', 'jamon', 'carne picada', 'champiñones', 'pimiento'],
+            'agua': ['pollo', 'bacon', 'queso', 'salchichas', 'huevo', 'atun', 'jamon', 'carne picada', 'champiñones', 'pimiento']
+
+        }
+
+        ingredientes_pizza = self.pizza.ingredientes_principales
+
+        maridaje_recomendado= None
+        max_coincidencias = 0
+
+        for bebida, ingredientes_bebida in bebidas.items():
+            coincidencias= len(set(ingredientes_pizza).intersection(ingredientes_bebida))
+            if coincidencias > max_coincidencias:
+                max_coincidencias = coincidencias
+                maridaje_recomendado = bebida
+
+        print(f"El maridaje recomendado para tu pizza es: {maridaje_recomendado}")
+        print(input('Quiere cambiar el maridaje recomendado? si o no: '))
+        if input == 'si':
+            self.pizza.maridaje_recomendado = input('¿Qué bebida quieres? cerveza, vino blanco, vino tinto, sangria, cocacola, fanta_naranja, fanta_limon o agua: ')
+        else:
+            self.pizza.maridaje_recomendado = maridaje_recomendado
 
     def añadir_extra(self):
         self.pizza.extra= input('¿Quieres bordes rellenos de queso? si o no: ')
@@ -138,7 +165,7 @@ class PizzaCSV:
 
     def write_pizza_to_csv(self, pizza):
         with open(self.file_name, mode='a', newline='') as file:
-            fieldnames = ['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extras']
+            fieldnames = ['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje', 'Extras']
             writer = csv.DictWriter(file, fieldnames=fieldnames)
 
             #Si el archivo está vacío o no existe, escribe la fila de encabezado
@@ -151,7 +178,7 @@ class PizzaCSV:
                 'Ingredientes Principales': ', '.join(pizza.ingredientes_principales),
                 'Cocción': pizza.coccion,
                 'Presentación': pizza.presentacion,
-                'Maridaje Recomendado': pizza.maridaje_recomendado,
+                'Maridaje': pizza.maridaje_recomendado,
                 'Extras': pizza.extra
             })
 
