@@ -160,7 +160,7 @@ class PizzaDirector():
 #Creamos una clase que muestre la pizza, por si se necesita modificar
 #-----------------------------------------
 class PizzaValidator:
-    def __init(self, builder):
+    def __init__(self, builder):
         self.builder = builder
         self.pizza = None
 
@@ -180,28 +180,32 @@ class PizzaValidator:
         else:
             print("No hay una pizza configurada para mostrar un resumen.")
 
-    def confirmar_pizza(self):
+    def verificar_pizza(self):
         if self.pizza:
-            confirmacion = input('¿Desea confirmar la pizza? (si o no): ')
+            print("¿Estás satisfecho con las modificaciones realizadas en la pizza?")
+            confirmacion = input('Responde "si" para confirmar la pizza o "no" para seguir modificando: ')
             if confirmacion.lower() == 'si':
                 print("Pizza confirmada. ¡Gracias por tu pedido!")
-
+                return True
             elif confirmacion.lower() == 'no':
                 self.modificar_selecciones()
+                return self.verificar_pizza()
             else:
                 print("Respuesta no válida. Debes responder 'si' o 'no.")
-                self.confirmar_pizza()
+                return self.verificar_pizza()
         else:
-            print("No hay una pizza configurada para confirmar.")
+            print("No hay una pizza configurada para verificar.")
 
     def modificar_selecciones(self):
         if self.pizza:
             print("Modifica tus selecciones antes de confirmar:")
             self.builder = PizzaCustomizadaBuilder()
-            self.builder.pizza = self.pizza
+            director = PizzaDirector()
+            director.builder = self.builder
+            director.crear_pizza()
+            self.set_pizza(director.get_pizza())
         else:
             print("No hay una pizza configurada para modificar.")
-        
 
 
 
@@ -244,26 +248,19 @@ if __name__ == "__main__":
     
     director = PizzaDirector()
     director.builder = PizzaCustomizadaBuilder()
-    director.crear_pizza()
-    pizza = director.get_pizza()
-    print(pizza.__dict__)
 
-    # Creamos un CSV donde almacenar las elecciones de los clientes
-    csv_writer = PizzaCSV("pizzas.csv")
+    while True:
+        director.crear_pizza()
+        pizza = director.get_pizza()
 
+        csv_writer = PizzaCSV("pizzas.csv")
+        validator = PizzaValidator(director.builder)
+        validator.set_pizza(pizza)
 
-    # Creamos una clase que muestre la pizza, por si se necesita modificar
-    validator = PizzaValidator()
-    validator.set_pizza(pizza)
+        while not validator.verificar_pizza():
+            pass  # Continúa modificando hasta que se confirme
 
-    # Muestra un resumen de la pizza
-    validator.mostrar_resumen()
-
-    # Confirmamos la pizza
-    if validator.confirmar_pizza():
         csv_writer.write_pizza_to_csv(validator.pizza)
-
-
     
 
 
