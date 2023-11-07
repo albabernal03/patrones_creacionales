@@ -66,7 +66,19 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
         self.pizza.salsa= input('¿Qué salsa quieres? tomate o barbacoa: ')
 
     def añadir_ingredientes_principales(self):
-        self.pizza.ingredientes_principales= input('¿Qué ingredientes quieres? añádelos separándolos por comas ').split(',')
+        opciones_ingredientes = ['tomate', 'queso', 'jamon', 'atun', 'champiñones', 'bacon', 'cebolla', 'pollo', 'piña',
+                                 'aceitunas', 'anchoas', 'maiz', 'salchichas', 'pimiento', 'gambas', 'carne picada', 'huevo']
+        
+        print("Elige los ingredientes principales para tu pizza:")
+        for i, ingrediente in enumerate(opciones_ingredientes, start=1):
+            print(f"{i}. {ingrediente}")
+
+        seleccionados = input("Ingresa los números de los ingredientes separados por comas: ")
+        numeros_seleccionados = [int(x) for x in seleccionados.split(',') if x.isdigit()]
+
+        ingredientes_seleccionados = [opciones_ingredientes[i - 1] for i in numeros_seleccionados]
+
+        self.pizza.ingredientes_principales = ingredientes_seleccionados
 
     def añadir_coccion(self):
         self.pizza.coccion= input('¿Cómo quieres que se cocine? al horno o a la piedra: ')
@@ -79,7 +91,12 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
         pass
 
     def añadir_extra(self):
-        self.pizza.extra= input('¿Qué extras quieres? añádelos separándolos por comas ').split(',')
+        self.pizza.extra= input('¿Quieres bordes rellenos de queso? si o no: ')
+        if self.pizza.extra == 'si':
+            self.pizza.extra = 'bordes rellenos de queso'
+        else:
+            self.pizza.extra = 'sin bordes rellenos de queso'
+
 
 #-----------------------------------------
 #Director
@@ -135,7 +152,7 @@ class PizzaCSV:
                 'Cocción': pizza.coccion,
                 'Presentación': pizza.presentacion,
                 'Maridaje Recomendado': pizza.maridaje_recomendado,
-                'Extras': ', '.join(pizza.extra)
+                'Extras': pizza.extra
             })
 
             
