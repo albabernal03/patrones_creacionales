@@ -175,12 +175,13 @@ class PizzaValidator:
             print(f"Ingredientes Principales: {', '.join(self.pizza.ingredientes_principales)}")
             print(f"Cocción: {self.pizza.coccion}")
             print(f"Presentación: {self.pizza.presentacion}")
-            print(f"Maridaje recomendado: {self.pizza.maridaje_recomendado}")
+            print(f"Maridaje: {self.pizza.maridaje_recomendado}")
             print(f"Extras: {self.pizza.extra}")
         else:
             print("No hay una pizza configurada para mostrar un resumen.")
 
     def verificar_pizza(self):
+        self.mostrar_resumen()
         if self.pizza:
             print("¿Estás satisfecho con las modificaciones realizadas en la pizza?")
             confirmacion = input('Responde "si" para confirmar la pizza o "no" para seguir modificando: ')
