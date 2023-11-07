@@ -1,19 +1,17 @@
-from analisisdatos_factory import Analisisdatos
-from media import Media
-from moda import Moda
-from mediana import Mediana
 from calculosestadisticos import CalculosEstadisticos
 from graficas import Graficas
-
+from analisisdatos_factory import Analisisdatos
+from barras import GraficaBarras
+from histograma import Histograma
 
 #-----------------------------------------
-#ConcreteFactory1
+#ConcreteFactory2
 #-----------------------------------------
 
-class Calculosmmm(Analisisdatos):
+class Mostrargraficas(Analisisdatos):
     def crear_calculos(self) -> CalculosEstadisticos:
-        return [Media(), Mediana(), Moda()]
+        return None
 
     def crear_graficas(self) -> Graficas:
-        return None
+        return [GraficaBarras(), Histograma()]
 
