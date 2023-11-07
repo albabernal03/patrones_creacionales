@@ -159,28 +159,16 @@ class PizzaDirector():
 #-----------------------------------------
 #Creamos una clase que muestre la pizza, por si se necesita modificar
 #-----------------------------------------
-
 class PizzaValidator:
 
-    def __init__(self, builder):
+    def __init__(self, builder, pizza=None):
         self.builder = builder
-        self.pizza= None
-
-    def validar_pizza(self):
-        self.builder.añadir_masa()
-        self.builder.añadir_salsa()
-        self.builder.añadir_ingredientes_principales()
-        self.builder.añadir_coccion()
-        self.builder.añadir_presentacion()
-        self.builder.añadir_maridaje_recomendado()
-        self.builder.añadir_extra()
-        self.pizza = self.builder.pizza
-        self.mostrar_resumen()
+        self.pizza = pizza
 
     def mostrar_resumen(self):
         print("Resumen de selecciones:")
-        print(f"Masa: {self.pizza.masa}")
-        print(f"Salsa: {self.pizza.salsa}")
+        print(f"Masa: {self.pizza.get_masa()}")
+        print(f"Salsa: {self.pizza.get_salsa()}")
         print(f"Ingredientes Principales: {', '.join(self.pizza.ingredientes_principales)}")
         print(f"Cocción: {self.pizza.coccion}")
         print(f"Presentación: {self.pizza.presentacion}")
@@ -191,17 +179,18 @@ class PizzaValidator:
         confirmacion = input('¿Desea confirmar la pizza? (si o no): ')
         if confirmacion.lower() == 'si':
             self.write_pizza_to_csv()
+            print("Pizza confirmada y guardada en el archivo CSV.")
         elif confirmacion.lower() == 'no':
             self.modificar_selecciones()
         else:
             print("Respuesta no válida. Debes responder 'si' o 'no.")
             self.confirmar_pizza()
-            
 
     def modificar_selecciones(self):
         print("Modifica tus selecciones antes de confirmar:")
-        self.builder = PizzaCustomizadaBuilder()  # Reinicia el builder
-        self.validar_pizza()
+        self.builder = PizzaCustomizadaBuilder()
+        self.builder.pizza = self.pizza
+
         
 
 
@@ -255,7 +244,6 @@ if __name__ == "__main__":
 
     # Creamos una clase que muestre la pizza, por si se necesita modificar
     validator = PizzaValidator(director.builder)
-    validator.validar_pizza()
 
     # Confirmamos la pizza
     validator.confirmar_pizza()
