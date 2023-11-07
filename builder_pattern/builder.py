@@ -259,7 +259,6 @@ if __name__ == "__main__":
 
         while True:
             if validator.verificar_pizza():
-                print("Pizza confirmada. ¡Gracias por tu pedido!")
                 break  # Sal del bucle interno después de confirmar
 
         break  # Sal del bucle principal después de confirmar
