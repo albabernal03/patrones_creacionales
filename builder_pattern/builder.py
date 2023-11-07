@@ -260,7 +260,7 @@ if __name__ == "__main__":
     validator.mostrar_resumen()
 
     # Confirmamos la pizza
-    if validator.confirmar_pizza:
+    if validator.confirmar_pizza():
         csv_writer.write_pizza_to_csv(validator.pizza)
 
 
