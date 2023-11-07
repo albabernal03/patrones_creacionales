@@ -36,22 +36,21 @@ para ello sería la de FECHA.
 
 """
 
-data['FECHA'] = pd.to_datetime(data['FECHA'])
 
-#-----------------------------------------
-#Lo guardamos en un csv
-#-----------------------------------------
-data.to_csv('emergencias.csv', index=False)
-print(data.columns)
 
 #-----------------------------------------
 #Vamos a ver que valores estan mas relacionados con la columna FECHA
 #-----------------------------------------
 
+
 # Convertir la columna "FECHA" en numérica
 
 data['FECHA'] = data['FECHA'].apply(lambda x: int("".join(x.split(" ")[0].split("-"))))
 
+#Lo guardamos en un csv
+#-----------------------------------------
+data.to_csv('emergencias.csv', index=False)
+print(data.columns)
 
 
 #-----------------------------------------
@@ -74,3 +73,6 @@ plt.savefig('correlation.png')
 
 '''LUEGO DEL ANÁLISIS VEMOS QUE LA COLUMNA QUE MAYOR CORRELACION ES LA DE ID-EVENTO,
  POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS'''
+
+
+
