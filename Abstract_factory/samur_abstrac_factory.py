@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 import pandas as pd 
 from numpy import mean
 from numpy import median
-from scipy import stats #libreria para calcular moda
 import matplotlib.pyplot as plt
 import seaborn as sns
 from statistics import mode
