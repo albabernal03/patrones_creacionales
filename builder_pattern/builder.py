@@ -111,12 +111,12 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
                 maridaje_recomendado = bebida
 
         print(f"El maridaje recomendado para tu pizza es: {maridaje_recomendado}")
-        print(input('Quiere cambiar el maridaje recomendado? si o no: '))
-        if input == 'si':
+        cambiar_maridaje = input('¿Quieres cambiar el maridaje recomendado? si o no: ')
+        if cambiar_maridaje == 'si':
             self.pizza.maridaje_recomendado = input('¿Qué bebida quieres? cerveza, vino blanco, vino tinto, sangria, cocacola, fanta_naranja, fanta_limon o agua: ')
         else:
             self.pizza.maridaje_recomendado = maridaje_recomendado
-
+            
     def añadir_extra(self):
         self.pizza.extra= input('¿Quieres bordes rellenos de queso? si o no: ')
         if self.pizza.extra == 'si':
