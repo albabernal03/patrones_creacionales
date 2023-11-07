@@ -1,7 +1,7 @@
 from pizza_director import PizzaDirector
 from personalizarpizza import PizzaCustomizadaBuilder
-from pizza_validator import PizzaValidator
-from pizzaCSV import PizzaCSV
+from validar import PizzaValidator
+from crearCVS import PizzaCSV
 
 
 
