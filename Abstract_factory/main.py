@@ -1,5 +1,5 @@
-from calculosmmm import Calculosmmm
-from mostrargraficas import Mostrargraficas
+from calculosmmm_factory import Calculosmmm
+from mostrargraficas_factory import Mostrargraficas
 
 #-----------------------------------------
 #Client
