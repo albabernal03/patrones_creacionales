@@ -118,18 +118,24 @@ class PizzaCSV:
     def __init__(self, file_name):
         self.file_name = file_name
         
-    def write_pizza_to_csv(self,pizza):
-        with open(self.file_name, 'a', newline='') as csvfile:
-            writer = csv.writer(csvfile, delimiter=',')
-            writer.writerow([
-                pizza.masa,
-                pizza.salsa,
-                ', '.join(pizza.ingredientes_principales),
-                pizza.coccion,
-                pizza.presentacion,
-                pizza.maridaje_recomendado,
-                ', '.join(pizza.extra)
-            ])
+    def write_pizza_to_csv(self, pizza):
+        with open(self.file_name, mode='a', newline='') as file:
+            fieldnames = ['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extras']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+            # Write the header row if the file is empty
+            if file.tell() == 0:
+                writer.writeheader()
+
+            writer.writerow({
+                'Masa': pizza.masa,
+                'Salsa': pizza.salsa,
+                'Ingredientes Principales': ', '.join(pizza.ingredientes_principales),
+                'Cocción': pizza.coccion,
+                'Presentación': pizza.presentacion,
+                'Maridaje Recomendado': pizza.maridaje_recomendado,
+                'Extras': ', '.join(pizza.extra)
+            })
 
 #-----------------------------------------
 #Client
