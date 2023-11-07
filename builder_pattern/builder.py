@@ -116,7 +116,7 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
             self.pizza.maridaje_recomendado = input('¿Qué bebida quieres? cerveza, vino blanco, vino tinto, sangria, cocacola, fanta_naranja, fanta_limon o agua: ')
         else:
             self.pizza.maridaje_recomendado = maridaje_recomendado
-            
+
     def añadir_extra(self):
         self.pizza.extra= input('¿Quieres bordes rellenos de queso? si o no: ')
         if self.pizza.extra == 'si':
@@ -257,10 +257,9 @@ if __name__ == "__main__":
         validator = PizzaValidator(director.builder)
         validator.set_pizza(pizza)
 
-        while not validator.verificar_pizza():
-            pass  # Continúa modificando hasta que se confirme
-
-        csv_writer.write_pizza_to_csv(validator.pizza)
+        while True:
+            if validator.verificar_pizza():
+                break  # Si el usuario confirma, salimos del bucle interior
     
 
 
