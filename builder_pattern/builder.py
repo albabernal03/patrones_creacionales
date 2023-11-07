@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import csv
 
 #-----------------------------------------
 #Product
@@ -108,6 +109,28 @@ class PizzaDirector():
     def get_pizza(self):
         return self.builder.pizza
     
+
+
+#-----------------------------------------
+#Creamos un CSV donde almacenar las elecciones de los clientes
+#-----------------------------------------
+class PizzaCSV:
+    def __init__(self, file_name):
+        self.file_name = file_name
+        
+    def write_pizza_to_csv(self,pizza):
+        with open(self.file_name, 'a', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',')
+            writer.writerow([
+                pizza.masa,
+                pizza.salsa,
+                ', '.join(pizza.ingredientes_principales),
+                pizza.coccion,
+                pizza.presentacion,
+                pizza.maridaje_recomendado,
+                ', '.join(pizza.extra)
+            ])
+
 #-----------------------------------------
 #Client
 #-----------------------------------------
@@ -120,4 +143,10 @@ if __name__ == "__main__":
     pizza = director.get_pizza()
     print(pizza.__dict__)
 
-    
+    # Creamos un CSV donde almacenar las elecciones de los clientes
+    csv_writer = PizzaCSV("pizza_elecciones.csv")
+    csv_writer.write_pizza_to_csv(pizza)
+
+
+
+
