@@ -114,16 +114,17 @@ class PizzaDirector():
 #-----------------------------------------
 #Creamos un CSV donde almacenar las elecciones de los clientes
 #-----------------------------------------
+
 class PizzaCSV:
     def __init__(self, file_name):
         self.file_name = file_name
-        
+
     def write_pizza_to_csv(self, pizza):
         with open(self.file_name, mode='a', newline='') as file:
             fieldnames = ['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extras']
             writer = csv.DictWriter(file, fieldnames=fieldnames)
 
-            # Write the header row if the file is empty
+            # Write the header row if the file is empty or doesn't exist
             if file.tell() == 0:
                 writer.writeheader()
 
@@ -136,7 +137,6 @@ class PizzaCSV:
                 'Maridaje Recomendado': pizza.maridaje_recomendado,
                 'Extras': ', '.join(pizza.extra)
             })
-
 #-----------------------------------------
 #Client
 #-----------------------------------------
@@ -150,7 +150,7 @@ if __name__ == "__main__":
     print(pizza.__dict__)
 
     # Creamos un CSV donde almacenar las elecciones de los clientes
-    csv_writer = PizzaCSV("pizza_elecciones.csv")
+    csv_writer = PizzaCSV("pizzas.csv")
     csv_writer.write_pizza_to_csv(pizza)
 
 
