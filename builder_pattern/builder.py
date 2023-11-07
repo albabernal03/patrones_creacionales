@@ -184,8 +184,8 @@ class PizzaValidator:
         if self.pizza:
             confirmacion = input('¿Desea confirmar la pizza? (si o no): ')
             if confirmacion.lower() == 'si':
-                self.write_pizza_to_csv()
-                print("Pizza confirmada y guardada en el archivo CSV.")
+                print("Pizza confirmada. ¡Gracias por tu pedido!")
+
             elif confirmacion.lower() == 'no':
                 self.modificar_selecciones()
             else:
@@ -250,7 +250,7 @@ if __name__ == "__main__":
 
     # Creamos un CSV donde almacenar las elecciones de los clientes
     csv_writer = PizzaCSV("pizzas.csv")
-    csv_writer.write_pizza_to_csv(pizza)
+
 
     # Creamos una clase que muestre la pizza, por si se necesita modificar
     validator = PizzaValidator()
@@ -260,7 +260,9 @@ if __name__ == "__main__":
     validator.mostrar_resumen()
 
     # Confirmamos la pizza
-    validator.confirmar_pizza()
+    if validator.confirmar_pizza:
+        csv_writer.write_pizza_to_csv(validator.pizza)
+
 
     
 
