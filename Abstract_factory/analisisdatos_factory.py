@@ -1,2 +1,2 @@
 from abc import ABC, abstractmethod
-from calculosestadisticos import CalculosEstadisticos
+
