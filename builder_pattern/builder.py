@@ -194,7 +194,9 @@ class PizzaValidator:
         elif confirmacion.lower() == 'no':
             self.modificar_selecciones()
         else:
-            print("Respuesta no válida. Debes responder 'si' o 'no'.")
+            print("Respuesta no válida. Debes responder 'si' o 'no.")
+            self.confirmar_pizza()
+            
 
     def modificar_selecciones(self):
         print("Modifica tus selecciones antes de confirmar:")
