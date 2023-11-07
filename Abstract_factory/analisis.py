@@ -36,14 +36,23 @@ para ello sería la de FECHA.
 
 """
 
-data['FECHA'] = data['FECHA'].apply(lambda x: int("".join(x.split(" ")[0].split("-"))))
+data['FECHA'] = pd.to_datetime(data['FECHA'])
 
 #-----------------------------------------
-#lo guardamos en un csv
+#Lo guardamos en un csv
 #-----------------------------------------
-
 data.to_csv('emergencias.csv', index=False)
 print(data.columns)
+
+#-----------------------------------------
+#Vamos a ver que valores estan mas relacionados con la columna FECHA
+#-----------------------------------------
+
+# Convertir la columna "FECHA" en numérica
+
+data['FECHA'] = data['FECHA'].apply(lambda x: int("".join(x.split(" ")[0].split("-"))))
+
+
 
 #-----------------------------------------
 #Hacer matrix de correlacion
