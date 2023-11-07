@@ -91,7 +91,7 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
             'cerveza': ['pollo', 'bacon', 'salchichas', 'carne picada', 'huevo', 'queso'],
             'vino blanco': ['gambas', 'atun', 'anchoas','queso', 'champiñones'],
             'vino_tinto': ['queso', 'aceitunas', 'tomate', 'maiz', 'champiñones', 'pimiento'],
-            'sangria': ['pollo', 'bacon', 'queso', 'salchichas', 'huevo', 'atun', 'jamon', 'carne picada', 'champiñones', 'pimiento'],
+            'sangria': ['pollo', 'bacon', 'queso', 'huevo', 'atun', 'jamon', 'carne picada'],
             'cocacola': ['huevo', 'queso', 'jamon', 'bacon', 'champiñones', 'pollo', 'pimiento', 'carne picada', 'salchichas'],
             'fanta_naranja': ['aceitunas', 'atun', 'anchoas', 'maiz', 'gambas'],
             'fanta_limon': ['pollo', 'bacon', 'queso', 'salchichas', 'huevo', 'atun', 'jamon', 'carne picada', 'champiñones', 'pimiento'],
@@ -125,6 +125,8 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
             self.pizza.extra = 'sin bordes rellenos de queso'
 
 
+
+
 #-----------------------------------------
 #Director
 #-----------------------------------------
@@ -153,6 +155,56 @@ class PizzaDirector():
     def get_pizza(self):
         return self.builder.pizza
     
+
+#-----------------------------------------
+#Creamos una clase que muestre la pizza, por si se necesita modificar
+#-----------------------------------------
+
+class PizzaValidator:
+
+    def __init__(self, builder):
+        self.builder = builder
+        self.pizza= None
+
+    def validar_pizza(self):
+        self.builder.añadir_masa()
+        self.builder.añadir_salsa()
+        self.builder.añadir_ingredientes_principales()
+        self.builder.añadir_coccion()
+        self.builder.añadir_presentacion()
+        self.builder.añadir_maridaje_recomendado()
+        self.builder.añadir_extra()
+        self.pizza = self.builder.pizza
+        self.mostrar_resumen()
+
+    def mostrar_resumen(self):
+        print("Resumen de selecciones:")
+        print(f"Masa: {self.pizza.masa}")
+        print(f"Salsa: {self.pizza.salsa}")
+        print(f"Ingredientes Principales: {', '.join(self.pizza.ingredientes_principales)}")
+        print(f"Cocción: {self.pizza.coccion}")
+        print(f"Presentación: {self.pizza.presentacion}")
+        print(f"Maridaje recomendado: {self.pizza.maridaje_recomendado}")
+        print(f"Extras: {self.pizza.extra}")
+
+    def confirmar_pizza(self):
+        confirmacion = input('¿Desea confirmar la pizza? (si o no): ')
+        if confirmacion.lower() == 'si':
+            self.write_pizza_to_csv()
+        elif confirmacion.lower() == 'no':
+            self.modificar_selecciones()
+        else:
+            print("Respuesta no válida. Debes responder 'si' o 'no'.")
+
+    def modificar_selecciones(self):
+        print("Modifica tus selecciones antes de confirmar:")
+        self.builder = PizzaCustomizadaBuilder()  # Reinicia el builder
+        self.validar_pizza()
+        
+
+
+
+
 
 
 #-----------------------------------------
@@ -198,6 +250,15 @@ if __name__ == "__main__":
     # Creamos un CSV donde almacenar las elecciones de los clientes
     csv_writer = PizzaCSV("pizzas.csv")
     csv_writer.write_pizza_to_csv(pizza)
+
+    # Creamos una clase que muestre la pizza, por si se necesita modificar
+    validator = PizzaValidator(director.builder)
+    validator.validar_pizza()
+
+    # Confirmamos la pizza
+    validator.confirmar_pizza()
+
+    
 
 
 
