@@ -6,6 +6,7 @@ import csv
 class PizzaCSV:
     def __init__(self, file_name):
         self.file_name = file_name
+        self.file_path = f'Proyectoweb/Proyectowebapp/{self.file_name}'
 
     def write_pizza_to_csv(self, pizza):
         with open(self.file_name, mode='a', newline='') as file:
@@ -27,5 +28,3 @@ class PizzaCSV:
             })
 
 
-
-#TODO: lUEGO LO CONECTAMOS
