@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .form import PizzaBuilderForm
 from .models import Pizza
 from .storage import PizzaCSV
@@ -38,7 +38,23 @@ def pedir(request):
                 'maridaje_recomendado': maridaje_recomendado,
                 'extra': extra,
             })
-        pizza_order= Pizza(
+    
+    else:
+        form = PizzaBuilderForm()
+
+    return render(request, "Proyectowebapp/pedir.html", {'form': form})
+
+def confirmar_pedido(request):
+    if request.method == 'POST':
+        masa = request.POST.get('masa')
+        salsa = request.POST.get('salsa')
+        ingredientes_principales = request.POST.get('ingredientes_principales')
+        coccion = request.POST.get('coccion')
+        presentacion = request.POST.get('presentacion')
+        maridaje_recomendado = request.POST.get('maridaje_recomendado')
+        extra = request.POST.get('extra')
+
+        pizza_order = Pizza(
             masa=masa,
             salsa=salsa,
             ingredientes_principales=ingredientes_principales,
@@ -48,27 +64,20 @@ def pedir(request):
             extra=extra
         )
         pizza_order.save()
-        # Guarda los datos en un archivo CSV
+
+        # Guardar los datos en un archivo CSV (o donde prefieras)
         csv_file_name = 'pizza.csv'
         pizza_csv = PizzaCSV(csv_file_name)
         pizza_csv.write_pizza_to_csv(pizza_order)
-        return render(request,'Proyectowebapp/home.html')
-      
-    
-    else:
-        form = PizzaBuilderForm()
 
-    return render(request, "Proyectowebapp/pedir.html", {'form': form})
-
+        return HttpResponse("¡Pedido confirmado!")
+    return redirect('home')
 
 
 def ver_csv(request):
-    csv_file_name = 'pizza.csv'  # Nombre de tu archivo CSV
+    csv_file_name = 'pizza.csv'
     df = pd.read_csv(csv_file_name)
-
-    # Convertir el DataFrame de pandas a una tabla HTML
     table_html = df.to_html(classes='table table-striped')
-
     return render(request, 'Proyectowebapp/ver_csv.html', {'table_html': table_html})
 
     

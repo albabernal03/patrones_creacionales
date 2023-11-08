@@ -1,0 +1,28 @@
+{% extends 'Proyectowebapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="content-container">
+    <h1>Resumen de Pedido</h1>
+    <p><strong>Masa:</strong> {{ masa }}</p>
+    <p><strong>Salsa:</strong> {{ salsa }}</p>
+    <p><strong>Ingredientes Principales:</strong> {{ ingredientes_principales }}</p>
+    <p><strong>Cocción:</strong> {{ coccion }}</p>
+    <p><strong>Presentación:</strong> {{ presentacion }}</p>
+    <p><strong>Maridaje Recomendado:</strong> {{ maridaje_recomendado }}</p>
+    <p><strong>Extra Bordes de Queso:</strong> {{ extra }}</p>
+
+    <form method="post" action="{% url 'confirmar_pedido' %}">
+        {% csrf_token %}
+        <input type="hidden" name="masa" value="{{ masa }}">
+        <input type="hidden" name="salsa" value="{{ salsa }}">
+        <input type="hidden" name="ingredientes_principales" value="{{ ingredientes_principales }}">
+        <input type="hidden" name="coccion" value="{{ coccion }}">
+        <input type="hidden" name="presentacion" value="{{ presentacion }}">
+        <input type="hidden" name="maridaje_recomendado" value="{{ maridaje_recomendado }}">
+        <input type="hidden" name="extra" value="{{ extra }}">
+        <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
+    </form>
+
+    <a href="{% url 'pedir' %}" class="btn btn-secondary">Modificar Pedido</a>
+</div>
+{% endblock %}
