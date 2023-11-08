@@ -28,8 +28,11 @@ def pedir(request):
             maridaje_recomendado=maridaje_recomendado,
             extra=extra
         )
+    else:
+        form = PizzaBuilderForm()
+
+    return render(request, "Proyectowebapp/pedir.html", {'form': form})
 
 
 
-    return render(request, "Proyectowebapp/pedir.html")
 

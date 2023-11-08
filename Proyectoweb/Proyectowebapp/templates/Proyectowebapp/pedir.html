@@ -2,6 +2,12 @@
 {% load static %}
 {% block content %}
 
-<div class ='formulario-container'>
-    <h2>Personaliza tu propia pizza</h2>
-    
+<div>
+    <h1>Pedir</h1>
+    <form action="{% url 'pedir' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+{% endblock %}
