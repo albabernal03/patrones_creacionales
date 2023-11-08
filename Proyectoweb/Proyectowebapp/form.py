@@ -21,6 +21,6 @@ class PizzaBuilderForm(forms.Form):
             ('fanta_limon', 'Fanta Limón'), ('agua', 'Agua')
         ]
     )
-    extra = forms.ChoiceField(choices=[('si', 'Sí'), ('no', 'No')], widget=forms.RadioSelect)
+    extra_bodes_queso = forms.ChoiceField(choices=[('si', 'Sí'), ('no', 'No')], widget=forms.RadioSelect)
 
     

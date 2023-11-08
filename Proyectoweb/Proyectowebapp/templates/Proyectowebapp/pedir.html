@@ -2,6 +2,27 @@
 {% load static %}
 {% block content %}
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+function recomendar_bebida() {
+    const seleccion = document.getElementById('id_maridaje_recomendado').value;
+    const bebida_recomendada = document.getElementById('id_bebida_recomendada');
+    const bebidasRecomendadas = {
+        'cerveza': 'pollo, bacon, salchichas, carne picada, huevo, queso',
+        'vino_blanco': 'gambas, atun, anchoas, queso, champiñones',
+        'vino_tinto': 'queso, aceitunas, tomate, maiz, champiñones, pimiento',
+        'sangria': 'pollo, bacon, queso, huevo, atun, jamon, carne picada',
+        'cocacola': 'huevo, queso, jamon, bacon, champiñones, pollo, pimiento, carne picada, salchichas',
+        'fanta_naranja': 'aceitunas, atun, anchoas, maiz, gambas',
+        'fanta_limon': 'pollo, bacon, queso, salchichas, huevo, atun, jamon, carne picada, champiñones, pimiento',
+        'agua': 'pollo, bacon, queso, salchichas, huevo, atun, jamon, carne picada, champiñones, pimiento'
+    };
+    
+    const coincidencias = bebidasRecomendadas[seleccion];
+    bebida_recomendada.value = coincidencias;
+}
+</script>
+
 <div class="form-control">
     <h1>Pedir</h1>
     <form action="{% url 'pedir' %}" method="POST">
