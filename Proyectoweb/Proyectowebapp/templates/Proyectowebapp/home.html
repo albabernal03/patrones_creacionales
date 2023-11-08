@@ -30,17 +30,17 @@
  <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
-      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="home.html">Pizzeria Delizioso</a>
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'home' %}">Pizzeria Delizioso</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="home.html">Inicio</a>
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Inicio</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="pedir.html">Pedir</a>
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'pedir' %}">Pedir</a>
           </li>
          
         </ul>
@@ -76,10 +76,10 @@
           <div class="col-xl-9 mx-auto">
             <div class="cta-inner text-center rounded">
               <h2 class="section-heading mb-4">
-                <span class="section-heading-upper">Pizza totalmente caseras</span>
+                <span class="section-heading-upper">Pizzas totalmente caseras</span>
                 <span class="section-heading-lower">Un viaje a Italia garantizado</span>
               </h2>
-              <p class="mb-0">Pizzeria fundada en 1995, se trata de un negocio familiar donde la receta de la abuela se ha ido pasando de generación en generación.</p>
+              <p class="mb-0">Pizzeria fundada en 1995, se trata de un negocio familiar donde la receta de la abuela ha ido pasando de generación en generación.</p>
             </div>
           </div>
         </div>
