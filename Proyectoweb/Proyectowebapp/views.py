@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
-from Proyectowebapp.form import PizzaBuilderForm
+from .form import PizzaBuilderForm
+from Proyectowebapp.models import Pizza
+
 # Create your views here. Aqui se crean las vistas de la app, en este caso de la pizzeria
 
 def home(request):
@@ -17,7 +19,17 @@ def pedir(request):
             maridaje_recomendado=form.cleaned_data['maridaje_recomendado']
             extra=form.cleaned_data['extra']
 
-            
+        pizza= Pizza(
+            masa=masa,
+            salsa=salsa,
+            ingredientes_principales=ingredientes_principales,
+            coccion=coccion,
+            presentacion=presentacion,
+            maridaje_recomendado=maridaje_recomendado,
+            extra=extra
+        )
+
+
 
     return render(request, "Proyectowebapp/pedir.html")
 
