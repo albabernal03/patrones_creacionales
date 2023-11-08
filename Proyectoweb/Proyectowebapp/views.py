@@ -42,6 +42,7 @@ def pedir(request):
         csv_file_name = 'pizza.csv'
         pizza_csv = PizzaCSV(csv_file_name)
         pizza_csv.write_pizza_to_csv(pizza_order)
+        return HttpResponse("¡Pedido de pizza realizado con éxito!")
       
     
     else:
