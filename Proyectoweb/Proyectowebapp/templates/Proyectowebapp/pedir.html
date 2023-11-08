@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div>
+<div class="form-control">
     <h1>Pedir</h1>
     <form action="{% url 'pedir' %}" method="POST">
         {% csrf_token %}
