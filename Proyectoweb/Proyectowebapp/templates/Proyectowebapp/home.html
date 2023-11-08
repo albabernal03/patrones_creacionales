@@ -1,21 +1,24 @@
+<!--Lo vinculamos con style.css-->
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Esto lo usamos para para definir cómo se debe ajustar la presentación de la página en dispositivos móviles.-->
-        <meta charset="UTF-8"> <!--Esto lo usamos para definir la codificación de caracteres para el documento HTML.-->
-        <link rel="stylesheet" href="./style.css" />
-        <title>Inicio</title>
-    
-
-</html>
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{%static 'Proyectowebapp/style.css'%}">
+    <title>Inicio</title>
+</head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href='home.html'>INICIO</a></li>
-                <li><a href='pedir.html'>PEDIR</a></li>
+                <li><a href="home.html">INICIO</a></li>
+                <li><a href="pedir.html">PEDIR</a></li>
             </ul>
         </nav>
     </header>
-</body>
 
+    <!-- Resto del contenido de tu página -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+/*HEADER*/
+header{
+    background: black;
+    padding:20px;
+    color:white;
+    text-align:center;
+    font-size: 13px;
+    
+}
+
+ul{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+
+}
+
+li{
+    display:inline-block; /*Esto es para que se pongan en linea*/
+    margin: 20px;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+header .mobile {
+    display:none;
+}
+
+/*RESPONSIVE RULES*/
+@media screen and (max-width: 299px){
+    header .mobile{
+        display: inline-block;
+    }
+    header .desktop{
+        display: none;
+    }
+}
+
