@@ -7,3 +7,5 @@ fina,tomate,"tomate, jamon, bacon, huevo",horno,entera,vino_blanco,no
 fina,tomate,"queso, atun, anchoas, carne_picada",horno,entera,cerveza,no
 gruesa,carbonara,"atun, bacon, pollo, anchoas, salchichas",horno,entera,cerveza,no
 ,,,,,,
+gruesa,carbonara,"tomate, jamon, cebolla, aceitunas, salchichas, carne_picada",piedra,porciones,vino_blanco,no
+gruesa,tomate,"tomate, atun, pollo, piña, maiz, salchichas",piedra,porciones,vino_tinto,si

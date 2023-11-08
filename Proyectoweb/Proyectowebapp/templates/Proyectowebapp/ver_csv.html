@@ -1,6 +1,25 @@
 {% extends 'Proyectowebapp/base.html' %}
 {% load static %}
 {% block content %}
-
-
+<head>
+    <title>Visualizar CSV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .content-container {
+            background-color: white; /* Fondo blanco para el contenido */
+            padding: 20px; /* Espaciado para el contenido */
+            text-align: center; /* Centra el contenido horizontalmente */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh; /* Centra verticalmente en el medio de la página */
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <h1>Datos del archivo CSV</h1>
+        {{ table_html | safe }}
+    </div>
+</body>
 {% endblock %}
