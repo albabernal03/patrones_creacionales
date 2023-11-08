@@ -21,5 +21,6 @@ from Proyecto.views import saludo, fecha
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", saludo),
+    path("saludo/", saludo),
     path("fecha/", fecha),
 ]

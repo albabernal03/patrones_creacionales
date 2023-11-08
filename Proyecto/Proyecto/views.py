@@ -17,7 +17,7 @@ def fecha(request):
     documento= '''
     <html>
         <body>
-            <h1>Fecha y hora actuales %s</h1>
+            <h2>Fecha y hora actuales %s</h2>
         </body>
 
     
