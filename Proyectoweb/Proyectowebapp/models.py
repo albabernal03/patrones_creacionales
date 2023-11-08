@@ -41,12 +41,14 @@ class PizzaBuilder(ABC):
 #Concrete Builder
 #-----------------------------------------
 
-class Pizza():
-    def __init__(self,masa,salsa,ingredientes_principales,coccion,presentacion,maridaje_recomendado,extra):
-        self.masa= masa
-        self.salsa= salsa
-        self.ingredientes_principales= ingredientes_principales
-        self.coccion= coccion
-        self.presentacion= presentacion
-        self.maridaje_recomendado= maridaje_recomendado
-        self.extra= extra
+class Pizza(models.Model):
+    masa = models.CharField(max_length=255)
+    salsa = models.CharField(max_length=255)
+    ingredientes_principales = models.CharField(max_length=255)
+    coccion = models.CharField(max_length=255)
+    presentacion = models.CharField(max_length=255)
+    maridaje_recomendado = models.CharField(max_length=255)
+    extra = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.masa} Pizza"

@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .form import PizzaBuilderForm
-from Proyectowebapp.models import Pizza
+from .models import Pizza
 from .storage import PizzaCSV
 
 # Create your views here. Aqui se crean las vistas de la app, en este caso de la pizzeria
@@ -28,7 +28,7 @@ def pedir(request):
             maridaje_recomendado=form.cleaned_data['maridaje_recomendado']
             extra=form.cleaned_data['extra_bordes_queso']
 
-        pizza= Pizza(
+        pizza_order= Pizza(
             masa=masa,
             salsa=salsa,
             ingredientes_principales=ingredientes_principales,
@@ -37,11 +37,11 @@ def pedir(request):
             maridaje_recomendado=maridaje_recomendado,
             extra=extra
         )
-        pizza.save()
+        pizza_order.save()
         # Guarda los datos en un archivo CSV
         csv_file_name = 'pizza.csv'
         pizza_csv = PizzaCSV(csv_file_name)
-        pizza_csv.write_pizza_to_csv(pizza)
+        pizza_csv.write_pizza_to_csv(pizza_order)
       
     
     else:
