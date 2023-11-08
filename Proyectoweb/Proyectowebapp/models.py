@@ -42,11 +42,11 @@ class PizzaBuilder(ABC):
 #-----------------------------------------
 
 class Pizza():
-    def __init__(self,masa,salsa,ingredientes_principales,coccion,presentacion,maridaje,extra):
+    def __init__(self,masa,salsa,ingredientes_principales,coccion,presentacion,maridaje_recomendado,extra):
         self.masa= masa
         self.salsa= salsa
         self.ingredientes_principales= ingredientes_principales
         self.coccion= coccion
         self.presentacion= presentacion
-        self.maridaje_recomendado= maridaje
+        self.maridaje_recomendado= maridaje_recomendado
         self.extra= extra

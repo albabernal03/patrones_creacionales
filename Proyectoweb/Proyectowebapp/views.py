@@ -9,6 +9,14 @@ def home(request):
     return render(request, "Proyectowebapp/home.html")
 
 def pedir(request):
+    masa = ""  # Provide default values or empty strings for variables
+    salsa = ""
+    ingredientes_principales = ""
+    coccion = ""
+    presentacion = ""
+    maridaje_recomendado = ""
+    extra = ""
+
     if request.method == 'POST':
         form = PizzaBuilderForm(request.POST)
         if form.is_valid():
@@ -18,7 +26,7 @@ def pedir(request):
             coccion=form.cleaned_data['coccion']
             presentacion=form.cleaned_data['presentacion']
             maridaje_recomendado=form.cleaned_data['maridaje_recomendado']
-            extra=form.cleaned_data['extra']
+            extra=form.cleaned_data['extra_bordes_queso']
 
         pizza= Pizza(
             masa=masa,
@@ -29,6 +37,12 @@ def pedir(request):
             maridaje_recomendado=maridaje_recomendado,
             extra=extra
         )
+        pizza.save()
+        # Guarda los datos en un archivo CSV
+        csv_file_name = 'pizza.csv'
+        pizza_csv = PizzaCSV(csv_file_name)
+        pizza_csv.write_pizza_to_csv(pizza)
+      
     
     else:
         form = PizzaBuilderForm()
