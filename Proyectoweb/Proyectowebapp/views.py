@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from .form import PizzaBuilderForm
 from .models import Pizza
 from .storage import PizzaCSV
-
+import csv
 # Create your views here. Aqui se crean las vistas de la app, en este caso de la pizzeria
 
 def home(request):
@@ -49,6 +49,20 @@ def pedir(request):
         form = PizzaBuilderForm()
 
     return render(request, "Proyectowebapp/pedir.html", {'form': form})
+
+def ver_csv(request):
+    csv_file_name = 'pizza.csv'
+    pizza_csv = PizzaCSV(csv_file_name)
+    
+    try:
+        with open(pizza_csv.file_path, newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            pizza_data = list(reader)
+    except FileNotFoundError:
+        pizza_data = []  # Manejar si el archivo no existe
+    
+    return render(request, 'Proyectowebapp/ver_csv.html', {'pizza_data': pizza_data})
+    
 
 
 
