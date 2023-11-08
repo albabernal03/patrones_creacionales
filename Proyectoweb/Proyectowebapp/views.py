@@ -73,15 +73,8 @@ def confirmar_pedido(request):
         return HttpResponse("¡Pedido confirmado!")
     return redirect('home')
 
-
 def ver_csv(request):
     csv_file_name = 'pizza.csv'
     df = pd.read_csv(csv_file_name)
     table_html = df.to_html(classes='table table-striped')
     return render(request, 'Proyectowebapp/ver_csv.html', {'table_html': table_html})
-
-    
-
-
-
-

@@ -327,3 +327,7 @@ ul.errorlist{
 .label-field {
   font-weight: bold;
 }
+
+.content-container {
+  background-color: white; /* Establece el fondo en blanco */
+}
