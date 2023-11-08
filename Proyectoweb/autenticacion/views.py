@@ -3,4 +3,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def autenticacion(request):
-    pass
+    return render(request, 'registro.html')
