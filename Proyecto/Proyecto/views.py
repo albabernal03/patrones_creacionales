@@ -26,18 +26,3 @@ def fecha(request):
     
     return HttpResponse(documento)
 
-def calculaEdad(request, agno):
-    edadActual=18
-    periodo=agno-2021
-    edadFutura=edadActual+periodo
-    documento= '''
-    <html>
-        <body>
-            <h2>En el año %s tendras %s años</h2>
-        </body>
-
-    
-
-''' %(agno, edadFutura)
-    
-    return HttpResponse(documento)
