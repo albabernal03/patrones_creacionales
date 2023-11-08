@@ -6,5 +6,4 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("pedir/", views.pedir, name="pedir"),
     path("ver_csv/", views.ver_csv, name="ver_csv"),
-    path("confirmar_pedido/", views.confirmar_pedido, name="confirmar_pedido"),
 ]

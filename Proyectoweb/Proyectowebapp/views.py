@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse
 from .form import PizzaBuilderForm
 from .models import Pizza
 from .storage import PizzaCSV
@@ -10,7 +10,7 @@ def home(request):
     return render(request, "Proyectowebapp/home.html")
 
 def pedir(request):
-    masa = ""
+    masa = ""  # Provide default values or empty strings for variables
     salsa = ""
     ingredientes_principales = ""
     coccion = ""
@@ -21,34 +21,30 @@ def pedir(request):
     if request.method == 'POST':
         form = PizzaBuilderForm(request.POST)
         if form.is_valid():
-            masa = form.cleaned_data['masa']
-            salsa = form.cleaned_data['salsa']
-            ingredientes_principales = ", ".join(form.cleaned_data['ingredientes_principales'])
-            coccion = form.cleaned_data['coccion']
-            presentacion = form.cleaned_data['presentacion']
-            maridaje_recomendado = form.cleaned_data['maridaje_recomendado']
-            extra = form.cleaned_data['extra_bordes_queso']
+            masa=form.cleaned_data['masa']
+            salsa=form.cleaned_data['salsa']
+            ingredientes_principales=form.cleaned_data['ingredientes_principales']
+            coccion=form.cleaned_data['coccion']
+            presentacion=form.cleaned_data['presentacion']
+            maridaje_recomendado=form.cleaned_data['maridaje_recomendado']
+            extra=form.cleaned_data['extra_bordes_queso']
 
-            pizza_order = Pizza(
-                masa=masa,
-                salsa=salsa,
-                ingredientes_principales=ingredientes_principales,
-                coccion=coccion,
-                presentacion=presentacion,
-                maridaje_recomendado=maridaje_recomendado,
-                extra=extra
-            )
-
-
-            pizza_order.save()
-            csv_file_name = 'pizza.csv'
-            df=pd.read_csv(csv_file_name)
-            table_html=df.to_html(classes='table table-striped')
-
-            return render(request, "Proyectowebapp/ver_csv.html", {'table_html': table_html})
-        
-
-       
+        pizza_order= Pizza(
+            masa=masa,
+            salsa=salsa,
+            ingredientes_principales=ingredientes_principales,
+            coccion=coccion,
+            presentacion=presentacion,
+            maridaje_recomendado=maridaje_recomendado,
+            extra=extra
+        )
+        pizza_order.save()
+        # Guarda los datos en un archivo CSV
+        csv_file_name = 'pizza.csv'
+        pizza_csv = PizzaCSV(csv_file_name)
+        pizza_csv.write_pizza_to_csv(pizza_order)
+        return render(request,'Proyectowebapp/home.html')
+      
     
     else:
         form = PizzaBuilderForm()
@@ -58,7 +54,10 @@ def pedir(request):
 
 
 def ver_csv(request):
-    csv_file_name = 'pizza.csv'
-    df=pd.read_csv(csv_file_name)
-    table_html=df.to_html(classes='table table-striped')
-    return render(request, "Proyectowebapp/ver_csv.html", {'table_html': table_html})
+    csv_file_name = 'pizza.csv'  # Nombre de tu archivo CSV
+    df = pd.read_csv(csv_file_name)
+
+    # Convertir el DataFrame de pandas a una tabla HTML
+    table_html = df.to_html(classes='table table-striped')
+
+    return render(request, 'Proyectowebapp/ver_csv.html', {'table_html': table_html})
