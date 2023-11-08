@@ -1,21 +1,5 @@
 {% extends 'Proyectowebapp/base.html' %}
 {% load static %}
 {% block content %}
-<head>
-    <title>Pedido Confirmado</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <h1>Pedido Confirmado</h1>
-    <h2>Detalles del pedido:</h2>
-    <ul>
-        <li>Masa: {{ pizza_order.masa }}</li>
-        <li>Salsa: {{ pizza_order.salsa }}</li>
-        <li>Ingredientes Principales: {{ pizza_order.ingredientes_principales }}</li>
-        <li>Cocción: {{ pizza_order.coccion }}</li>
-        <li>Presentación: {{ pizza_order.presentacion }}</li>
-        <li>Maridaje Recomendado: {{ pizza_order.maridaje_recomendado }}</li>
-        <li>Extras: {{ pizza_order.extra }}</li>
-    </ul>
-</body>
+
 {% endblock %}
