@@ -1,6 +1,10 @@
 from django.shortcuts import render
+from django.views.generic import View
 
 # Create your views here.
 
-def autenticacion(request):
-    return render(request, 'registro.html')
+class VRegistro(View):
+    def get(self,request):
+        pass
+    def post(self,request):
+        pass

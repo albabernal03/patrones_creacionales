@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import VRegistro
 
-urlspatterns = [
-    path('', views.autenticacion, name='autenticacion'),
+urlpatterns = [
+    path('', VRegistro.as_view(), name='autenticacion'),
 ]
