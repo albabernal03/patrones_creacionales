@@ -11,7 +11,7 @@ Este es el link del [repositorio](https://github.com/albabernal03/patrones_creac
 
 En este ejercicicio se nos pide que apliquemos el patron Abstract Factory para crear dos tipo de fábricas:
 
-*Una fábrica que genere análisis estadísticos (media, moda, mediana).
+\textbf{*}Una fábrica que genere análisis estadísticos (media, moda, mediana).
 
 
 *Una fábrica que produzca visualizaciones gráficas (histogramas, gráficos de barras).
