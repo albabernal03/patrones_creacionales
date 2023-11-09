@@ -117,6 +117,7 @@ plt.savefig('correlation.png')
 
 ```
 La matriz de correlacion que se obtiene es la siguiente:
+
 ![matriz](https://github.com/albabernal03/patrones_creacionales/assets/91721875/fe40c32a-7a3b-4a76-a564-9f4d053a4900)
 
 
