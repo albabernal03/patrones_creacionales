@@ -88,15 +88,26 @@ def confirmar_modificar_pedido(request):
     if request.method == 'POST':
         decision = request.POST.get('decision')
 
-        print("Decision:", decision)  # Debugging statement
-
         if decision == 'confirmar':
-            print("Confirmar pedido")  # Debugging statement
-            return redirect('home')
+            # Obtener los datos del resumen_pedido
+            masa = request.POST.get('masa')
+            salsa = request.POST.get('salsa')
+            ingredientes_principales = request.POST.get('ingredientes_principales')
+            coccion = request.POST.get('coccion')
+            presentacion = request.POST.get('presentacion')
+            maridaje_recomendado = request.POST.get('maridaje_recomendado')
+            extra = request.POST.get('extra_bordes_queso')
+
+            # Guardar los datos en un archivo CSV
+            csv_file_name = 'pizza.csv'
+            with open(csv_file_name, mode='w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extra'])
+                writer.writerow([masa, salsa, ingredientes_principales, coccion, presentacion, maridaje_recomendado, extra])
+
+            return render(request, 'Proyectowebapp/ver_csv.html', {'masa': masa, 'salsa': salsa, 'ingredientes_principales': ingredientes_principales, 'coccion': coccion, 'presentacion': presentacion, 'maridaje_recomendado': maridaje_recomendado, 'extra': extra})
         
         elif decision == 'modificar':
-            print("Modificar pedido")  # Debugging statement
-            return redirect('pedir')  # Modifica esta línea para redirigir a la vista 'pedir'
+            return redirect('pedir')
 
-    print("No decision found")  # Debugging statement
     return HttpResponse("Invalid decision or appropriate response")
