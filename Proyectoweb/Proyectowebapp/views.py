@@ -63,3 +63,35 @@ def ver_csv(request):
 
     return render(request, 'Proyectowebapp/ver_csv.html', {'table_html': table_html})
 
+
+def resumen_pedido(request):
+    if request.method == 'POST':
+        form= PizzaBuilderForm(request.POST)
+        if form.is_valid():
+            masa=form.cleaned_data['masa']
+            salsa=form.cleaned_data['salsa']
+            ingredientes_principales=form.cleaned_data['ingredientes_principales']
+            coccion=form.cleaned_data['coccion']
+            presentacion=form.cleaned_data['presentacion']
+            maridaje_recomendado=form.cleaned_data['maridaje_recomendado']
+            extra=form.cleaned_data['extra_bordes_queso']
+
+            return render(request, 'Proyectowebapp/resumen_pedido.html', {'masa': masa, 'salsa': salsa, 'ingredientes_principales': ingredientes_principales, 'coccion': coccion, 'presentacion': presentacion, 'maridaje_recomendado': maridaje_recomendado, 'extra': extra, 'form': form})
+        
+    return redirect ('pedir')
+
+
+def confirmar_modificar_pedido(request):
+    if request.method == 'POST':
+        decision = request.POST.get('decision')
+
+        if decision == 'confirmar':
+            # Lógica para confirmar el pedido
+            return render(request, 'Proyectowebapp/pedido_confirmado.html')
+        
+        elif decision == 'modificar':
+            # Lógica para modificar el pedido
+            return render(request, 'Proyectowebapp/modificar_pedido.html', {'selected_options': request.POST})
+
+   
+   

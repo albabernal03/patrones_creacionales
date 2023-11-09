@@ -1,0 +1,33 @@
+{% extends 'Proyectowebapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Resumen pedido</h1>
+<ul>
+    <li>Masa: {{masa}}</li> 
+    <li>Salsa: {{salsa}}</li>
+    <li>Ingredientes: {{ingredientes_extras}}</li>
+    <li>Coccion: {{coccion}}</li>
+    <li>Maridaje Recomendado: {{maridaje_recomendado}}</li>
+    <li>Extra bordes queso: {{extra}}</li>
+    <li>Presentacion: {{presentacion}}</li>
+</ul>
+
+<form action="{% url 'confirmar_modificar_pedido' %}" method="POST">
+    {% csrf_token %}
+
+    <input type="hidden" name="masa" value="{{masa}}">
+    <input type="hidden" name="salsa" value="{{salsa}}">
+    <input type="hidden" name="ingredientes_principales" value="{{ingredientes_principales}}">
+    <input type="hidden" name="coccion" value="{{coccion}}">
+    <input type="hidden" name="maridaje_recomendado" value="{{maridaje_recomendado}}">
+    <input type="hidden" name="extra" value="{{extra}}">
+    <input type="hidden" name="presentacion" value="{{presentacion}}">
+
+
+
+    <input type="submit" name="decision" value="Confirmar">
+    <input type="submit" name="decision" value="Modificar">
+
+</form>
+{ %end block %}
