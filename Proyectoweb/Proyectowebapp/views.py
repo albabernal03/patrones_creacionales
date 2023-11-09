@@ -97,7 +97,7 @@ def confirmar_modificar_pedido(request):
             coccion = request.POST.get('coccion')
             presentacion = request.POST.get('presentacion')
             maridaje_recomendado = request.POST.get('maridaje_recomendado')
-            extra = request.POST.get('extra_bordes_queso')
+            extra = request.POST.get('extra')
 
             # Guardar los datos en un archivo CSV
             csv_file_name = 'pizza.csv'
@@ -107,7 +107,7 @@ def confirmar_modificar_pedido(request):
                     writer.writerow(['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extra'])
                 writer.writerow([masa, salsa, ingredientes_principales, coccion, presentacion, maridaje_recomendado, extra])
 
-            return render(request, 'Proyectowebapp/ver_csv.html', {'masa': masa, 'salsa': salsa, 'ingredientes_principales': ingredientes_principales, 'coccion': coccion, 'presentacion': presentacion, 'maridaje_recomendado': maridaje_recomendado, 'extra': extra})
+            return redirect('home')
         
         elif decision == 'modificar':
             return redirect('pedir')
