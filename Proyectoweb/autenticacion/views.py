@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib import messages
 from django.utils.translation import activate
+
 
 
 # Create your views here.
@@ -19,7 +20,7 @@ class VRegistro(View):
 
     def post(self,request):
         activate('es')
-        
+
         form= UserCreationForm(request.POST)
 
         if form.is_valid():
@@ -37,3 +38,8 @@ class VRegistro(View):
             return render(request, 'registro/registro.html', {'form':form})
             
 
+def cerrar_sesion(request):
+    logout(request)
+    messages.success(request,"Sesión cerrada exitosamente")
+    return redirect('home')
+    
