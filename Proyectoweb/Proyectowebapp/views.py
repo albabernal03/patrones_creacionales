@@ -81,17 +81,30 @@ def resumen_pedido(request):
     return redirect ('pedir')
 
 
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+
 def confirmar_modificar_pedido(request):
     if request.method == 'POST':
         decision = request.POST.get('decision')
 
+        print("Decision:", decision)  # Add this line for debugging
+
         if decision == 'confirmar':
             # Lógica para confirmar el pedido
-            return redirect ('home')
+            print("Confirmar pedido")  # Add this line for debugging
+            return redirect('home')
         
         elif decision == 'modificar':
             # Lógica para modificar el pedido
-            return render ('pedir')
+            print("Modificar pedido")  # Add this line for debugging
+            return render(request, 'pedir.html')
 
+    print("No decision found")  # Add this line for debugging
     # Default return statement
     return HttpResponse("Invalid decision or appropriate response")
+
+
