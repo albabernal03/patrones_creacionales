@@ -350,6 +350,7 @@ Al ejecutarlo obtenemos por consola lo siguiente:
 
 <img width="319" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/491ecced-2139-4d6f-b1ce-df714cad624c">
 
+
 ![grafica](https://github.com/albabernal03/patrones_creacionales/assets/91721875/aa767936-af73-4a32-b223-ea5efa4bfab3)
 
 ***
@@ -655,26 +656,26 @@ class PizzaValidator:
 ```
 
 Si lo ejecutamos nos saldrá lo siguiente por terminal
+<img width="498" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/2f066dec-0f37-412c-85eb-6967678dbddf">
+<img width="503" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/badc084e-f3e2-40ca-8305-76c5721135ed">
+<img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/2948af66-45b9-4339-bdd1-f1203f0d1cbb">
+<img width="358" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/ffd18f67-1975-4ae1-ad70-27fa0072ec68">
+<img width="500" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/487887c0-6b8d-4c5d-a855-7324f9bba302">
+<img width="501" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/410c3280-36c2-4628-b92b-e0e5b69c4fab">
 
-<img width="509" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3aace760-1647-4b0f-bd21-78d45107fccd">
-<img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1eec9312-7c16-4fde-84b1-50b1df071d53">
-<img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4d713ab2-8261-4aa0-918e-92ca9a4da007">
-<img width="360" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/122235ff-a909-4889-a135-2aad83a26efc">
-<img width="500" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/bac72c3f-545e-40aa-a412-d904e41586f4">
-<img width="507" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/975950af-04ac-4d86-8353-b10771349f60">
 
 como vemos nos hace recomendaciones
 
-<img width="388" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/e7b7a57b-e7d2-40b5-a604-4d16f454e082">
-<img width="505" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7eb068d8-e182-45e8-bb08-e86c25e90127">
-<img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/309026a3-b196-4290-abd0-68e2e050b127">
+<img width="362" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1a713651-214d-4c9f-a504-edce41a015cf">
+<img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3d9d1b48-10e4-4b4a-a03a-0a6ef5495953">
+<img width="498" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/354fb21f-9c4f-4ce6-95bd-c28115be814e">
+
 
 Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
+<img width="441" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/488499c2-a353-4e1a-bde0-43134616b50e">
+<img width="498" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/730e9860-ddbb-4494-8005-f4ff1b47e15a">
+<img width="318" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/aed6315e-c2ca-4304-9813-685fc62bda2d">
 
-<img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f0158957-4e66-4e94-ae47-575439a97768">
-<img width="484" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7e467379-daee-4321-83fc-475cb4a9fe7e">
-
-<img width="274" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/85ab58dd-6e9f-43ab-89e4-ba51e589ef2c">
 
 ***
 
