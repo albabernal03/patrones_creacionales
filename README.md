@@ -347,6 +347,7 @@ Al ejecutarlo obtenemos por consola lo siguiente:
 
 <img width="234" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/6e2870d5-42a7-4c26-9d19-ef96349a094a">
 
+
 <img width="319" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/491ecced-2139-4d6f-b1ce-df714cad624c">
 
 ![grafica](https://github.com/albabernal03/patrones_creacionales/assets/91721875/aa767936-af73-4a32-b223-ea5efa4bfab3)
