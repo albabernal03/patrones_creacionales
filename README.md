@@ -660,11 +660,13 @@ Si lo ejecutamos nos saldrá lo siguiente por terminal
 <img width="507" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/975950af-04ac-4d86-8353-b10771349f60">
 
 como vemos nos hace recomendaciones
+
 <img width="388" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/e7b7a57b-e7d2-40b5-a604-4d16f454e082">
 <img width="505" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7eb068d8-e182-45e8-bb08-e86c25e90127">
 <img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/309026a3-b196-4290-abd0-68e2e050b127">
 
 Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
+
 <img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f0158957-4e66-4e94-ae47-575439a97768">
 <img width="274" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/85ab58dd-6e9f-43ab-89e4-ba51e589ef2c">
 
