@@ -727,17 +727,19 @@ Los datos se guardan en un archivo SQL donde la contraseña se encripta para may
 
 Una vez dentro de la página puede pedir una pizza:
 
-<img width="1176" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f1a14f64-9abe-48dc-afac-d487499db535">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/875f7632-5ffd-4f3d-8dd5-993461fbed53">
 
 
 Una vez seleccionado te muestra un resumen y te dice si quieres modificar o confirmar:
 
-<img width="1430" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/71273cf7-dd1f-49dc-9f7c-b026e33b6858">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7636b21b-7c48-4bd8-b92f-0ef5264c747e">
+
 
 Y todo esto se guarda en un CSV:
-<img width="1427" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a46b0cb2-0c97-4640-b0aa-edf62b372d85">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/55c4c4c9-0911-42ce-a42c-2fa592b8f6ad">
 
-<img width="1412" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7369597b-689a-43c4-8e47-87b5ecb4ffcc">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/971d62cd-f509-495c-aaab-363b7e0b21f2">
+
 
 
 ***
