@@ -81,30 +81,31 @@ def resumen_pedido(request):
     return redirect ('pedir')
 
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+
 
 def confirmar_modificar_pedido(request):
     if request.method == 'POST':
         decision = request.POST.get('decision')
 
-        print("Decision:", decision)  # Add this line for debugging
+        print("Decision:", decision)  # Debugging statement
 
         if decision == 'confirmar':
-            # Lógica para confirmar el pedido
-            print("Confirmar pedido")  # Add this line for debugging
+            print("Confirmar pedido")  # Debugging statement
+
+            # Obtén el último pedido confirmado desde la base de datos
+            last_order = Pizza.objects.latest('id')
+
+            # Guarda los datos del último pedido en el formulario en un archivo CSV
+            csv_file_name = 'pizza.csv'
+            pizza_csv = PizzaCSV(csv_file_name)
+            pizza_csv.write_pizza_to_csv(last_order, include_form_data=True)
+
             return redirect('home')
         
         elif decision == 'modificar':
-            # Lógica para modificar el pedido
-            print("Modificar pedido")  # Add this line for debugging
-            return render(request, 'pedir.html')
+            print("Modificar pedido")  # Debugging statement
+            return redirect('pedir')  # Modifica esta línea para redirigir a la vista 'pedir'
 
-    print("No decision found")  # Add this line for debugging
-    # Default return statement
+    print("No decision found")  # Debugging statement
     return HttpResponse("Invalid decision or appropriate response")
-
-
