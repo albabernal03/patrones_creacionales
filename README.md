@@ -717,6 +717,12 @@ Una vez dentro de la página puede pedir una pizza:
 <img width="1176" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f1a14f64-9abe-48dc-afac-d487499db535">
 
 
+Una vez seleccionado te muestra un resumen y te dice si quieres modificar o confirmar:
+
+<img width="1430" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/71273cf7-dd1f-49dc-9f7c-b026e33b6858">
+
+Y todo esto se guarda en un CSV:
+<img width="1427" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a46b0cb2-0c97-4640-b0aa-edf62b372d85">
 
 
 
