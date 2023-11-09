@@ -63,17 +63,3 @@ def ver_csv(request):
 
     return render(request, 'Proyectowebapp/ver_csv.html', {'table_html': table_html})
 
-def resumen_pedido(request):
-    if request.method == 'POST':
-        confirmar= request.POST.get('confirmar')
-        if confirmar:
-            return redirect('home')
-        else:
-            return redirect('pedir')
-    
-    #Leer el ultimo pedido desde el archivo CSV
-    csv_file_name = 'pizza.csv'
-    df = PizzaCSV(csv_file_name)
-    detalles_pedido= df.tail(1).to_dict(orient='records')[0] # Convertir el DataFrame de pandas a un diccionario de Python
-
-    return render(request, 'Proyectowebapp/resumen_pedido.html', {'detalles_pedido': detalles_pedido})

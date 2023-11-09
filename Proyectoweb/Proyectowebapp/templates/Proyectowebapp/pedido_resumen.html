@@ -2,20 +2,5 @@
 {% load static %}
 {% block content %}
 
-<div class="form-control">
-    <h1>Resumen pedido</h1>
-    <p>Masa: {{detalles_pedido.masa}}</p>
-    <p>Salsa:{{detalles_pedido.salsa}}</p>
-    <p>Ingredientes: {{detalles_pedido.ingredientes_principales}}</p>
-    <p>Coccion: {{detalles_pedido.coccion}}</p>
-    <p>Presentacion: {{detalles_pedido.presentacion}}</p>
-    <p>Maridaje: {{detalles_pedido.maridaje_recomendado}}</p>
-    <p>Extras: {{detalles.pedido.extra}}</p>
 
-    <form action="{% url 'resumen_pedido' %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" name="confirmar" value="Confirmar">
-        <input type="submit" name= 'modificar' value="Modificar">
-    </form>
-</div>
 {% endblock %}
