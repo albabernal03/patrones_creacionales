@@ -29,6 +29,7 @@ Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizio
 1. [Ejercicio 1](#id1)
 2. [Ejercicio 2](#id2)
 3. [Implementacion del ejercicio 2 en una página web](#id3)
+4. [¿Por qué usamos elpatrón Builder?](#id4)
 
 ***
 
