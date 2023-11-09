@@ -29,6 +29,7 @@ Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizio
 1. [Ejercicio 1](#id1)
 2. [Ejercicio 2](#id2)
 3. [Implementacion del ejercicio 2 en una página web](#id3)
+4. [¿Por qué usamos elpatrón Builder?](#id4)
 
 ***
 
@@ -717,10 +718,78 @@ Una vez dentro de la página puede pedir una pizza:
 <img width="1176" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f1a14f64-9abe-48dc-afac-d487499db535">
 
 
+Una vez seleccionado te muestra un resumen y te dice si quieres modificar o confirmar:
+
+<img width="1430" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/71273cf7-dd1f-49dc-9f7c-b026e33b6858">
+
+Y todo esto se guarda en un CSV:
+<img width="1427" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a46b0cb2-0c97-4640-b0aa-edf62b372d85">
+
+<img width="1412" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7369597b-689a-43c4-8e47-87b5ecb4ffcc">
 
 
+***
+
+## ¿Por qué el patrón Builder?:<a name="id4"></a>
+
+# Delizioso Pizza Personalization Platform
+
+## Uso del Patrón Builder
+
+El uso del patrón Builder en este escenario de diseño para la plataforma de personalización de pizzas de "Delizioso" es una elección acertada debido a la complejidad y variabilidad de las opciones disponibles. A continuación, se justifica el uso del patrón Builder y se explica cómo contribuye a la robustez y adaptabilidad del sistema:
+
+### Complejidad en la construcción de objetos:
+
+**Justificación:** La creación de pizzas personalizadas implica la combinación de numerosos elementos, desde el tipo de masa hasta los ingredientes y la presentación. Utilizar un constructor (Builder) ayuda a manejar esta complejidad al dividir la construcción del objeto final (pizza) en pasos individuales.
+
+### Validación de elecciones previas del cliente:
+
+**Justificación:** El patrón Builder permite la validación de cada elección en el momento en que se realiza, asegurando que cada componente sea compatible con las selecciones previas del cliente. Esto garantiza una experiencia de usuario coherente y evita combinaciones no deseadas o inválidas.
+
+### Sistema de recomendaciones:
+
+**Justificación:** Al utilizar el patrón Builder, se puede integrar fácilmente un sistema de recomendaciones en cada paso de la construcción. Cada componente del Builder puede tener su propio conjunto de recomendaciones basadas en las elecciones previas del cliente, proporcionando sugerencias personalizadas y mejorando la experiencia del usuario.
+
+### Almacenamiento en un archivo CSV:
+
+**Justificación:** El patrón Builder permite controlar y registrar cada detalle de la construcción de la pizza. Al utilizar un builder, es sencillo capturar y almacenar la información en un formato estructurado como un archivo CSV. Esto facilita el análisis posterior, las recomendaciones personalizadas y el marketing dirigido.
+
+### Reconstrucción y edición desde el archivo CSV:
+
+**Justificación:** La capacidad de reconstruir una pizza a partir de un archivo CSV se simplifica con el patrón Builder. Cada paso de la construcción se puede leer y aplicar para recrear la pizza de manera precisa, permitiendo a los clientes visualizar, editar o reordenar sus creaciones anteriores de manera eficiente.
+
+### Flexibilidad y mantenibilidad del sistema:
+
+**Justificación:** El patrón Builder ofrece flexibilidad al permitir la incorporación de nuevos componentes o la modificación de existentes sin afectar el resto del sistema. Esto es crucial para una pizzería que está constantemente innovando y agregando nuevas opciones a su menú.
+
+### Interfaz de usuario amigable:
+
+**Justificación:** El patrón Builder facilita la creación de una interfaz de usuario amigable guiando al cliente paso a paso. Cada paso del Builder puede mostrar información relevante sobre las opciones disponibles, facilitando la toma de decisiones del cliente.
+
+### Medidas de seguridad:
+
+**Justificación:** El patrón Builder permite implementar medidas de seguridad en cada paso de la construcción, asegurando la integridad de los datos almacenados y la privacidad de las elecciones de los clientes. Se pueden incorporar validaciones y controles de acceso de manera efectiva.
+
+En resumen, el uso del patrón Builder en este escenario ofrece una forma estructurada y eficiente de manejar la complejidad de la personalización de pizzas, garantizando robustez, adaptabilidad y una experiencia de usuario optimizada. La modularidad inherente al patrón Builder facilita la expansión y mantenimiento del sistema a medida que la pizzería evoluciona.
 
 
+***
+
+
+<h4>Resumen</h4>
+
+
+## Uso del Patrón Builder
+
+El patrón Builder se utiliza en este proyecto para construir objetos paso a paso, permitiendo aplazar pasos de la construcción o ejecutarlos de forma recursiva. Esto facilita la creación de representaciones personalizadas de productos, como pizzas.
+
+### Principales beneficios del Patrón Builder:
+
+- **Reutilización de código:** Permite reutilizar el mismo código de construcción para crear varias representaciones de productos, mejorando la eficiencia del desarrollo.
+
+- **Principio de responsabilidad única:** Aísla un código de construcción complejo de la lógica de negocio del producto, mejorando la mantenibilidad y la claridad del código.
+
+Este enfoque estructurado ofrece flexibilidad y adaptabilidad al sistema de personalización de pizzas de "Delizioso", garantizando una experiencia de usuario optimizada y facilitando futuras expansiones y modificaciones del sistema.
 
 
 
