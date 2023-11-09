@@ -773,7 +773,22 @@ El uso del patrón Builder en este escenario de diseño para la plataforma de pe
 En resumen, el uso del patrón Builder en este escenario ofrece una forma estructurada y eficiente de manejar la complejidad de la personalización de pizzas, garantizando robustez, adaptabilidad y una experiencia de usuario optimizada. La modularidad inherente al patrón Builder facilita la expansión y mantenimiento del sistema a medida que la pizzería evoluciona.
 
 
+***
 
+<h4>En resumen</h4>
+
+
+## Uso del Patrón Builder
+
+El patrón Builder se utiliza en este proyecto para construir objetos paso a paso, permitiendo aplazar pasos de la construcción o ejecutarlos de forma recursiva. Esto facilita la creación de representaciones personalizadas de productos, como pizzas.
+
+### Principales beneficios del Patrón Builder:
+
+- **Reutilización de código:** Permite reutilizar el mismo código de construcción para crear varias representaciones de productos, mejorando la eficiencia del desarrollo.
+
+- **Principio de responsabilidad única:** Aísla un código de construcción complejo de la lógica de negocio del producto, mejorando la mantenibilidad y la claridad del código.
+
+Este enfoque estructurado ofrece flexibilidad y adaptabilidad al sistema de personalización de pizzas de "Delizioso", garantizando una experiencia de usuario optimizada y facilitando futuras expansiones y modificaciones del sistema.
 
 
 
