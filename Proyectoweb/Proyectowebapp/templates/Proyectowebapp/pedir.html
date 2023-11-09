@@ -27,6 +27,7 @@ function recomendar_bebida() {
     <h1>Pedir</h1>
     <form action="{% url 'resumen_pedido' %}" method="POST">
         {% csrf_token %}
+    
         {{ form.as_p }}
         <input type="submit" value="Enviar">
     </form>

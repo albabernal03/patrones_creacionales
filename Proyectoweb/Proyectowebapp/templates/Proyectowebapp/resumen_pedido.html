@@ -24,6 +24,15 @@
         {% csrf_token %}
 
         <!-- Your form inputs here -->
+        <input type="hidden" name="masa" value="{{masa}}">
+        <input type="hidden" name="salsa" value="{{salsa}}">
+        <input type="hidden" name="ingredientes_principales" value="{{ingredientes_principales}}">
+        <input type="hidden" name="coccion" value="{{coccion}}">
+        <input type="hidden" name="maridaje_recomendado" value="{{maridaje_recomendado}}">
+        <input type="hidden" name="extra" value="{{extra}}">
+        <input type="hidden" name="presentacion" value="{{presentacion}}">
+        
+        
 
         <input type="radio" name="decision" value="confirmar"> Confirmar
         <input type="radio" name="decision" value="modificar"> Modificar
