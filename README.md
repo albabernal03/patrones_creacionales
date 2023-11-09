@@ -707,6 +707,11 @@ Esto también pasa en el apartado de registrarse si no se cumplen los requisitos
 
 <img width="1059" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/179f2b57-b0da-45e1-b525-78ca968e7344">
 
+Los datos se guardan en un archivo SQL donde la contraseña se encripta para mayor seguridad:
+
+<img width="587" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3a4c3fbb-fe5f-47f5-911c-a33275b78fed">
+
+
 
 
 
