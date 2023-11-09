@@ -30,3 +30,6 @@ Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizio
 2. [Ejercicio 2](#id2)
 
 ***
+
+## Ejercicio 1:<a name="id1"></a>
+
