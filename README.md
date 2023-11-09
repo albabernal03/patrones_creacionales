@@ -692,7 +692,8 @@ A continuación mostraremos la pagina web:
 
 Como vemos la página web cuenta con la posibilidad de poder registrarse o iniciar sesión:
 
-<img width="221" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/72fbe3c8-9406-41ea-8ecd-c9ef36fb2a57">
+<img width="182" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/6325f850-30e1-4f01-931f-ceba90f81ae6">
+
 
 Si pinchamos en registrase veremos lo siguiente:
 
