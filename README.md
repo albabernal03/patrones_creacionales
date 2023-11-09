@@ -335,3 +335,6 @@ if __name__ == "__main__":
 ```
 
 
+Al ejecutarlo obtenemos por consola lo siguiente:
+
+
