@@ -1,0 +1,36 @@
+{% extends 'Proyectowebapp/base.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Revisar Pedido</title>
+</head>
+<body>
+    <h1>Revisar Pedido</h1>
+    <form method="post" action="{% url 'confirmar_modificar_pedido' %}">
+        {% csrf_token %}
+        <h2>Tu Selección:</h2>
+        <ul>
+            <li>Masa: {{ selected_options.masa }}</li>
+            <li>Salsa: {{ selected_options.salsa }}</li>
+            <li>Ingredientes Principales: {{ selected_options.ingredientes_principales }}</li>
+            <li>Cocción: {{ selected_options.coccion }}</li>
+            <li>Presentación: {{ selected_options.presentacion }}</li>
+            <li>Maridaje Recomendado: {{ selected_options.maridaje_recomendado }}</li>
+            <li>Extra Bordes de Queso: {{ selected_options.extra }}</li>
+        </ul>
+        <input type="hidden" name="masa" value="{{ selected_options.masa }}">
+        <input type="hidden" name="salsa" value="{{ selected_options.salsa }}">
+        <input type="hidden" name="ingredientes_principales" value="{{ selected_options.ingredientes_principales }}">
+        <input type="hidden" name="coccion" value="{{ selected_options.coccion }}">
+        <input type="hidden" name="presentacion" value="{{ selected_options.presentacion }}">
+        <input type="hidden" name="maridaje_recomendado" value="{{ selected_options.maridaje_recomendado }}">
+        <input type="hidden" name="extra_bordes_queso" value="{{ selected_options.extra }}">
+        <p>¿Deseas confirmar o modificar tu pedido?</p>
+        <input type="submit" name="decision" value="confirmar">
+        <input type="submit" name="decision" value="modificar">
+    </form>
+</body>
+</html>
+
+{% endblock %}
