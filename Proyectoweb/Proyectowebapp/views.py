@@ -87,11 +87,11 @@ def confirmar_modificar_pedido(request):
 
         if decision == 'confirmar':
             # Lógica para confirmar el pedido
-            return render(request, 'Proyectowebapp/pedido_confirmado.html')
+            return redirect ('home')
         
         elif decision == 'modificar':
             # Lógica para modificar el pedido
-            return render(request, 'Proyectowebapp/modificar_pedido.html', {'selected_options': request.POST})
+            return render ('pedir')
 
-   
-   
+    # Default return statement
+    return HttpResponse("Invalid decision or appropriate response")
