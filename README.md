@@ -17,3 +17,5 @@ En este ejercicicio se nos pide que apliquemos el patron Abstract Factory para c
 *Una fábrica que produzca visualizaciones gráficas (histogramas, gráficos de barras).
 
 Para realizar un análisis de para modularizar y estandarizar el análisis de los datos que se nos proporcionan de Activaciones del SAMUR-Protección Civil.
+
+<h3>Ejercicio 2</h3>
