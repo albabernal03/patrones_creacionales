@@ -348,6 +348,7 @@ Al ejecutarlo obtenemos por consola lo siguiente:
 <img width="234" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/6e2870d5-42a7-4c26-9d19-ef96349a094a">
 
 
+
 <img width="319" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/491ecced-2139-4d6f-b1ce-df714cad624c">
 
 
@@ -655,7 +656,8 @@ class PizzaValidator:
 
 ```
 
-Si lo ejecutamos nos saldrá lo siguiente por terminal
+Si lo ejecutamos nos saldrá lo siguiente por terminal:
+
 <img width="498" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/2f066dec-0f37-412c-85eb-6967678dbddf">
 <img width="503" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/badc084e-f3e2-40ca-8305-76c5721135ed">
 <img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/2948af66-45b9-4339-bdd1-f1203f0d1cbb">
