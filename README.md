@@ -587,6 +587,98 @@ class PizzaCSV:
             })
 
 ```
+Tambien creamos una clase que sera quien nos muestre las elecciones y nos permita confirmar o modificar
+
+```
+from pizza_builder import PizzaBuilder
+from pizza import Pizza
+from pizza_director import PizzaDirector
+from personalizarpizza import PizzaCustomizadaBuilder
+
+
+#-----------------------------------------
+#Creamos una clase que muestre la pizza, por si se necesita modificar
+#-----------------------------------------
+class PizzaValidator:
+    def __init__(self, builder):
+        self.builder = builder
+        self.pizza = None
+
+    def set_pizza(self, pizza):
+        self.pizza = pizza
+
+    def mostrar_resumen(self):
+        if self.pizza:
+            print("Resumen de selecciones:")
+            print(f"Masa: {self.pizza.masa}")
+            print(f"Salsa: {self.pizza.salsa}")
+            print(f"Ingredientes Principales: {', '.join(self.pizza.ingredientes_principales)}")
+            print(f"Cocción: {self.pizza.coccion}")
+            print(f"Presentación: {self.pizza.presentacion}")
+            print(f"Maridaje: {self.pizza.maridaje_recomendado}")
+            print(f"Extras: {self.pizza.extra}")
+        else:
+            print("No hay una pizza configurada para mostrar un resumen.")
+
+    def verificar_pizza(self):
+        self.mostrar_resumen()
+        if self.pizza:
+            print("¿Estás satisfecho con las modificaciones realizadas en la pizza?")
+            confirmacion = input('Responde "si" para confirmar la pizza o "no" para seguir modificando: ')
+            if confirmacion.lower() == 'si':
+                print("Pizza confirmada. ¡Gracias por tu pedido!")
+                return True
+            elif confirmacion.lower() == 'no':
+                self.modificar_selecciones()
+                return self.verificar_pizza()
+            else:
+                print("Respuesta no válida. Debes responder 'si' o 'no.")
+                return self.verificar_pizza()
+        else:
+            print("No hay una pizza configurada para verificar.")
+
+    def modificar_selecciones(self):
+        if self.pizza:
+            print("Modifica tus selecciones antes de confirmar:")
+            self.builder = PizzaCustomizadaBuilder()
+            director = PizzaDirector()
+            director.builder = self.builder
+            director.crear_pizza()
+            self.set_pizza(director.get_pizza())
+        else:
+            print("No hay una pizza configurada para modificar.")
+
+```
+
+Si lo ejecutamos nos saldrá lo siguiente por terminal
+<img width="509" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3aace760-1647-4b0f-bd21-78d45107fccd">
+<img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1eec9312-7c16-4fde-84b1-50b1df071d53">
+<img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4d713ab2-8261-4aa0-918e-92ca9a4da007">
+<img width="360" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/122235ff-a909-4889-a135-2aad83a26efc">
+<img width="500" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/bac72c3f-545e-40aa-a412-d904e41586f4">
+<img width="507" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/975950af-04ac-4d86-8353-b10771349f60">
+
+como vemos nos hace recomendaciones
+<img width="388" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/e7b7a57b-e7d2-40b5-a604-4d16f454e082">
+<img width="505" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7eb068d8-e182-45e8-bb08-e86c25e90127">
+<img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/309026a3-b196-4290-abd0-68e2e050b127">
+
+Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
+<img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f0158957-4e66-4e94-ae47-575439a97768">
+<img width="274" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/85ab58dd-6e9f-43ab-89e4-ba51e589ef2c">
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
