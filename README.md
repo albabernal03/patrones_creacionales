@@ -337,4 +337,6 @@ if __name__ == "__main__":
 
 Al ejecutarlo obtenemos por consola lo siguiente:
 
+<img width="529" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/210ba387-fa3e-4ff5-a134-dddfe48871b1">
+
 
