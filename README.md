@@ -348,5 +348,7 @@ Al ejecutarlo obtenemos por consola lo siguiente:
 
 ![histograma](https://github.com/albabernal03/patrones_creacionales/assets/91721875/e4a1232d-e6b8-44da-965f-9a090b14981b)
 
+***
 
+## Ejercicio 2:<a name="id2"></a>
 
