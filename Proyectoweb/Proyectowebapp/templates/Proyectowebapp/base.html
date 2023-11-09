@@ -30,12 +30,12 @@
       <div style=" text-align: right; margin-right: 100px; color:white">
         {% if user.is_authenticated %}
         
-        Hola {{user.username}}  · <a href='{% url 'cerrar_sesion' %}' style="color:white">Cerrar sesión</a>
-        {% if user.is_staff %}
+        Hola {{user.username}}  &nbsp;&nbsp;<a href="{% url 'cerrar_sesion' %}" style="color:white">Cerrar sesión</a>
+    
 
         {% else %}
         
-        <a href="#" style="color:white">Iniciar sesión</a> · <a href="autenticacion" style="color:white">Registrarse</a>
+        <a href="#" style="color:white">Iniciar sesión</a> &nbsp;&nbsp; <a href="autenticacion" style="color:white">Registrarse</a>
 
         {% endif %}
       
