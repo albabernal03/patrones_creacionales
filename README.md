@@ -723,6 +723,7 @@ Una vez seleccionado te muestra un resumen y te dice si quieres modificar o conf
 
 Y todo esto se guarda en un CSV:
 <img width="1427" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a46b0cb2-0c97-4640-b0aa-edf62b372d85">
+
 <img width="1412" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7369597b-689a-43c4-8e47-87b5ecb4ffcc">
 
 
