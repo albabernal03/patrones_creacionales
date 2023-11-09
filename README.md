@@ -352,3 +352,9 @@ Al ejecutarlo obtenemos por consola lo siguiente:
 
 ## Ejercicio 2:<a name="id2"></a>
 
+En este ejercicio diseñamos una pizzeria haciendo uso del patron creacional Builder
+
+```
+```
+
+
