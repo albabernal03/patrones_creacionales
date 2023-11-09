@@ -1,9 +1,10 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .form import PizzaBuilderForm
 from .models import Pizza
 from .storage import PizzaCSV
 import csv
 import pandas as pd
+
 # Create your views here. Aqui se crean las vistas de la app, en este caso de la pizzeria
 
 def home(request):
@@ -61,3 +62,18 @@ def ver_csv(request):
     table_html = df.to_html(classes='table table-striped')
 
     return render(request, 'Proyectowebapp/ver_csv.html', {'table_html': table_html})
+
+def resumen_pedido(request):
+    if request.method == 'POST':
+        confirmar= request.POST.get('confirmar')
+        if confirmar:
+            return redirect('home')
+        else:
+            return redirect('pedir')
+    
+    #Leer el ultimo pedido desde el archivo CSV
+    csv_file_name = 'pizza.csv'
+    df = PizzaCSV(csv_file_name)
+    detalles_pedido= df.tail(1).to_dict(orient='records')[0] # Convertir el DataFrame de pandas a un diccionario de Python
+
+    return render(request, 'Proyectowebapp/resumen_pedido.html', {'detalles_pedido': detalles_pedido})
