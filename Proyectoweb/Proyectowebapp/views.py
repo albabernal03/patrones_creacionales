@@ -85,6 +85,7 @@ def resumen_pedido(request):
 
 
 def confirmar_modificar_pedido(request):
+    print(request.POST)
     if request.method == 'POST':
         decision = request.POST.get('decision')
 
@@ -100,9 +101,10 @@ def confirmar_modificar_pedido(request):
 
             # Guardar los datos en un archivo CSV
             csv_file_name = 'pizza.csv'
-            with open(csv_file_name, mode='w', newline='') as file:
+            with open(csv_file_name, mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extra'])
+                if file.tell() == 0:  # Check if the file is empty
+                    writer.writerow(['Masa', 'Salsa', 'Ingredientes Principales', 'Cocción', 'Presentación', 'Maridaje Recomendado', 'Extra'])
                 writer.writerow([masa, salsa, ingredientes_principales, coccion, presentacion, maridaje_recomendado, extra])
 
             return render(request, 'Proyectowebapp/ver_csv.html', {'masa': masa, 'salsa': salsa, 'ingredientes_principales': ingredientes_principales, 'coccion': coccion, 'presentacion': presentacion, 'maridaje_recomendado': maridaje_recomendado, 'extra': extra})
