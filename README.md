@@ -339,4 +339,9 @@ Al ejecutarlo obtenemos por consola lo siguiente:
 
 <img width="529" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/210ba387-fa3e-4ff5-a134-dddfe48871b1">
 
+<img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/db6453a1-d36e-48c8-98c5-1069f009094c">
+
+![histograma](https://github.com/albabernal03/patrones_creacionales/assets/91721875/e4a1232d-e6b8-44da-965f-9a090b14981b)
+
+
 
