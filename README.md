@@ -113,8 +113,106 @@ plt.savefig('correlation.png')
  POR LO QUE NOS CENTRAREMOS EN ANALIZAR AMBAS'''
 
 
+```
+A continuación pasamos a construir el patrón, en este caso emplearemos el patron creacional Abstract Factory:
+
+```
+from abc import ABC, abstractmethod
+
+#-----------------------------------------
+#AbstractProductA
+#-----------------------------------------
+
+class CalculosEstadisticos(ABC):
+    @abstractmethod
+    def calcular(self) -> float:
+        pass
+```
+
+```
+from abc import ABC, abstractmethod
+
+#-----------------------------------------
+#AbstractProductB
+#-----------------------------------------
+
+class Graficas(ABC):
+    @abstractmethod
+    def grafica(self) -> None:
+        pass
 
 
 ```
 
+```
+from abc import ABC, abstractmethod
+from calculosestadisticos import CalculosEstadisticos
+from graficas import Graficas
+
+
+#-----------------------------------------
+#AbstractFactory
+#-----------------------------------------
+
+class Analisisdatos(ABC):
+    @abstractmethod
+    def crear_calculos(self) -> CalculosEstadisticos:
+        pass
+
+    @abstractmethod
+    def crear_graficas(self) -> Graficas:
+        pass
+
+```
+
+```
+from calculosestadisticos import CalculosEstadisticos
+import pandas as pd
+from numpy import mean
+
+#-----------------------------------------
+#ConcreteProductA1
+#-----------------------------------------
+class Media(CalculosEstadisticos):
+    def calcular(self) -> float:
+        datos=pd.read_csv("emergencias.csv")
+        activaciones_por_dia = datos.groupby(datos['FECHA']).size()
+        return (f'La media es: {activaciones_por_dia.mean()}')
+```
+
+```
+from calculosestadisticos import CalculosEstadisticos
+import pandas as pd
+from statistics import mode
+#-----------------------------------------
+#ConcreteProductA2
+#-----------------------------------------
+
+class Moda(CalculosEstadisticos):
+    def calcular(self) -> float:
+        datos=pd.read_csv("emergencias.csv")
+        activaciones_por_dia = datos.groupby(datos['FECHA']).size()
+        return (f'La moda es: {mode(activaciones_por_dia)}')
+
+```
+
+```
+from calculosestadisticos import CalculosEstadisticos
+import pandas as pd
+from numpy import median
+
+
+#-----------------------------------------
+#ConcreteProductA3
+#-----------------------------------------
+
+class Mediana(CalculosEstadisticos):
+    def calcular(self) -> float:
+        datos=pd.read_csv("emergencias.csv")
+        activaciones_por_dia = datos.groupby(datos['FECHA']).size()
+        return (f'La mediana es: {activaciones_por_dia.median()}')
+    
+
+
+```
 
