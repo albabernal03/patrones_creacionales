@@ -92,15 +92,6 @@ def confirmar_modificar_pedido(request):
 
         if decision == 'confirmar':
             print("Confirmar pedido")  # Debugging statement
-
-            # Obtén el último pedido confirmado desde la base de datos
-            last_order = Pizza.objects.latest('id')
-
-            # Guarda los datos del último pedido en el formulario en un archivo CSV
-            csv_file_name = 'pizza.csv'
-            pizza_csv = PizzaCSV(csv_file_name)
-            pizza_csv.write_pizza_to_csv(last_order, include_form_data=True)
-
             return redirect('home')
         
         elif decision == 'modificar':
