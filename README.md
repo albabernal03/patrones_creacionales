@@ -669,6 +669,8 @@ como vemos nos hace recomendaciones
 Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
 
 <img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f0158957-4e66-4e94-ae47-575439a97768">
+<img width="484" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7e467379-daee-4321-83fc-475cb4a9fe7e">
+
 <img width="274" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/85ab58dd-6e9f-43ab-89e4-ba51e589ef2c">
 
 ***
