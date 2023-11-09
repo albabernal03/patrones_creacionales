@@ -651,6 +651,7 @@ class PizzaValidator:
 ```
 
 Si lo ejecutamos nos saldrá lo siguiente por terminal
+
 <img width="509" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3aace760-1647-4b0f-bd21-78d45107fccd">
 <img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1eec9312-7c16-4fde-84b1-50b1df071d53">
 <img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4d713ab2-8261-4aa0-918e-92ca9a4da007">
