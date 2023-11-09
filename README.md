@@ -21,3 +21,12 @@ Para realizar un análisis de para modularizar y estandarizar el análisis de lo
 <h3>Ejercicio 2</h3>
 
 Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizioso" que permita a los clientes personalizar sus pizzas de manera detallada. Se debe utilizar el patrón Builder para construir paso a paso las pizzas, validar las elecciones del cliente, incorporar recomendaciones basadas en elecciones anteriores, almacenar cada pizza en un archivo CSV, permitir la reconstrucción desde el archivo, asegurar flexibilidad para futuras actualizaciones, desarrollar una interfaz de usuario amigable y garantizar la seguridad de los datos. El uso del patrón Builder se justifica para lograr robustez y adaptabilidad, permitiendo la construcción flexible de pizzas complejas y facilitando futuras expansiones del sistema.
+
+***
+
+<h2>Indice</h2>
+
+1. [Ejercicio 1](#id1)
+2. [Ejercicio 2](#id2)
+
+***
