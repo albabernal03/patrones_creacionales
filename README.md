@@ -712,6 +712,12 @@ Los datos se guardan en un archivo SQL donde la contraseña se encripta para may
 <img width="587" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3a4c3fbb-fe5f-47f5-911c-a33275b78fed">
 
 
+Una vez dentro de la página puede pedir una pizza:
+
+<img width="1176" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f1a14f64-9abe-48dc-afac-d487499db535">
+
+
+
 
 
 
