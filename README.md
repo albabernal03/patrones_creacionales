@@ -685,9 +685,10 @@ Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
 
 A continuación mostraremos la pagina web:
 
-<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/d7758dcf-0b1d-4796-91d4-403e5e554463">
+<img width="1436" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4a6b782c-e75a-4f80-9b4b-389a30a23784">
 
-<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/10f5da3b-fe6b-4ba3-b2c4-5ba82b61cd80">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1abf9749-ed61-4271-b2aa-2693041aa15d">
+
 
 Como vemos la página web cuenta con la posibilidad de poder registrarse o iniciar sesión:
 
