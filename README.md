@@ -697,11 +697,13 @@ Como vemos la página web cuenta con la posibilidad de poder registrarse o inici
 
 Si pinchamos en registrase veremos lo siguiente:
 
-<img width="1169" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a4d04c66-dad7-449f-9578-44537c2a7c26">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/79cb7b63-1d5d-428b-afc2-b32b7af75aa7">
+
 
 Si nos registramos veremos lo siguiente:
 
-<img width="779" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/73480e92-054e-4820-bae9-a0bdbd0ecef9">
+
+
 
 Como vemos podemos cerrar sesión y entonces como ya nos hemos registrado ya si podemos darle a iniciar sesión:
 
