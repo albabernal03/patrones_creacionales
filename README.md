@@ -677,11 +677,43 @@ Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
 
 ## Página web:<a name="id1"></a>
 
-A continuación mostraremos la pagina web
+A continuación mostraremos la pagina web:
 
 <img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/d7758dcf-0b1d-4796-91d4-403e5e554463">
 
 <img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/10f5da3b-fe6b-4ba3-b2c4-5ba82b61cd80">
+
+Como vemos la página web cuenta con la posibilidad de poder registrarse o iniciar sesión:
+
+<img width="221" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/72fbe3c8-9406-41ea-8ecd-c9ef36fb2a57">
+
+Si pinchamos en registrase veremos lo siguiente:
+
+<img width="1169" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a4d04c66-dad7-449f-9578-44537c2a7c26">
+
+Si nos registramos veremos lo siguiente:
+
+<img width="779" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/73480e92-054e-4820-bae9-a0bdbd0ecef9">
+
+Como vemos podemos cerrar sesión y entonces como ya nos hemos registrado ya si podemos darle a iniciar sesión:
+
+<img width="1372" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/414d1db4-4002-4e25-8a1c-bdbb9eb1ede4">
+
+En el caso de meter mal algunos datos por ejemplo en la parte de iniciar sesión veriamos como se nos muestra el error:
+
+<img width="1193" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/75103f93-6af8-4eb2-adea-7f9a1c8dbd5f">
+
+Esto también pasa en el apartado de registrarse si no se cumplen los requisitos:
+
+<img width="1059" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/179f2b57-b0da-45e1-b525-78ca968e7344">
+
+
+
+
+
+
+
+
 
 
 
