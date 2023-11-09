@@ -702,12 +702,13 @@ Si pinchamos en registrase veremos lo siguiente:
 
 Si nos registramos veremos lo siguiente:
 
-
+<img width="302" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/c4867435-7910-4c4d-9088-5e4f27c13d5e">
 
 
 Como vemos podemos cerrar sesión y entonces como ya nos hemos registrado ya si podemos darle a iniciar sesión:
 
-<img width="1372" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/414d1db4-4002-4e25-8a1c-bdbb9eb1ede4">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3f25f3ac-2206-47c2-9737-2e205ab64459">
+
 
 En el caso de meter mal algunos datos por ejemplo en la parte de iniciar sesión veriamos como se nos muestra el error:
 
