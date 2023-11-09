@@ -712,15 +712,17 @@ Como vemos podemos cerrar sesión y entonces como ya nos hemos registrado ya si 
 
 En el caso de meter mal algunos datos por ejemplo en la parte de iniciar sesión veriamos como se nos muestra el error:
 
-<img width="1193" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/75103f93-6af8-4eb2-adea-7f9a1c8dbd5f">
+<img width="1146" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/79e4cee5-8ad2-4dc2-b99a-8b201c2d7ee6">
+
 
 Esto también pasa en el apartado de registrarse si no se cumplen los requisitos:
 
-<img width="1059" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/179f2b57-b0da-45e1-b525-78ca968e7344">
+<img width="1164" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/752d2a56-92c6-454d-badf-f81e58f93fd4">
+
 
 Los datos se guardan en un archivo SQL donde la contraseña se encripta para mayor seguridad:
 
-<img width="587" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3a4c3fbb-fe5f-47f5-911c-a33275b78fed">
+<img width="580" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/65177715-03cd-40dd-a6ae-655ee42f91bd">
 
 
 Una vez dentro de la página puede pedir una pizza:
