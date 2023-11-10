@@ -8,3 +8,4 @@ gruesa,carbonara,"['tomate', 'queso']",piedra,porciones,vino_tinto,
 fina,tomate,"['tomate', 'cebolla', 'salchichas', 'huevo']",piedra,entera,vino_blanco,
 gruesa,carbonara,"['tomate', 'jamon', 'atun', 'gambas']",piedra,porciones,vino_tinto,si
 gruesa,carbonara,"['tomate', 'queso', 'atun', 'champiñones', 'cebolla', 'huevo']",piedra,porciones,sangria,si
+gruesa,carbonara,"['tomate', 'queso', 'jamon', 'atun']",piedra,porciones,vino_blanco,si
