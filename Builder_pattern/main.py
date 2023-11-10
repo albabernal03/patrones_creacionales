@@ -12,7 +12,7 @@ from crearCVS import PizzaCSV
 if __name__ == "__main__":
     director = PizzaDirector()
     director.builder = PizzaCustomizadaBuilder()
-    csv_writer = PizzaCSV("pizzas.csv")  # Mueva la creación de la instancia de PizzaCSV fuera del bucle
+    csv_writer = PizzaCSV("pizzas.csv")  
 
     while True:
         director.crear_pizza()
