@@ -32,21 +32,26 @@ class PizzaCustomizadaBuilder(PizzaBuilder):
 
     def añadir_ingredientes_principales(self):
         opciones_ingredientes = ['tomate', 'queso', 'jamon', 'atun', 'champiñones', 'bacon', 'cebolla', 'pollo', 'piña',
-                                 'aceitunas', 'anchoas', 'maiz', 'salchichas', 'pimiento', 'gambas', 'carne picada', 'huevo']
+                                'aceitunas', 'anchoas', 'maiz', 'salchichas', 'pimiento', 'gambas', 'carne picada', 'huevo']
         while True:
             print("Elige los ingredientes principales para tu pizza:")
             for i, ingrediente in enumerate(opciones_ingredientes, start=1):
                 print(f"{i}. {ingrediente}")
 
             seleccionados = input("Ingresa los números de los ingredientes separados por comas: ")
-            numeros_seleccionados = [int(x) for x in seleccionados.split(',') if x.isdigit()]
+            
+            if seleccionados.replace(',', '').isdigit() and seleccionados:
+                numeros_seleccionados = [int(x) for x in seleccionados.split(',')]
 
-            if all(1 <= num <= len(opciones_ingredientes) for num in numeros_seleccionados):
-                ingredientes_seleccionados = [opciones_ingredientes[i - 1] for i in numeros_seleccionados]
-                self.pizza.ingredientes_principales = ingredientes_seleccionados
-                break
+                if all(1 <= num <= len(opciones_ingredientes) for num in numeros_seleccionados):
+                    ingredientes_seleccionados = [opciones_ingredientes[i - 1] for i in numeros_seleccionados]
+                    self.pizza.ingredientes_principales = ingredientes_seleccionados
+                    break
+                else:
+                    print('Error: Ingresa números válidos.')
             else:
-                print('Error: Ingresa números válidos.')
+                print('Error: Ingresa números válidos y asegúrate de no dejar la entrada vacía.')
+
 
     def añadir_coccion(self):
         opciones_coccion = ['al horno', 'a la piedra']
