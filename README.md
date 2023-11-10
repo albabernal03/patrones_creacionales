@@ -683,7 +683,7 @@ Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
 
 ## Página web:<a name="id3"></a>
 
-A continuación mostraremos la pagina web:
+A continuación mostraremos la pagina web: (***PARA EJECUTARLA EN TERMINAL HAY QUE PONER python manage.py runserver)
 
 <img width="1436" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4a6b782c-e75a-4f80-9b4b-389a30a23784">
 
