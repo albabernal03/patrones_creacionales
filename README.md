@@ -695,7 +695,7 @@ Como vemos la página web cuenta con la posibilidad de poder registrarse o inici
 <img width="182" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/6325f850-30e1-4f01-931f-ceba90f81ae6">
 
 
-Si pinchamos en registrase veremos lo siguiente:
+Si pinchamos en registrarse veremos lo siguiente:
 
 <img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/79cb7b63-1d5d-428b-afc2-b32b7af75aa7">
 
