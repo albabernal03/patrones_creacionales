@@ -117,8 +117,9 @@ plt.savefig('correlation.png')
 
 ```
 La matriz de correlacion que se obtiene es la siguiente:
-![matriz](https://github.com/albabernal03/patrones_creacionales/assets/91721875/fe40c32a-7a3b-4a76-a564-9f4d053a4900)
 
+
+![correlacion](https://github.com/albabernal03/patrones_creacionales/assets/91721875/c6d17798-785c-4139-b44a-6e168c75c070)
 
 
 A continuación pasamos a construir el patrón, en este caso emplearemos el patron creacional Abstract Factory:
@@ -344,11 +345,14 @@ if __name__ == "__main__":
 
 Al ejecutarlo obtenemos por consola lo siguiente:
 
-<img width="529" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/210ba387-fa3e-4ff5-a134-dddfe48871b1">
+<img width="234" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/6e2870d5-42a7-4c26-9d19-ef96349a094a">
 
-<img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/db6453a1-d36e-48c8-98c5-1069f009094c">
 
-![histograma](https://github.com/albabernal03/patrones_creacionales/assets/91721875/e4a1232d-e6b8-44da-965f-9a090b14981b)
+
+<img width="319" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/491ecced-2139-4d6f-b1ce-df714cad624c">
+
+
+![grafica](https://github.com/albabernal03/patrones_creacionales/assets/91721875/aa767936-af73-4a32-b223-ea5efa4bfab3)
 
 ***
 
@@ -652,27 +656,28 @@ class PizzaValidator:
 
 ```
 
-Si lo ejecutamos nos saldrá lo siguiente por terminal
+Si lo ejecutamos nos saldrá lo siguiente por terminal:
 
-<img width="509" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3aace760-1647-4b0f-bd21-78d45107fccd">
-<img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1eec9312-7c16-4fde-84b1-50b1df071d53">
-<img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4d713ab2-8261-4aa0-918e-92ca9a4da007">
-<img width="360" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/122235ff-a909-4889-a135-2aad83a26efc">
-<img width="500" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/bac72c3f-545e-40aa-a412-d904e41586f4">
-<img width="507" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/975950af-04ac-4d86-8353-b10771349f60">
+<img width="498" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/2f066dec-0f37-412c-85eb-6967678dbddf">
+<img width="503" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/badc084e-f3e2-40ca-8305-76c5721135ed">
+<img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/2948af66-45b9-4339-bdd1-f1203f0d1cbb">
+<img width="358" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/ffd18f67-1975-4ae1-ad70-27fa0072ec68">
+<img width="500" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/487887c0-6b8d-4c5d-a855-7324f9bba302">
+<img width="501" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/410c3280-36c2-4628-b92b-e0e5b69c4fab">
+
 
 como vemos nos hace recomendaciones
 
-<img width="388" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/e7b7a57b-e7d2-40b5-a604-4d16f454e082">
-<img width="505" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7eb068d8-e182-45e8-bb08-e86c25e90127">
-<img width="502" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/309026a3-b196-4290-abd0-68e2e050b127">
+<img width="362" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1a713651-214d-4c9f-a504-edce41a015cf">
+<img width="496" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3d9d1b48-10e4-4b4a-a03a-0a6ef5495953">
+<img width="498" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/354fb21f-9c4f-4ce6-95bd-c28115be814e">
+
 
 Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
+<img width="441" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/488499c2-a353-4e1a-bde0-43134616b50e">
+<img width="498" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/730e9860-ddbb-4494-8005-f4ff1b47e15a">
+<img width="318" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/aed6315e-c2ca-4304-9813-685fc62bda2d">
 
-<img width="504" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f0158957-4e66-4e94-ae47-575439a97768">
-<img width="484" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7e467379-daee-4321-83fc-475cb4a9fe7e">
-
-<img width="274" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/85ab58dd-6e9f-43ab-89e4-ba51e589ef2c">
 
 ***
 
@@ -680,52 +685,61 @@ Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
 
 A continuación mostraremos la pagina web:
 
-<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/d7758dcf-0b1d-4796-91d4-403e5e554463">
+<img width="1436" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4a6b782c-e75a-4f80-9b4b-389a30a23784">
 
-<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/10f5da3b-fe6b-4ba3-b2c4-5ba82b61cd80">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/1abf9749-ed61-4271-b2aa-2693041aa15d">
+
 
 Como vemos la página web cuenta con la posibilidad de poder registrarse o iniciar sesión:
 
-<img width="221" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/72fbe3c8-9406-41ea-8ecd-c9ef36fb2a57">
+<img width="182" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/6325f850-30e1-4f01-931f-ceba90f81ae6">
+
 
 Si pinchamos en registrase veremos lo siguiente:
 
-<img width="1169" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a4d04c66-dad7-449f-9578-44537c2a7c26">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/79cb7b63-1d5d-428b-afc2-b32b7af75aa7">
+
 
 Si nos registramos veremos lo siguiente:
 
-<img width="779" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/73480e92-054e-4820-bae9-a0bdbd0ecef9">
+<img width="302" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/c4867435-7910-4c4d-9088-5e4f27c13d5e">
+
 
 Como vemos podemos cerrar sesión y entonces como ya nos hemos registrado ya si podemos darle a iniciar sesión:
 
-<img width="1372" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/414d1db4-4002-4e25-8a1c-bdbb9eb1ede4">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3f25f3ac-2206-47c2-9737-2e205ab64459">
+
 
 En el caso de meter mal algunos datos por ejemplo en la parte de iniciar sesión veriamos como se nos muestra el error:
 
-<img width="1193" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/75103f93-6af8-4eb2-adea-7f9a1c8dbd5f">
+<img width="1146" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/79e4cee5-8ad2-4dc2-b99a-8b201c2d7ee6">
+
 
 Esto también pasa en el apartado de registrarse si no se cumplen los requisitos:
 
-<img width="1059" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/179f2b57-b0da-45e1-b525-78ca968e7344">
+<img width="1164" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/752d2a56-92c6-454d-badf-f81e58f93fd4">
+
 
 Los datos se guardan en un archivo SQL donde la contraseña se encripta para mayor seguridad:
 
-<img width="587" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3a4c3fbb-fe5f-47f5-911c-a33275b78fed">
+<img width="580" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/65177715-03cd-40dd-a6ae-655ee42f91bd">
 
 
 Una vez dentro de la página puede pedir una pizza:
 
-<img width="1176" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/f1a14f64-9abe-48dc-afac-d487499db535">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/875f7632-5ffd-4f3d-8dd5-993461fbed53">
 
 
 Una vez seleccionado te muestra un resumen y te dice si quieres modificar o confirmar:
 
-<img width="1430" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/71273cf7-dd1f-49dc-9f7c-b026e33b6858">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7636b21b-7c48-4bd8-b92f-0ef5264c747e">
+
 
 Y todo esto se guarda en un CSV:
-<img width="1427" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/a46b0cb2-0c97-4640-b0aa-edf62b372d85">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/55c4c4c9-0911-42ce-a42c-2fa592b8f6ad">
 
-<img width="1412" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/7369597b-689a-43c4-8e47-87b5ecb4ffcc">
+<img width="1440" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/971d62cd-f509-495c-aaab-363b7e0b21f2">
+
 
 
 ***
