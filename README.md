@@ -681,7 +681,7 @@ Luego nos muestra un resumen de nuestro pedido y nos pide si estamos satisfechos
 
 ***
 
-## Página web:<a name="id1"></a>
+## Página web:<a name="id3"></a>
 
 A continuación mostraremos la pagina web:
 
