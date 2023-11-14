@@ -116,4 +116,4 @@ def confirmar_modificar_pedido(request):
 
 
 def menu(request):
-    return render(request, "Proyectowebapp/menu.html")
+    return render(request, 'menu/menu.html')
