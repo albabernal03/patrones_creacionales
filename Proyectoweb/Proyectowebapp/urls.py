@@ -8,6 +8,7 @@ urlpatterns = [
     path("ver_csv/", views.ver_csv, name="ver_csv"),
     path('resumen_pedido/', views.resumen_pedido, name='resumen_pedido'),
     path('confirmar_modificar_pedido/', views.confirmar_modificar_pedido, name='confirmar_modificar_pedido'),
+    path('menu/', views.menu, name='menu'),
    
 
 ]

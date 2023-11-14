@@ -113,3 +113,7 @@ def confirmar_modificar_pedido(request):
             return redirect('pedir')
 
     return HttpResponse("Invalid decision or appropriate response")
+
+
+def menu(request):
+    return render(request, "Proyectowebapp/menu.html")
