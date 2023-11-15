@@ -19,6 +19,9 @@ class Producto(models.Model):
     categorias=models.ForeignKey(CategoriaProd, on_delete=models.CASCADE)
     imagen=models.ImageField(upload_to='menu', null=True, blank=True)
     precio=models.FloatField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
 
     class Meta: #esto es para definir el nombre de la tabla en la base de datos
         verbose_name = "producto"
