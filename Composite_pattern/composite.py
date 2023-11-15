@@ -188,7 +188,7 @@ if __name__ == "__main__":
     combo_2.agregar(bebida_agua)
     combo_2.agregar(postre_frutas)
 
-    combo_3 = ComboPareja("Combo Pareja 1")
+    combo_3 = ComboPareja("Combo Pareja")
     combo_3.agregar(entrante_alitas)
     combo_3.agregar(pizza_hawaiana)
     combo_3.agregar(bebida_cola)
@@ -288,7 +288,7 @@ if __name__ == "__main__":
             combo_2.mostrar()
         elif eleccion_combo_predefinido == 3:
             combo_3.mostrar()
-            
+
     elif eleccion == 3:
         print("Gracias por usar nuestro servicio. ¡Hasta pronto!")
 
