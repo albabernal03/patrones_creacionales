@@ -110,7 +110,6 @@ class Combo(ComponentMenu):
 #------------------------------------------------------------
 
 # Composite
-# Composite
 class ComboPareja(ComponentMenu):
     def __init__(self, nombre):
         self.nombre = nombre
@@ -125,22 +124,45 @@ class ComboPareja(ComponentMenu):
         print(f'Combo Pareja: {self.nombre}')
 
         if self.combo1:
-            self.mostrar_elementos(self.combo1, "Combo 1")
+            print('Combo 1:')
+            self.mostrar_elementos(self.combo1, "Entrante", "Pizza", "Bebida", "Postre")
+            print(f'Precio Total del Combo 1: {self.combo1.calcular_precio_total()}')
 
         if self.combo2:
-            self.mostrar_elementos(self.combo2, "Combo 2")
+            print('Combo 2:')
+            self.mostrar_elementos(self.combo2, "Entrante", "Pizza", "Bebida", "Postre")
+            print(f'Precio Total del Combo 2: {self.combo2.calcular_precio_total()}')
 
         print(f'Precio Total del Combo Pareja: {self.calcular_precio_total()}')
 
-    def mostrar_elementos(self, combo, nombre_combo):
-        print(f'{nombre_combo}:')
-        for elemento in combo.elementos:
-            elemento.mostrar()
+    def mostrar_elementos(self, combo, tipo_entrante, tipo_pizza, tipo_bebida, tipo_postre):
+        entrantes = [elemento for elemento in combo.elementos if isinstance(elemento, Entrante)]
+        pizzas = [elemento for elemento in combo.elementos if isinstance(elemento, Pizza)]
+        bebidas = [elemento for elemento in combo.elementos if isinstance(elemento, Bebida)]
+        postres = [elemento for elemento in combo.elementos if isinstance(elemento, Postre)]
+
+        print('\nEntrantes:')
+        for i, entrante in enumerate(entrantes, start=1):
+            print(f'{tipo_entrante}_{i}: {entrante.nombre} - Precio: {entrante.precio}')
+
+        print('\nPizzas:')
+        for i, pizza in enumerate(pizzas, start=1):
+            print(f'{tipo_pizza}_{i}: {pizza.nombre} - Precio: {pizza.precio}')
+
+        print('\nBebidas:')
+        for i, bebida in enumerate(bebidas, start=1):
+            print(f'{tipo_bebida}_{i}: {bebida.nombre} - Precio: {bebida.precio}')
+
+        print('\nPostres:')
+        for i, postre in enumerate(postres, start=1):
+            print(f'{tipo_postre}_{i}: {postre.nombre} - Precio: {postre.precio}')
 
     def calcular_precio_total(self):
         total_combo1 = self.combo1.calcular_precio_total() if self.combo1 else 0
         total_combo2 = self.combo2.calcular_precio_total() if self.combo2 else 0
         return total_combo1 + total_combo2
+
+
 
 
 
