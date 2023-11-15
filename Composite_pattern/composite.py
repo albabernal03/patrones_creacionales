@@ -109,29 +109,51 @@ class Combo(ComponentMenu):
 # Composite
 #------------------------------------------------------------
 
+# Composite
 class ComboPareja(ComponentMenu):
-
     def __init__(self, nombre):
         self.nombre = nombre
-        self.elementos = []
+        self.combo1 = None
+        self.combo2 = None
 
-    def agregar(self, elemento):
-        self.elementos.append(elemento)
+    def personalizar(self, combo1, combo2):
+        self.combo1 = combo1
+        self.combo2 = combo2
 
-    def eliminar(self, elemento):
-        self.elementos.remove(elemento)
-    
     def mostrar(self):
         print(f'Combo Pareja: {self.nombre}')
+        if self.combo1:
+            print('Combo 1:')
+            self.mostrar_elementos(self.combo1)
+        if self.combo2:
+            print('Combo 2:')
+            self.mostrar_elementos(self.combo2)
+        print(f'Precio Total del Combo Pareja: {self.calcular_precio_total()}')
 
-        for elemento in self.elementos:
-            elemento.mostrar()
-        
-        print(f'Precio Total del Combo: {self.calcular_precio_total()}')
-
+    def mostrar_elementos(self, combo):
+        print(f'Entrantes:')
+        for elemento in combo.elementos:
+            if isinstance(elemento, Entrante):
+                elemento.mostrar()
+        print(f'Pizzas:')
+        for elemento in combo.elementos:
+            if isinstance(elemento, Pizza):
+                elemento.mostrar()
+        print(f'Bebidas:')
+        for elemento in combo.elementos:
+            if isinstance(elemento, Bebida):
+                elemento.mostrar()
+        print(f'Postres:')
+        for elemento in combo.elementos:
+            if isinstance(elemento, Postre):
+                elemento.mostrar()
 
     def calcular_precio_total(self):
-        return sum(elemento.precio for elemento in self.elementos)
+        total_combo1 = self.combo1.calcular_precio_total() if self.combo1 else 0
+        total_combo2 = self.combo2.calcular_precio_total() if self.combo2 else 0
+        return total_combo1 + total_combo2
+
+
 
 
 #------------------------------------------------------------
@@ -158,7 +180,7 @@ if __name__ == "__main__":
 
     bebida_cola = Bebida("Coca-Cola", 2.0)
     bebida_agua = Bebida("Agua", 1.5)
-    bebida_jugo_naranja = Bebida("Fanta de Naranja", 2.0)
+    bebida_fanta_de_naranja = Bebida("Fanta de Naranja", 2.0)
     bebida_cerveza = Bebida("Cerveza", 3.5)
     bebida_nestea=Bebida("Nestea", 2.0)
 
@@ -188,23 +210,46 @@ if __name__ == "__main__":
     combo_2.agregar(bebida_agua)
     combo_2.agregar(postre_frutas)
 
-    combo_3 = ComboPareja("Combo Pareja")
+    combo_3 = Combo("Combo 3")
     combo_3.agregar(entrante_alitas)
-    combo_3.agregar(pizza_hawaiana)
-    combo_3.agregar(bebida_cola)
+    combo_3.agregar(pizza_vegetariana)
+    combo_3.agregar(bebida_fanta_de_naranja)
     combo_3.agregar(postre_natillas)
+
+    combo_4 = Combo("Combo 4")
+    combo_4.agregar(entrante_nuggets)
+    combo_4.agregar(pizza_hawaiana)
+    combo_4.agregar(bebida_cerveza)
+    combo_4.agregar(postre_tarta_de_la_abuela)
+
+  # Crear combos pareja predefinidos
+
+    combo_pareja_1 = ComboPareja("Combo Pareja 1")
+    combo_pareja_1.personalizar(combo_1, combo_2)
+
+    combo_pareja_2 = ComboPareja("Combo Pareja 2")
+    combo_pareja_2.personalizar(combo_3, combo_4)
+
+
+
+
 
     # Mostrar combos predefinidos
     print("\nCombos predefinidos:")
     combo_1.mostrar()
     combo_2.mostrar()
     combo_3.mostrar()
+    combo_4.mostrar()
+    print("\nCombos Pareja predefinidos:")
+    combo_pareja_1.mostrar()
+    combo_pareja_2.mostrar()
 
     print("\nOpciones:")
     print("1. Crear combo personalizado")
     print("2. Elegir combo predefinido")
-    print("3. Salir")
-    eleccion = solicitar_opcion("Elige una opción (1, 2 o 3): ", [1, 2, 3])
+    print('3. Elegir combo pareja predefinido')
+    print("4. Salir")
+    eleccion = solicitar_opcion("Elige una opción (1, 2, 3 o 4): ", [1, 2, 3, 4])
 
     if eleccion == 1:
         # Solicitar al usuario que elija elementos para el combo personalizado
@@ -290,5 +335,31 @@ if __name__ == "__main__":
             combo_3.mostrar()
 
     elif eleccion == 3:
-        print("Gracias por usar nuestro servicio. ¡Hasta pronto!")
+        combo_pareja_personalizado = ComboPareja("Combo Pareja Personalizado")
+
+        print("\nElige los combos para tu Combo Pareja:")
+        print("1. Combo 1")
+        print("2. Combo 2")
+        eleccion_combo1 = solicitar_opcion("Elige el Combo 1 (1 o 2): ", [1, 2])
+        eleccion_combo2 = solicitar_opcion("Elige el Combo 2 (1 o 2): ", [1, 2])
+
+        if eleccion_combo1 == 1:
+            combo_pareja_personalizado.personalizar(combo_1, None)
+        elif eleccion_combo1 == 2:
+            combo_pareja_personalizado.personalizar(combo_2, None)
+
+        if eleccion_combo2 == 1:
+            combo_pareja_personalizado.personalizar(combo_pareja_personalizado.combo1, combo_1)
+        elif eleccion_combo2 == 2:
+            combo_pareja_personalizado.personalizar(combo_pareja_personalizado.combo1, combo_2)
+
+        # Mostrar el Combo Pareja personalizado
+        print("\nTu Combo Pareja personalizado:")
+        combo_pareja_personalizado.mostrar()
+
+    elif eleccion == 4:
+        print("\nGracias por usar nuestro servicio. Hasta pronto.")
+        exit()
+
+
 
