@@ -110,6 +110,7 @@ class Combo(ComponentMenu):
 #------------------------------------------------------------
 
 # Composite
+# Composite
 class ComboPareja(ComponentMenu):
     def __init__(self, nombre):
         self.nombre = nombre
@@ -122,36 +123,26 @@ class ComboPareja(ComponentMenu):
 
     def mostrar(self):
         print(f'Combo Pareja: {self.nombre}')
+
         if self.combo1:
-            print('Combo 1:')
-            self.mostrar_elementos(self.combo1)
+            self.mostrar_elementos(self.combo1, "Combo 1")
+
         if self.combo2:
-            print('Combo 2:')
-            self.mostrar_elementos(self.combo2)
+            self.mostrar_elementos(self.combo2, "Combo 2")
+
         print(f'Precio Total del Combo Pareja: {self.calcular_precio_total()}')
 
-    def mostrar_elementos(self, combo):
-        print(f'Entrantes:')
+    def mostrar_elementos(self, combo, nombre_combo):
+        print(f'{nombre_combo}:')
         for elemento in combo.elementos:
-            if isinstance(elemento, Entrante):
-                elemento.mostrar()
-        print(f'Pizzas:')
-        for elemento in combo.elementos:
-            if isinstance(elemento, Pizza):
-                elemento.mostrar()
-        print(f'Bebidas:')
-        for elemento in combo.elementos:
-            if isinstance(elemento, Bebida):
-                elemento.mostrar()
-        print(f'Postres:')
-        for elemento in combo.elementos:
-            if isinstance(elemento, Postre):
-                elemento.mostrar()
+            elemento.mostrar()
 
     def calcular_precio_total(self):
         total_combo1 = self.combo1.calcular_precio_total() if self.combo1 else 0
         total_combo2 = self.combo2.calcular_precio_total() if self.combo2 else 0
         return total_combo1 + total_combo2
+
+
 
 
 
