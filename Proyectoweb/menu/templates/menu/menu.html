@@ -1,7 +1,23 @@
-{% extends 'Proyectowebapp/base.html' %}
-{% load static %}
-{% block content %}
 
+{% block content %}
+{% for combo in combos %}
+
+<section class="page-section clearfix">
+    <div class="menu_cotainer">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{combo.imagen.url}}" alt="" style="width: 50%;">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-lower">{{combo.nombre}}</span>
+                    <span class="section-heading-upper">{{combo.precio}}</span>
+                </h2>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endfor %}
 
 {% endblock %}
 

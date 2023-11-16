@@ -32,6 +32,7 @@ class Combo(models.Model):
     nombre = models.CharField(max_length=50)
     componentes = models.ManyToManyField(Componente)
     created = models.DateTimeField(auto_now_add=True)
+    imagen = models.ImageField(upload_to='menu', null=True, blank=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     class Meta:
