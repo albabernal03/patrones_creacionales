@@ -812,6 +812,9 @@ El patrón Builder se utiliza en este proyecto para construir objetos paso a pas
 Este enfoque estructurado ofrece flexibilidad y adaptabilidad al sistema de personalización de pizzas de "Delizioso", garantizando una experiencia de usuario optimizada y facilitando futuras expansiones y modificaciones del sistema.
 
 
+## Ejercicio 3:<a name="id5"></a>
+
+
 
 
 
