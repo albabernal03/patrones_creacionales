@@ -1,28 +1,48 @@
+# menu/models.py
 from django.db import models
-from .compositepatron import Pizza, Bebida, Postre, Entrante, Combo, ComboPareja
-# Create your models here.
 
 class CategoriaProd(models.Model):
     nombre = models.CharField(max_length=50)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
 
-    class Meta: #esto es para definir el nombre de la tabla en la base de datos
+    class Meta:
         verbose_name = "categoriaProd"
         verbose_name_plural = "categoriasProd"
 
     def __str__(self):
         return self.nombre
-    
-class Producto(models.Model):
-    nombre=models.CharField(max_length=50)
-    categorias=models.ForeignKey(CategoriaProd, on_delete=models.CASCADE)
-    imagen=models.ImageField(upload_to='menu', null=True, blank=True)
-    precio=models.FloatField()
+
+class Componente(models.Model):
+    nombre = models.CharField(max_length=50)
+    categoria = models.ForeignKey(CategoriaProd, on_delete=models.CASCADE)
+    precio = models.FloatField()
+    imagen = models.ImageField(upload_to='menu', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = "componente"
+        verbose_name_plural = "componentes"
 
-    class Meta: #esto es para definir el nombre de la tabla en la base de datos
-        verbose_name = "producto"
-        verbose_name_plural = "productos"
+    def mostrar(self):
+        print(f'{self.categoria}: {self.nombre} - Precio: {self.precio}')
+
+class Combo(models.Model):
+    nombre = models.CharField(max_length=50)
+    componentes = models.ManyToManyField(Componente)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "combo"
+        verbose_name_plural = "combos"
+
+    def mostrar(self):
+        print(f'Combo: {self.nombre}')
+        for componente in self.componentes.all():
+            componente.mostrar()
+        print(f'Precio Total del Combo: {self.calcular_precio_total()}')
+
+    def calcular_precio_total(self):
+        return sum(componente.precio for componente in self.componentes.all())
