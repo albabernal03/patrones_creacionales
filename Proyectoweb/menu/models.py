@@ -1,6 +1,5 @@
 from django.db import models
-from .compositepatron import 
-
+from .compositepatron import Pizza, Bebida, Postre, Entrante, Combo, ComboPareja
 # Create your models here.
 
 class CategoriaProd(models.Model):
