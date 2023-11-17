@@ -5,6 +5,7 @@ from .storage import PizzaCSV
 import csv
 import pandas as pd
 
+
 # Create your views here. Aqui se crean las vistas de la app, en este caso de la pizzeria
 
 def home(request):
@@ -116,4 +117,5 @@ def confirmar_modificar_pedido(request):
 
 
 def menu(request):
+
     return render(request, 'menu/menu.html')
