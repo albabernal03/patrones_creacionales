@@ -1,3 +1,4 @@
+User
 {% extends 'Proyectowebapp/base.html' %}
 {% load static %}
 
@@ -5,7 +6,7 @@
 <div class="container">
   <div class="row">
     {% for combo in combos %}
-      <div class="col-md-4">
+      <div class="col-md-4"> <!-- Ajusta el ancho según tus necesidades -->
         <div class="card" id="combo{{ combo.id }}" style="width: 100%;">
           <img class="combo-image" src="{{ combo.imagen.url }}">
           <div class="card-body" style="text-align: center;">
@@ -19,26 +20,9 @@
             </div>
             <p class="card-text">Precio total: {{combo.calcular_precio_total}}&nbsp;€</p>
           </div>
-        </div>
+        </div><!--- card que se cierra --->
       </div>
     {% endfor %}
-  </div>
-
-  <!-- Formulario para personalizar combo -->
-  <div class="row mt-4">
-    <div class="col-md-6 offset-md-3">
-      <form method="post" action="{% url 'personalizar_combo' %}">
-        {% csrf_token %}
-        <h2>Personalizar tu propio combo</h2>
-        <label for="componentes">Selecciona tus componentes:</label>
-        <select name="componentes" id="componentes" multiple>
-          {% for componente in todos_los_componentes %}
-            <option value="{{ componente.id }}">{{ componente.nombre }} - Precio: {{ componente.precio }}</option>
-          {% endfor %}
-        </select>
-        <button type="submit" class="btn btn-primary mt-2">Crear Combo Personalizado</button>
-      </form>
-    </div>
   </div>
 </div>
 
