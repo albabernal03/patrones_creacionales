@@ -1,14 +1,13 @@
 from django.db import transaction
 
-from django.shortcuts import render
-from menu.models import Combo
+from django.shortcuts import render, redirect
+from menu.models import Combo, Componente
 
 # Create your views here.
 @transaction.atomic
 def menu(request):
     combos = Combo.objects.all()
     return render(request, 'menu/menu.html', {'combos':combos})
-
 
 from django.shortcuts import render, redirect
 from .models import Combo, Componente
@@ -24,8 +23,8 @@ def personalizar_combo(request):
         # Calcula el precio total sumando los precios de los componentes seleccionados
         precio_total = sum(componente.precio for componente in componentes_seleccionados)
 
-        # Crea el combo personalizado
-        combo_personalizado = Combo.objects.create(nombre='Combo Personalizado', precio_total=precio_total)
+        # Crea el combo personalizado con el precio total calculado
+        combo_personalizado = Combo.objects.create(nombre='Combo Personalizado', precio=precio_total)
 
         # Agrega los componentes al combo personalizado
         combo_personalizado.componentes.set(componentes_seleccionados)
