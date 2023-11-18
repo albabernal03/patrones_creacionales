@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Combo # hemos importado el modelo Combo para poder usarlo en la vista menu
+from menu.models import Combo
 
 # Create your views here.
 def menu(request):
