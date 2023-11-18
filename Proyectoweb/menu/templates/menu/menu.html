@@ -2,14 +2,15 @@
 {% load static %}
 {% block content %}
 
-{% for combo in combos %}
-<li>
-    <img src="{{ combo.imagen.url }}" alt="{{ combo.nombre_del_campo }}">
-    <h2>{{ combo.nombre }}</h2>
-    <p>Precio: ${{ combo.precio }}</p>
-    <!-- Agrega aquí otros campos si es necesario -->
-</li>
-{% endfor %}
+    {% for combo in combos %}
+<div><p>
+
+    <h2>{{combo.nombre}}</h2>
+    <p>{{combo.componentes}}</p>
+</p>
+
+</div>
+    {% endfor %}
 
 
 {% endblock %}
