@@ -2,30 +2,18 @@
 {% load static %}
 
 {% block content %}
+<di class="row">
     {% for combo in combos %}
-    <section class="page-section clearfix">
-        <div class="container">
-          <div class="intro">
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ combo.imagen.url }}" alt="" style="width: 50%;">
-            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-              <h2 class="section-heading mb-4" >
-                <span class="section-heading-lower">{{ combo.nombre }}</span>
-                <span class="section-heading-upper"><ul style="color:white">
-                    {% for componente in combo.componentes.all %}
-                        <li>{{ componente.nombre }} - Precio: {{ componente.precio }}</li>
-                    {% endfor %}
-                </ul>
-                <p style="color:white">Precio Total del Combo: {{combo.precio}}</p></span>
-                
-              </h2>
 
-             
-            </div>
-          </div>
-        </div>
-      </section>
 
+    <div class="card" style="width: 10%;">
+      <img scr="{{ combo.imagen.url }}">
+
+
+
+    </div>
 
 
     {% endfor %}
+  </div>
 {% endblock %}
