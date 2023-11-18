@@ -51,7 +51,7 @@ class Combo(models.Model):
     def calcular_precio_total(self):
         return sum(componente.precio for componente in self.componentes.all())
     
-@receiver(m2m_changed, sender=Combo.componentes.through)
+
 def actualizar_precio_total(sender, instance, action, **kwargs):
     if action in ['post_add', 'post_remove', 'post_clear']:
         instance.precio = instance.calcular_precio_total()
