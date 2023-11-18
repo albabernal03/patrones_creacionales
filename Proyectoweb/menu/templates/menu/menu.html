@@ -2,16 +2,23 @@
 {% load static %}
 
 {% block content %}
-<di class="row">
+<div class="row">
     {% for combo in combos %}
 
 
     <div class="card" style="width: 10%;">
-      <img scr="{{ combo.imagen.url }}">
+      <img  src="{{ combo.imagen.url }}">
 
 
 
     </div>
+
+
+
+
+
+
+
 
 
     {% endfor %}

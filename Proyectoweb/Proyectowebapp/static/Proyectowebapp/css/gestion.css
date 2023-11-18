@@ -332,3 +332,22 @@ ul.errorlist{
   background-color: white; /* Establece el fondo en blanco */
 }
 
+
+img {
+  width: 100px; /* ajusta el valor según tus necesidades */
+  height: 100px; /* ajusta el valor según tus necesidades */
+  object-fit: cover; /* opcional: controla cómo la imagen se ajusta al contenedor manteniendo su relación de aspecto */
+}
+
+.card{
+  width: 100px; /* ajusta el valor según tus necesidades */
+  height: 100px; /* ajusta el valor según tus necesidades */
+  overflow: hidden; /* asegura que las imágenes que sean más grandes se recorten */
+}
+
+.card img {
+  width: 100%; /* ajusta el valor según tus necesidades */
+  height: 100%; /* ajusta el valor según tus necesidades */
+  object-fit: cover; /* opcional: controla cómo la imagen se ajusta al contenedor manteniendo su relación de aspecto */
+}
+
