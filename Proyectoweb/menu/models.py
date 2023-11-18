@@ -52,9 +52,3 @@ class Combo(models.Model):
         return sum(componente.precio for componente in self.componentes.all())
     
 
-def actualizar_precio_total(sender, instance, action, **kwargs):
-    if action in ['post_add', 'post_remove', 'post_clear']:
-        instance.precio = instance.calcular_precio_total()
-
-# Conectar la señal al modelo
-m2m_changed.connect(actualizar_precio_total, sender=Combo.componentes.through)

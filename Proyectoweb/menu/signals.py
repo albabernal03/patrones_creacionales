@@ -8,4 +8,3 @@ def actualizar_precio_total(sender, instance, action, **kwargs):
     if action in ['post_add', 'post_remove', 'post_clear']:
         instance.precio = instance.calcular_precio_total()
         instance.save()
-I
