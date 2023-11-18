@@ -4,13 +4,13 @@
 {% block content %}
     {% for combo in combos %}
         <div>
-            <h2>{{ combo.nombre }}</h2>
-            <ul>
+            <h2 style="color:white">{{ combo.nombre }}</h2>
+            <ul style="color:white">
                 {% for componente in combo.componentes.all %}
                     <li>{{ componente.nombre }} - Precio: {{ componente.precio }}</li>
                 {% endfor %}
             </ul>
-            <p>Precio Total del Combo: {{ combo.calcular_precio_total }}</p>
+            <p style="color:white">Precio Total del Combo: {{ combo.calcular_precio_total }}</p>
         </div>
     {% endfor %}
 {% endblock %}
