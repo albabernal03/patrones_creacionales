@@ -34,6 +34,7 @@ class Combo(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     imagen = models.ImageField(upload_to='menu', null=True, blank=True)
     updated = models.DateTimeField(auto_now_add=True)
+    precio = models.FloatField(blank=True, null=True)
 
     class Meta:
         verbose_name = "combo"
