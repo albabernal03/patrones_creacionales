@@ -1,17 +1,16 @@
 {% extends 'Proyectowebapp/base.html' %}
 {% load static %}
+
 {% block content %}
-
     {% for combo in combos %}
-<div><p>
-
-    <h2>{{combo.nombre}}</h2>
-    <p>{{combo.componentes}}</p>
-</p>
-
-</div>
+        <div>
+            <h2>{{ combo.nombre }}</h2>
+            <ul>
+                {% for componente in combo.componentes.all %}
+                    <li>{{ componente.nombre }} - Precio: {{ componente.precio }}</li>
+                {% endfor %}
+            </ul>
+            <p>Precio Total del Combo: {{ combo.calcular_precio_total }}</p>
+        </div>
     {% endfor %}
-
-
 {% endblock %}
-
