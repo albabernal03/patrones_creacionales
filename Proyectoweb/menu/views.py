@@ -1,7 +1,7 @@
 from django.db import transaction
 
 from django.shortcuts import render, redirect
-from menu.models import Combo, Componente
+from menu.models import Combo
 
 # Create your views here.
 @transaction.atomic
