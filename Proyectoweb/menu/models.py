@@ -1,5 +1,7 @@
 # menu/models.py
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import m2m_changed 
 
 class CategoriaProd(models.Model):
     nombre = models.CharField(max_length=50)
@@ -48,3 +50,10 @@ class Combo(models.Model):
 
     def calcular_precio_total(self):
         return sum(componente.precio for componente in self.componentes.all())
+    
+    # Señal para actualizar el precio cuando cambian los componentes del combo
+@receiver(m2m_changed, sender=Combo.componentes.through)
+def actualizar_precio_total(sender, instance, action, **kwargs):
+    if action in ['post_add', 'post_remove', 'post_clear']:
+        instance.precio = instance.calcular_precio_total()
+        instance.save()
