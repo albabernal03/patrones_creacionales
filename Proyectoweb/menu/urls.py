@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.menu, name='menu'),
+    path('personalizar_combo/', personalizar_combo, name='personalizar_combo'),
    
 
 ]

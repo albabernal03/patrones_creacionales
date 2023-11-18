@@ -332,22 +332,33 @@ ul.errorlist{
   background-color: white; /* Establece el fondo en blanco */
 }
 
-
-img {
-  width: 100px; /* ajusta el valor según tus necesidades */
-  height: 100px; /* ajusta el valor según tus necesidades */
-  object-fit: cover; /* opcional: controla cómo la imagen se ajusta al contenedor manteniendo su relación de aspecto */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.card{
-  width: 100px; /* ajusta el valor según tus necesidades */
-  height: 100px; /* ajusta el valor según tus necesidades */
-  overflow: hidden; /* asegura que las imágenes que sean más grandes se recorten */
+.card {
+  width: 200px; /* Adjust the width as needed */
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
-  width: 100%; /* ajusta el valor según tus necesidades */
-  height: 100%; /* ajusta el valor según tus necesidades */
-  object-fit: cover; /* opcional: controla cómo la imagen se ajusta al contenedor manteniendo su relación de aspecto */
+  width: 100%;
+  height: auto;
 }
 
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 0.9em;
+}
