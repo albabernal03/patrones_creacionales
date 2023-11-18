@@ -136,3 +136,6 @@ MESSAGE_TAGS = {
     mensajes_de_error.ERROR: 'danger',
 
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
