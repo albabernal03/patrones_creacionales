@@ -1,57 +1,43 @@
 <table class="table table-bordered" style="color:white;">
-    <thread>
+    <thead>
         <tr>
-
             <th colspan="3" class="text-center">Carrito</th>
-
-            <tr>
-                <th>Combo</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-            </tr>
-
-
         </tr>
-    </thread>
+        <tr>
+            <th>Combo</th>
+            <th>Cantidad</th>
+            <th>Suma</th>
+        </tr>
+    </thead>
 
-    <btbody>
-
-        {% if request.sesssion.items %}
+    <tbody>
+        {% if request.session.items %}
             {% for key, value in request.session.carro.items %}
                 <tr class="text-center">
-                    <td>{{value.combo.nombre}}</td>
-                    <td>{{value.cantidad}}</td>
+                    <td>{{ value.nombre }}</td>
+                    <td>{{ value.cantidad }}</td>
                     <td>
-                        <a href="{% url 'carro.agregar' value.combo_id %}" class="btn btn-sm btn-success">+</a>
-                        <a href="{% url 'carro.eliminar' value.combo_id %}" class="btn btn-sm btn-success">-</a><br/>
-                        {{value.precio}}€
+                        <a href="{% url 'carro:agregar' value.combo_id %}" class="btn btn-sm btn-success">+</a>
+                        <a href="{% url 'carro:eliminar' value.combo_id %}" class="btn btn-sm btn-success">-</a><br/>
+                        {{ value.precio }}€
                     </td>
-
                 </tr>
-
-
-
             {% endfor %}
-
         {% else %}
-        <tr>
-            <td colspan="3">
-                <div class="alert alert-info">
-                    No hay productos en el carrito
-                </div>
-            </td>
+            <tr>
+                <td colspan="3">
+                    <div class="alert alert-info">
+                        No hay productos en el carrito
+                    </div>
+                </td>
+            </tr>
         {% endif %}
-
-            
-
-
-
-
-    </btbody>
+    </tbody>
 
     <tfoot>
         <tr>
-            <td colspan="3">Total:</td>
-            <td>{{importe_total_carro}}€</td>
+            <td colspan="2">Total:</td>
+            <td>{{ importe_total_carro }}€</td>
         </tr>
+    </tfoot>
 </table>
