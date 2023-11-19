@@ -10,13 +10,12 @@ class Carro:
         if not carro:
             carro={}
             carro = self.session['carro'] = {}
-        else:
-            self.carro = carro
+        #else:
+        self.carro = carro
 
-    def agregar(self, combo_id):
-        combo= Combo.objects.get(id=combo_id)
+    def agregar(self, combo):
         if str(combo.id) not in self.carro.keys():
-            self.carro[str(combo_id)] = {
+            self.carro[str(combo.id)] = {
                 'combo_id': combo.id,
                 'nombre': combo.nombre,
                 'precio': str(combo.precio),
@@ -34,19 +33,18 @@ class Carro:
         self.session['carro'] = self.carro
         self.session.modified = True
 
-    def eliminar(self, combo_id):
-        combo_id = str(combo_id)
-        if combo_id in self.carro:
-            del self.carro[combo_id]
+    def eliminar(self, combo):
+        combo.id = str(combo.id)
+        if combo.id in self.carro:
+            del self.carro[combo.id]
             self.guardar_carro()
 
-    def restar_producto(self, combo_id):
-        combo_id = str(combo_id)
+    def restar_producto(self, combo):
         for key, value in self.carro.items():
-            if key == combo_id:
+            if key == combo.id:
                 value['cantidad'] = value['cantidad'] - 1
                 if value['cantidad'] < 1:
-                    self.eliminar(combo_id)
+                    self.eliminar(combo.id)
                 break
         self.guardar_carro()
 

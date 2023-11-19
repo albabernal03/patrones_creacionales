@@ -9,6 +9,7 @@ urlpatterns = [
     path('resumen_pedido/', views.resumen_pedido, name='resumen_pedido'),
     path('confirmar_modificar_pedido/', views.confirmar_modificar_pedido, name='confirmar_modificar_pedido'),
     
+    
 
 
 ]

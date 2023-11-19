@@ -1,1 +1,57 @@
-fververver
+<table class="table table-bordered" style="color:white;">
+    <thread>
+        <tr>
+
+            <th colspan="3" class="text-center">Carrito</th>
+
+            <tr>
+                <th>Combo</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+
+
+        </tr>
+    </thread>
+
+    <btbody>
+
+        {% if request.sesssion.items %}
+            {% for key, value in request.session.carro.items %}
+                <tr class="text-center">
+                    <td>{{value.combo.nombre}}</td>
+                    <td>{{value.cantidad}}</td>
+                    <td>
+                        <a href="{% url 'carro.agregar' value.combo_id %}" class="btn btn-sm btn-success">+</a>
+                        <a href="{% url 'carro.eliminar' value.combo_id %}" class="btn btn-sm btn-success">-</a><br/>
+                        {{value.precio}}€
+                    </td>
+
+                </tr>
+
+
+
+            {% endfor %}
+
+        {% else %}
+        <tr>
+            <td colspan="3">
+                <div class="alert alert-info">
+                    No hay productos en el carrito
+                </div>
+            </td>
+        {% endif %}
+
+            
+
+
+
+
+    </btbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>{{importe_total_carro}}€</td>
+        </tr>
+</table>
