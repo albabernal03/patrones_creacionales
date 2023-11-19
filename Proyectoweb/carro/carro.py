@@ -1,5 +1,5 @@
 # Importa la nueva estructura
-from menu.models import Componente
+from menu.models import Combo
 
 class Carro:
     def __init__(self, request):
@@ -12,19 +12,19 @@ class Carro:
         else:
             self.carro = carro
 
-    def agregar(self, componente_id):
-        componente = Componente.objects.get(id=componente_id)
-        if str(componente.id) not in self.carro.keys():
-            self.carro[str(componente.id)] = {
+    def agregar(self, combo_id):
+        componente = Combo.objects.get(id=combo.id)
+        if str(combo.id) not in self.carro.keys():
+            self.carro[str(combo_id)] = {
                 'componente_id': componente.id,
-                'nombre': componente.nombre,
-                'precio': str(componente.precio),
+                'nombre': combo.nombre,
+                'precio': str(combo.precio),
                 'cantidad': 1,
-                'imagen': componente.imagen.url
+                'imagen': combo.imagen.url
             }
         else:
             for key, value in self.carro.items():
-                if key == str(componente.id):
+                if key == str(combo.id):
                     value['cantidad'] = value['cantidad'] + 1
                     break
         self.guardar_carro()
@@ -33,19 +33,19 @@ class Carro:
         self.session['carro'] = self.carro
         self.session.modified = True
 
-    def eliminar(self, componente_id):
-        componente_id = str(componente_id)
-        if componente_id in self.carro:
-            del self.carro[componente_id]
+    def eliminar(self, combo_id):
+        combo_id = str(combo_id)
+        if combo_id in self.carro:
+            del self.carro[combo_id]
             self.guardar_carro()
 
-    def restar_producto(self, componente_id):
-        componente_id = str(componente_id)
+    def restar_producto(self, combo_id):
+        combo_id = str(combo_id)
         for key, value in self.carro.items():
-            if key == componente_id:
+            if key == combo_id:
                 value['cantidad'] = value['cantidad'] - 1
                 if value['cantidad'] < 1:
-                    self.eliminar(componente_id)
+                    self.eliminar(combo_id)
                 break
         self.guardar_carro()
 
