@@ -3,7 +3,16 @@
 
 {% block content %}
 <div class="container">
+
+  <div style="float:right;">
+
+    <p style="color:white">Total: {{importe_total_carro}}</p>
+  
+  
+  </div>
   <div class="row">
+
+
     {% for combo in combos %}
       <div class="col-md-4"> <!-- Ajusta el ancho según tus necesidades -->
         <div class="card" id="combo{{ combo.id }}" style="width: 100%;">
@@ -19,6 +28,14 @@
             </div>
             <p class="card-text">Precio total: {{combo.calcular_precio_total}}&nbsp;€</p>
           </div>
+
+          <div class="card-footer text-center">
+            <a href="#" class="btn btn-success">Pedir</a>
+
+          </div>
+
+
+
         </div><!--- card que se cierra --->
       </div>
     {% endfor %}
