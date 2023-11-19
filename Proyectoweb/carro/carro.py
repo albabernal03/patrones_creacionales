@@ -13,10 +13,10 @@ class Carro:
             self.carro = carro
 
     def agregar(self, combo_id):
-        componente = Combo.objects.get(id=combo.id)
+        combo= Combo.objects.get(id=combo.id)
         if str(combo.id) not in self.carro.keys():
             self.carro[str(combo_id)] = {
-                'componente_id': componente.id,
+                'combo_id': combo.id,
                 'nombre': combo.nombre,
                 'precio': str(combo.precio),
                 'cantidad': 1,
