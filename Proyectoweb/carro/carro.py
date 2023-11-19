@@ -8,12 +8,13 @@ class Carro:
         carro = self.session.get('carro')
 
         if not carro:
+            carro={}
             carro = self.session['carro'] = {}
         else:
             self.carro = carro
 
     def agregar(self, combo_id):
-        combo= Combo.objects.get(id=combo.id)
+        combo= Combo.objects.get(id=combo_id)
         if str(combo.id) not in self.carro.keys():
             self.carro[str(combo_id)] = {
                 'combo_id': combo.id,
