@@ -42,7 +42,7 @@ class Carro:
 
     def restar_producto(self, combo):
         for key, value in self.carro.items():
-            if key == combo.id:
+            if key == str(combo.id):
                 value['cantidad'] = value['cantidad'] - 1
                 value['precio'] = float(value['precio']) - combo.precio
                 if value['cantidad'] < 1:
