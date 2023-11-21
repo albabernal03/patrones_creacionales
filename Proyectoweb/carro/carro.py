@@ -35,9 +35,9 @@ class Carro:
         self.session.modified = True
 
     def eliminar(self, combo):
-        combo.id = str(combo.id)
-        if combo.id in self.carro:
-            del self.carro[combo.id]
+        combo_id = str(combo.id) if isinstance(combo, Combo) else str(combo)
+        if combo_id in self.carro:
+            del self.carro[combo_id]
             self.guardar_carro()
 
     def restar_producto(self, combo):
