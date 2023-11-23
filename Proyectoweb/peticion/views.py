@@ -12,7 +12,7 @@ from django.utils.html import strip_tags
 
 from django.core.mail import send_mail
 
-from .models import Producto
+from .models import Combo
 
 
 # Create your views here.
@@ -61,6 +61,6 @@ def enviar_mail(**kwargs):
     mensaje_texto=strip_tags(mensaje)
     from_email="cursos@pildorasinformaticas.es"
     #to=kwargs.get("email_usuario")
-    to="albabr08@gmail.com"
+    to="pizzeriadelizioso@gmail.com"
     send_mail(asunto,mensaje_texto,from_email,[to], html_message=mensaje)
     
