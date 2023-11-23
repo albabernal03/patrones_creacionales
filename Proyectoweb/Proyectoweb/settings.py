@@ -142,3 +142,15 @@ MESSAGE_TAGS = {
 
 MEDIA_URL='/media/'
 MEDIA_ROOT= BASE_DIR / 'media'
+
+
+# configuración de email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'your_smtp_server'
+EMAIL_PORT = 587  # or your SMTP port
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'albabr08@gmail.com'
+EMAIL_HOST_PASSWORD = '1234'
+EMAIL_USE_SSL = False  # Set to True if your server uses SSL
+
+EMAIL_DEBUG = True
