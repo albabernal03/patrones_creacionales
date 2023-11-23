@@ -10,45 +10,41 @@ from django.core.mail import send_mail
 
 # Create your views here.
 @login_required(login_url='/autenticacion/login')
-def procesar_peticion(requets):
-    peticion=Peticion.objects.created(user=requets.user)
-    carro=Carro(requets)
-    lineas_peticion=list()
+def procesar_peticion(request):
+    peticion = Peticion.objects.create(user=request.user)
+    carro = Carro(request)
+    lineas_peticion = []
+
     for key, value in carro.carro.items():
         lineas_peticion.append(LineaPeticion(
             combo_id=key,
             cantidad=value['cantidad'],
-            user=requets.user,
+            user=request.user,
             peticion=peticion
-
-
-
         ))
 
-    LineaPeticion.objects.bulk_create(lineas_peticion) #para añaadir varios objetos a la vez
+    LineaPeticion.objects.bulk_create(lineas_peticion)
 
     enviar_email(
-        peticion= peticion, 
+        peticion=peticion, 
         lineas_peticion=lineas_peticion,
-        nombre_usuario=requets.user.username, 
-        email_usuario=requets.user.email
-        )
+        nombreusuario=request.user.username, 
+        email_usuario=request.user.email
+    )
 
-    messages.success(requets, 'Pedido procesado exitosamente') 
+    messages.success(request, 'Pedido procesado exitosamente') 
     return redirect('../menu')     
 
 def enviar_email(**kwargs):
-    asunto= 'Pedido Procesado'
-    mensaje= render_to_string('peticion/email.html',{
-        'pedido': kwargs.get['peticion'],
-        'lineas_pedido': kwargs.get['lineas_peticion'],
-        'nombreusuario': kwargs.get['nombreusuario'],
-
+    asunto = 'Pedido Procesado'
+    mensaje = render_to_string('peticion/email.html', {
+        'pedido': kwargs.get('peticion'),
+        'lineas_pedido': kwargs.get('lineas_peticion'),
+        'nombreusuario': kwargs.get('nombreusuario'),
     })
 
-    mensaje_texto=strip_tags(mensaje)
-    from_email='pizzeriadelizioso@gmail.com'
-    #to=[kwargs.get['email_usuario']]
-    to='albabr08@gmail.com'
+    mensaje_texto = strip_tags(mensaje)
+    from_email = 'pizzeriadelizioso@gmail.com'
+    to = [kwargs.get('email_usuario')]
 
-    send_mail(asunto, mensaje_texto, from_email,[to], html_message=mensaje)
+    send_mail(asunto, mensaje_texto, from_email, to, html_message=mensaje)
