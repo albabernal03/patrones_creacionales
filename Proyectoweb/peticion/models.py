@@ -5,7 +5,7 @@ from django.db.models import Sum, F, FloatField
 
 # Create your models here.
 
-User=get_user_model
+User=get_user_model()
 class Peticion(models.Model):
 
     user=models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,7 +20,7 @@ class Peticion(models.Model):
 
 
     class Meta:
-        dt_table='peticion'
+        db_table='peticion'
         verbose_name='peticion'
         verbose_name_plural='peticiones'
         ordering=['id']
@@ -38,7 +38,7 @@ class LineaPeticion(models.Model):
         return '{self.cantidad} unidades de {self.combo_id.nombre}'
     
     class Meta:
-        dt_table='lineapedidos'
+        db_table='lineapedidos'
         verbose_name='Línea Pedido'
         verbose_name_plural='Línea Pedidos'
         ordering=['id']
