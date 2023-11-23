@@ -27,13 +27,13 @@ class Peticion(models.Model):
 
 class LineaPeticion(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    combo_id = models.ForeignKey(Combo, on_delete=models.CASCADE)
+    combo = models.ForeignKey(Combo, on_delete=models.CASCADE)
     peticion = models.ForeignKey(Peticion, on_delete=models.CASCADE)
     cantidad = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.cantidad} unidades de {self.combo_id.nombre}'
+        return f'{self.cantidad} unidades de {self.combo.nombre}'
     
     class Meta:
         db_table = 'lineapedidos'
