@@ -13,25 +13,26 @@ from django.core.mail import send_mail
 def procesar_peticion(request):
     peticion = Peticion.objects.create(user=request.user)
     carro = Carro(request)
-    linea_peticion = []
+    lineas_peticion = []
 
     for key, value in carro.carro.items():
-        linea_peticion.append(LineaPeticion(
+        linea_peticion = LineaPeticion(
             combo_id=key,
             cantidad=value['cantidad'],
             user=request.user,
             peticion=peticion
-        ))
+        )
+        lineas_peticion.append(linea_peticion)
 
-        linea_peticion.save()  
-        linea_peticion.append(linea_peticion)
+    # Utilizar bulk_create para insertar todas las instancias de LineaPeticion
+    LineaPeticion.objects.bulk_create(lineas_peticion)
+
+    # Guardar la instancia de Peticion después de crear las LineaPeticion
     peticion.save()
-
-    LineaPeticion.objects.bulk_create(linea_peticion)
 
     enviar_email(
         peticion=peticion, 
-        linea_peticion=linea_peticion,
+        lineas_peticion=lineas_peticion,
         nombreusuario=request.user.username, 
         email_usuario=request.user.email
     )
