@@ -13,21 +13,25 @@ from django.core.mail import send_mail
 def procesar_peticion(request):
     peticion = Peticion.objects.create(user=request.user)
     carro = Carro(request)
-    lineas_peticion = []
+    linea_peticion = []
 
     for key, value in carro.carro.items():
-        lineas_peticion.append(LineaPeticion(
+        linea_peticion.append(LineaPeticion(
             combo_id=key,
             cantidad=value['cantidad'],
             user=request.user,
             peticion=peticion
         ))
 
-    LineaPeticion.objects.bulk_create(lineas_peticion)
+        linea_peticion.save()  
+        linea_peticion.append(linea_peticion)
+    peticion.save()
+
+    LineaPeticion.objects.bulk_create(linea_peticion)
 
     enviar_email(
         peticion=peticion, 
-        lineas_peticion=lineas_peticion,
+        linea_peticion=linea_peticion,
         nombreusuario=request.user.username, 
         email_usuario=request.user.email
     )
