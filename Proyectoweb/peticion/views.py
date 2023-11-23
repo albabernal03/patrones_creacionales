@@ -23,6 +23,8 @@ def procesar_peticion(request):
         ))
 
     LineaPeticion.objects.bulk_create(lineas_peticion)
+    # Eliminar el carrito de la sesión después de procesar el pedido
+    del request.session['carro']
 
     enviar_email(
         peticion=peticion, 
