@@ -45,13 +45,11 @@ def procesar_peticion(request):
     messages.success(request, "El pedido se ha creado correctamente")
     
     return redirect('../menu')
-    #return redirect('listado_productos')
-    #return render(request, "tienda/tienda.html",{"productos":productos})
     
 
 def enviar_mail(**kwargs):
     asunto="Gracias por el pedido"
-    mensaje=render_to_string("emails/pedido.html", {
+    mensaje=render_to_string("emails/peticion.html", {
         "peticion": kwargs.get("peticion"),
         "lineas_peticion": kwargs.get("lineas_peticion"),
         "nombreusuario":kwargs.get("nombreusuario") 
