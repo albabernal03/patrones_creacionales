@@ -4,12 +4,14 @@ from .models import Pizza
 from .storage import PizzaCSV
 import csv
 import pandas as pd
+from carro.carro import Carro
 
 
 
 # Create your views here. Aqui se crean las vistas de la app, en este caso de la pizzeria
 
 def home(request):
+    carro = Carro(request)
     return render(request, "Proyectowebapp/home.html")
 
 def pedir(request):

@@ -1,8 +1,14 @@
-# En tu context_processor.py modificado
+# context_processor.py
 def importe_total_carro(request):
-    total =0
+    total = 0
+
     if request.user.is_authenticated:
-        for key, value in request.session["carro"].items():
-            total = total + (float(value["precio"]))
+        carro = request.session.get("carro", {})  
+
+        for key, value in carro.items():
+            total += float(value.get("precio", 0)) * int(value.get("cantidad", 0))
+
+    else:
+        total = 'Debe iniciar sesión'
 
     return {"importe_total_carro": total}
