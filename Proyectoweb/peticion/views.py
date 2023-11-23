@@ -1,51 +1,66 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from peticion.models import Peticion, LineaPeticion
-from carro.carro import Carro
 from django.contrib import messages
-from django.shortcuts import redirect
-from django.template.loader import render_to_string 
+from django.shortcuts import redirect, render
+
+from django.contrib.auth.decorators import login_required
+from carro.carro import Carro
+
+from peticion.models import LineaPeticion, Peticion
+
+from django.template.loader import render_to_string
+
 from django.utils.html import strip_tags
+
 from django.core.mail import send_mail
+
+from .models import Producto
+
+
+# Create your views here.
+
 
 @login_required(login_url='/autenticacion/logear')
 def procesar_peticion(request):
-    peticion = Peticion.objects.create(user=request.user)
-    carro = Carro(request)
-    lineas_peticion = []
-
-    for key, value in carro.carro.items():
+    peticion=Peticion.objects.create(user=request.user) # damos de alta un pedido
+    carro=Carro(request)  # cogemos el carro
+    lineas_peticion=list()  # lista con los pedidos para recorrer los elementos del carro
+    for key, value in carro.carro.items(): #recorremos el carro con sus items
         lineas_peticion.append(LineaPeticion(
             combo_id=key,
             cantidad=value['cantidad'],
             user=request.user,
-            peticion=peticion
-        ))
+            peticion=peticion                
+            ))
 
-    LineaPeticion.objects.bulk_create(lineas_peticion)
-    # Eliminar el carrito de la sesión después de procesar el pedido
-    del request.session['carro']
-
-    enviar_email(
-        peticion=peticion, 
+    LineaPeticion.objects.bulk_create(lineas_peticion) # crea registros en BBDD en paquete
+    #enviamos mail al cliente
+    enviar_mail(
+        peticion=peticion,
         lineas_peticion=lineas_peticion,
-        nombre_usuario=request.user.username, 
+        nombreusuario=request.user.username,
         email_usuario=request.user.email
+        
+
     )
+    #mensaje para el futuro
+    messages.success(request, "El pedido se ha creado correctamente")
+    
+    return redirect('../tienda')
+    #return redirect('listado_productos')
+    #return render(request, "tienda/tienda.html",{"productos":productos})
+    
 
-    messages.success(request, 'Pedido procesado exitosamente') 
-    return redirect('../menu')     
+def enviar_mail(**kwargs):
+    asunto="Gracias por el pedido"
+    mensaje=render_to_string("emails/pedido.html", {
+        "peticion": kwargs.get("peticion"),
+        "lineas_peticion": kwargs.get("lineas_peticion"),
+        "nombreusuario":kwargs.get("nombreusuario") 
+                       
+        })
 
-def enviar_email(**kwargs):
-    asunto = 'Pedido Procesado'
-    mensaje = render_to_string('peticion/email.html', {
-        'pedido': kwargs.get('peticion'),
-        'lineas_pedido': kwargs.get('lineas_peticion'),
-        'nombreusuario': kwargs.get('nombre_usuario'),
-    })
-
-    mensaje_texto = strip_tags(mensaje)
-    from_email = 'pizzeriadelizioso@gmail.com'
-    to = [kwargs.get('email_usuario')]
-
-    send_mail(asunto, mensaje_texto, from_email, to, html_message=mensaje)
+    mensaje_texto=strip_tags(mensaje)
+    from_email="cursos@pildorasinformaticas.es"
+    #to=kwargs.get("email_usuario")
+    to="albabr08@gmail.com"
+    send_mail(asunto,mensaje_texto,from_email,[to], html_message=mensaje)
+    
