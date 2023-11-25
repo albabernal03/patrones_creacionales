@@ -23,10 +23,11 @@ class Peticion(models.Model):
 
     def __str__(self):
         return self.id
+    
 
 
     class Meta:
-        db_table='peticion'
+        db_table='peticiones'
         verbose_name='peticion'
         verbose_name_plural='peticiones'
         ordering=['id']
@@ -43,7 +44,7 @@ class LineaPeticion(models.Model):
         return f'{self.cantidad} de {self.combo.nombre}'
 
     class Meta:
-        db_table='lineapeticiones'
+        db_table='lineapeticion'
         verbose_name='Línea Peticion'
         verbose_name_plural='Líneas Peticiones'
         ordering=['id']
