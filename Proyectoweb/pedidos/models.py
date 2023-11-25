@@ -18,6 +18,7 @@ class Pedido(models.Model):
         return self.lineapedido_set.all().aggregate(total=Sum(F('combo_id__precio')*F('cantidad'), output_field=FloatField()))['total']
     
     class Meta:
+        db_table="pedidos"
         verbose_name="pedido"
         verbose_name_plural="pedidos"
         ordering=['id']
