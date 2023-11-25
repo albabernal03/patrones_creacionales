@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'carro',
     'menu',
-    'peticion',
+    'pedidos',
+    
 ]
 
 MIDDLEWARE = [
