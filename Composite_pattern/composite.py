@@ -149,6 +149,7 @@ def solicitar_opcion(mensaje, opciones):
         except ValueError:
             print("Error: Ingresa un número entero.")
 
+
 if __name__ == "__main__":
      # Crear instancias de elementos individuales (pizzas, bebidas, entrantes, postres)
     pizza_margarita = Pizza("Margarita", 10.0)

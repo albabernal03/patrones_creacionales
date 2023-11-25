@@ -26,7 +26,7 @@ if __name__ == "__main__":
             navegar(structure)
 
             # Solicitar al usuario que elija una acción
-            accion = input("¿Qué acción deseas realizar? (agregar/modificar/eliminar/nada): ")
+            accion = input("¿Qué acción deseas realizar? (agregar/modificar/eliminar/nada): ").lower()
 
             if accion == 'agregar':
                 # Solicitar detalles para agregar un nuevo elemento
