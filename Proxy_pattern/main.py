@@ -4,7 +4,6 @@ from archivo import Archivo
 from enlace import Enlace
 from proxy import *
 from iteraccion_con_json import *
-import json
 
 archivo1 = Archivo("Archivo1", "txt", 10)
 
