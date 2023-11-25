@@ -109,7 +109,6 @@ class Combo(ComponentMenu):
 # Composite
 #------------------------------------------------------------
 
-# TODO: mejora el código para que se muestre esta parte distinta
 class ComboPareja(ComponentMenu):
     def __init__(self, nombre):
         self.nombre = nombre

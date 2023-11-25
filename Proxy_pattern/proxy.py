@@ -27,7 +27,7 @@ class Archivo(Component):
 #------------------------------------------------------------
 
 class Carpeta(Component):
-    def __init__(self, nombre, elementos):
+    def __init__(self, nombre):
         self.__nombre = nombre
         self.__elementos = []
 
