@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
+import json
 
 #------------------------------------------------------------
 # Component
@@ -91,4 +92,77 @@ class ComponentProxy(Component):
         print(f"Proxy: {log_entry}")
         self._access_log.append(log_entry)
 
-        
+#Funciones para interactuar con la estructura y el Proxy
+def navegar(component):
+    print(f"El tamaño de {component._real_component._nombre} es: {component.tamaño()}")
+
+def agregar(carpeta, elemento):
+    carpeta.agregar(elemento)
+
+def modificar_contenido(elemento,nuevo_contenido):
+    if isinstance(elemento,Archivo):
+        elemento._contenido=nuevo_contenido
+    else:
+        print("No se puede modificar el contenido de una carpeta")
+
+def eliminar(carpeta, elemento):
+    carpeta.eliminar(elemento)
+
+def acceder(proxy, usuario):
+    proxy.check_access()
+    navegar(proxy)  
+
+def revocar_acceso(proxy, usuario):
+    proxy._access_granted = False
+
+
+# Función para cargar la estructura desde un archivo JSON
+def cargar_estructura_desde_json(ruta_archivo):
+    with open(ruta_archivo, 'r') as archivo:
+        datos = json.load(archivo)
+    return crear_estructura_desde_json(datos)
+
+# Función para crear la estructura desde un diccionario
+def crear_estructura_desde_json(datos):
+    carpeta_raiz = crear_componente_desde_json(datos)
+    return carpeta_raiz
+
+# Función recursiva para crear un componente desde un diccionario
+def crear_componente_desde_json(datos):
+    tipo_componente = datos.get('tipo')
+    if tipo_componente == 'Archivo':
+        return Archivo(datos['nombre'], datos['tipo'], datos['tamaño'])
+    elif tipo_componente == 'Carpeta':
+        carpeta = Carpeta(datos['nombre'])
+        for datos_hijo in datos['elementos']:
+            componente_hijo = crear_componente_desde_json(datos_hijo)
+            carpeta.agregar_elemento(componente_hijo)
+        return carpeta
+    elif tipo_componente == 'Enlace':
+        return Enlace(datos['nombre'], datos['url'])
+
+archivo1 = Archivo("Archivo1", "txt", 10)
+archivo2 = Archivo("Archivo2", "pdf", 20)
+carpeta1 = Carpeta("Carpeta1")
+carpeta1.agregar(archivo1)
+carpeta1.agregar(archivo2)
+proxy_archivo1 = ComponentProxy(archivo1, access_control=['Usuario1', 'Usuario2'])
+if __name__ == "__main__":
+    # Cargar la estructura desde un archivo JSON
+    structure = cargar_estructura_desde_json('structure.json')
+
+    if structure:
+        # Crear Proxy para el archivo
+        proxy_archivo1 = ComponentProxy(archivo1, access_control=['Usuario1', 'Usuario2'])
+
+        # Interactuar con la estructura y el Proxy
+        navegar(structure)
+        acceder(proxy_archivo1, "Usuario1")
+        modificar_contenido(proxy_archivo1, 15)
+        revocar_acceso(proxy_archivo1, "Usuario1")
+
+        # Mostrar el estado final de la estructura
+        print("\nFinal Structure:")
+        navegar(structure)
+    else:
+        print("Error loading structure from JSON.")
