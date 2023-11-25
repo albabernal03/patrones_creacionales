@@ -13,7 +13,7 @@ class Component(ABC):
 #Leaf
 #------------------------------------------------------------
 
-class Documento(Component):
+class Archivo(Component):
     def __init__(self, nombre, tipo, tamaño):
         self.__nombre = nombre
         self.__tipo = tipo
