@@ -24,7 +24,7 @@ def ver_pedido_csv(request):
         return HttpResponse("El archivo CSV no se encuentra.")
 
     # Renderiza el contenido CSV en una plantilla HTML
-    return render(request, 'ver_pedido_csv.html', {'csv_content': csv_content})
+    return render(request, 'ver_csv.html', {'csv_content': csv_content})
 
 
 def guardar_pedido_en_csv(request):
