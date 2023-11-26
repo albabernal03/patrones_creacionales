@@ -155,28 +155,28 @@ def guardar_elemento_csv(elemento, nombre_archivo, usuario):
 
 def leer_elementos_csv(nombre_archivo, usuario):
     elementos = []
+    combos = {}
+
     with open(nombre_archivo, 'r') as archivo:
         for linea in archivo:
             usuario_archivo, tipo_elemento, nombre_elemento, precio_elemento = linea.strip().split(',')
             if usuario_archivo == usuario:
                 if tipo_elemento == 'Combo':
                     combo = Combo(nombre_elemento)
-                    combo.elementos = leer_elementos_csv(nombre_archivo, usuario)
-                    elementos.append(combo)
+                    combos[nombre_elemento] = combo
                 elif tipo_elemento == 'ComboPareja':
                     combo_pareja = ComboPareja(nombre_elemento)
-                    combo_pareja.combo1 = leer_elementos_csv(nombre_archivo, usuario)
-                    combo_pareja.combo2 = leer_elementos_csv(nombre_archivo, usuario)
+                    combo_pareja.combo1 = combos.get(nombre_elemento + "_1")
+                    combo_pareja.combo2 = combos.get(nombre_elemento + "_2")
                     elementos.append(combo_pareja)
                 elif tipo_elemento in ['Pizza', 'Bebida', 'Entrante', 'Postre']:
-                    # Use the type to create the correct instance
                     clase_elemento = globals()[tipo_elemento]
                     elemento = clase_elemento(nombre_elemento, float(precio_elemento))
                     elementos.append(elemento)
+
     return elementos
 
-# Function call in the code
-pedidos_usuario = leer_elementos_csv('pedidos.csv', usuario)
+
 
 
 def preguntar_guardar_historial():
@@ -208,6 +208,7 @@ def solicitar_opcion(mensaje, opciones):
 if __name__ == "__main__":
     # Solicitar al usuario que ingrese su nombre
     usuario = input("Introduce tu nombre de usuario: ")
+    pedidos_usuario = leer_elementos_csv('pedidos.csv', usuario)
 
      # Crear instancias de elementos individuales (pizzas, bebidas, entrantes, postres)
     pizza_margarita = Pizza("Margarita", 10.0)
@@ -372,12 +373,27 @@ if __name__ == "__main__":
             opciones_combos_predefinidos = [1, 2, 3]
             eleccion_combo_predefinido = solicitar_opcion("Elige un combo predefinido (1, 2 o 3): ", opciones_combos_predefinidos)
 
+            chosen_combo = None
+
             if eleccion_combo_predefinido == 1:
-                combo_1.mostrar()
+                chosen_combo = combo_1
             elif eleccion_combo_predefinido == 2:
-                combo_2.mostrar()
+                chosen_combo = combo_2
             elif eleccion_combo_predefinido == 3:
-                combo_3.mostrar()
+                chosen_combo = combo_3
+
+            # Mostrar el combo predefinido
+            print("\nEl combo predefinido que has elegido es:")
+            chosen_combo.mostrar()
+
+            # Preguntar si quieren pedir este combo
+            if input("¿Quieres pedir este combo? (s/n): ").lower() == 's':
+                if preguntar_guardar_historial():
+                    guardar_elemento_csv(chosen_combo, 'pedidos.csv', usuario)
+                else:
+                    print("No se guardará el historial de pedidos.")
+            else:
+                print("Pedido cancelado.")
 
         elif eleccion == 3:
             combo_pareja_personalizado = ComboPareja("Combo Pareja Personalizado")
@@ -408,9 +424,10 @@ if __name__ == "__main__":
                 print("No se guardará el historial de pedidos.")
 
         elif eleccion == 4:
-            #Mostra historial de pedidos segun usuario
+            # Mostrar historial de pedidos segun usuario
             print("\nHistorial de pedidos:")
             pedidos_usuario = leer_elementos_csv('pedidos.csv', usuario)
+
             if pedidos_usuario:
                 print(f"\nPedidos antiguos de {usuario}:")
                 for pedido in pedidos_usuario:
