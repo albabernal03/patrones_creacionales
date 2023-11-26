@@ -11,21 +11,25 @@ def menu(request):
     combos = Combo.objects.all()
     return render(request, 'menu/menu.html', {'combos':combos})
 
-def ver_csv(request):
-    csv_file_name = 'pedido.csv'  # Nombre de tu archivo CSV
-    df = pd.read_csv(csv_file_name)
+def ver_pedido_csv(request):
+    # Nombre del archivo CSV
+    csv_file_name = 'pedido.csv'
 
-    # Convertir el DataFrame de pandas a una tabla HTML
-    table_html = df.to_html(classes='table table-striped')
+    try:
+        # Abre el archivo CSV en modo lectura
+        with open(csv_file_name, 'r') as csvfile:
+            # Lee el contenido del archivo
+            csv_content = csvfile.read()
+    except FileNotFoundError:
+        return HttpResponse("El archivo CSV no se encuentra.")
 
-    return render(request, 'Proyectowebapp/ver_csv.html', {'table_html': table_html})
-
+    # Renderiza el contenido CSV en una plantilla HTML
+    return render(request, 'ver_pedido_csv.html', {'csv_content': csv_content})
 
 
 def guardar_pedido_en_csv(request):
     # Obtener el carrito de la sesión
     carro = request.session.get('carro', {})
-
 
     # Verificar si hay elementos en el carrito
     if not carro:
@@ -46,15 +50,12 @@ def guardar_pedido_en_csv(request):
         writer.writeheader()
 
         # Escribir cada elemento del carrito al archivo
-        for item in carro:
+        for combo_id, combo_data in carro.items():
             writer.writerow({
-                'Combo ID': item['id'],
-                'Nombre': item['nombre'],
-                'Precio': item['precio']
+                'Combo ID': combo_id,
+                'Nombre': combo_data['nombre'],
+                'Precio': combo_data['precio']
                 # Agregar más campos según sea necesario
             })
 
     return HttpResponse(f"Carrito guardado exitosamente en {csv_file_name}.")
-
-
-
