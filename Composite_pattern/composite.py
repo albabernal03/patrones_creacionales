@@ -137,6 +137,22 @@ class ComboPareja(ComponentMenu):
         total_combo1 = self.combo1.calcular_precio_total() if self.combo1 else 0
         total_combo2 = self.combo2.calcular_precio_total() if self.combo2 else 0
         return total_combo1 + total_combo2
+    
+
+def guardar_elemento_csv(elemento, nombre_archivo, usuario):
+    with open(nombre_archivo, 'a') as archivo:
+        if isinstance(elemento, Combo):
+            archivo.write(f'{usuario},Combo,{elemento.nombre},{elemento.calcular_precio_total()}\n')
+            for subelemento in elemento.elementos:
+                guardar_elemento_csv(subelemento, nombre_archivo, usuario)
+        elif isinstance(elemento, ComboPareja):
+            archivo.write(f'{usuario},ComboPareja,{elemento.nombre},{elemento.calcular_precio_total()}\n')
+            if elemento.combo1:
+                guardar_elemento_csv(elemento.combo1, nombre_archivo, usuario)
+            if elemento.combo2:
+                guardar_elemento_csv(elemento.combo2, nombre_archivo, usuario)
+        elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
+            archivo.write(f'{usuario},{type(elemento).__name__},{elemento.nombre},{elemento.precio}\n')
 
 def guardar_elemento_csv(elemento, nombre_archivo, usuario):
     with open(nombre_archivo, 'a') as archivo:
@@ -164,6 +180,7 @@ def leer_elementos_csv(nombre_archivo, usuario):
                 if tipo_elemento == 'Combo':
                     combo = Combo(nombre_elemento)
                     combos[nombre_elemento] = combo
+                    elementos.append(combo)
                 elif tipo_elemento == 'ComboPareja':
                     combo_pareja = ComboPareja(nombre_elemento)
                     combo_pareja.combo1 = combos.get(nombre_elemento + "_1")
@@ -290,7 +307,7 @@ if __name__ == "__main__":
         print('3. Elegir combo pareja predefinido')
         print('4.Mostrar historial de pedidos')
         print("5. Salir")
-        eleccion = solicitar_opcion("Elige una opción (1, 2, 3 o 4): ", [1, 2, 3, 4])
+        eleccion = solicitar_opcion("Elige una opción (1, 2, 3, 4 o 5): ", [1, 2, 3, 4, 5])
 
         if eleccion == 1:
             # Solicitar al usuario que elija elementos para el combo personalizado
@@ -424,19 +441,25 @@ if __name__ == "__main__":
                 print("No se guardará el historial de pedidos.")
 
         elif eleccion == 4:
-            # Mostrar historial de pedidos segun usuario
+    # Mostrar historial de pedidos según usuario
             print("\nHistorial de pedidos:")
             pedidos_usuario = leer_elementos_csv('pedidos.csv', usuario)
 
             if pedidos_usuario:
                 print(f"\nPedidos antiguos de {usuario}:")
                 for pedido in pedidos_usuario:
-                    if isinstance(pedido, Combo) or isinstance(pedido, ComboPareja):
+                    if isinstance(pedido, Combo):
+                        print("\nPedido Combo:")
+                        pedido.mostrar()
+                    elif isinstance(pedido, ComboPareja):
+                        print("\nPedido Combo Pareja:")
                         pedido.mostrar()
                     else:
                         print(f'{type(pedido).__name__}: {pedido.nombre} - Precio: {pedido.precio}')
             else:
-                print(f"\nNo hay pedidos antiguos de {usuario}.")
+                print(f"No hay pedidos antiguos de {usuario}.")
+
+
         elif eleccion == 5:
             # Salir del programa
             print("Saliendo del programa...")
