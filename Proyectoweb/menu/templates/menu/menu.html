@@ -12,13 +12,15 @@
       <div class="alert alert-danger text-center"> Debes iniciar sesión para poder pedir</div>
 
     {% endif %}
-
   
-  
+    <!-- Formulario para guardar el pedido en CSV -->
+    <form action="{% url 'guardar_pedido_en_csv' %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+    </form>
   </div>
+  
   <div class="row">
-
-
     {% for combo in combos %}
       <div class="col-md-4"> <!-- Ajusta el ancho según tus necesidades -->
         <div class="card" id="combo{{ combo.id }}" style="width: 100%;">
@@ -37,11 +39,7 @@
 
           <div class="card-footer text-center">
             <a href="{% url 'carro:agregar' combo.id %}" class="btn btn-success">Pedir</a>
-
           </div>
-
-
-
         </div><!--- card que se cierra --->
       </div>
     {% endfor %}

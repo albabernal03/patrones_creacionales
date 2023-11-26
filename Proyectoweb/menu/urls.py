@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.menu, name='menu'),
+    path('guardar_pedido_en_csv/', views.guardar_pedido_en_csv, name='guardar_pedido_en_csv'),
    
 
 ]

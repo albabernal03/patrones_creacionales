@@ -24,10 +24,11 @@ def ver_csv(request):
 
 def guardar_pedido_en_csv(request):
     # Obtener el carrito de la sesión
-    carrito = request.session.get('carrito', [])
+    carro = request.session.get('carro', {})
+
 
     # Verificar si hay elementos en el carrito
-    if not carrito:
+    if not carro:
         return HttpResponse("El carrito está vacío.")
 
     # Nombre del archivo CSV
@@ -45,7 +46,7 @@ def guardar_pedido_en_csv(request):
         writer.writeheader()
 
         # Escribir cada elemento del carrito al archivo
-        for item in carrito:
+        for item in carro:
             writer.writerow({
                 'Combo ID': item['id'],
                 'Nombre': item['nombre'],
