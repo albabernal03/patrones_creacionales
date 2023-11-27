@@ -7,7 +7,7 @@ Este es el link del [repositorio](https://github.com/albabernal03/patrones_creac
 
 <h2>¿De qué trata esta tarea?</h2>
 
-<h3>Ejercicio1:</h3>
+<h3>Ejercicio 1:</h3>
 
 En este ejercicicio se nos pide que apliquemos el patron Abstract Factory para crear dos tipo de fábricas:
 
@@ -18,17 +18,17 @@ En este ejercicicio se nos pide que apliquemos el patron Abstract Factory para c
 
 Para realizar un análisis de para modularizar y estandarizar el análisis de los datos que se nos proporcionan de Activaciones del SAMUR-Protección Civil.
 
-<h3>Ejercicio 2</h3>
+<h3>Ejercicio 2:</h3>
 
 Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizioso" que permita a los clientes personalizar sus pizzas de manera detallada. Se debe utilizar el patrón Builder para construir paso a paso las pizzas, validar las elecciones del cliente, incorporar recomendaciones basadas en elecciones anteriores, almacenar cada pizza en un archivo CSV, permitir la reconstrucción desde el archivo, asegurar flexibilidad para futuras actualizaciones, desarrollar una interfaz de usuario amigable y garantizar la seguridad de los datos. El uso del patrón Builder se justifica para lograr robustez y adaptabilidad, permitiendo la construcción flexible de pizzas complejas y facilitando futuras expansiones del sistema.
 
 
-<h3>Ejercicio3:</h3>
+<h3>Ejercicio 3:</h3>
 
 En este ejercicio, la cadena "Delizioso" busca expandir su plataforma digital de creación de pizzas gourmet, ahora permitiendo a los clientes combinar sus pizzas personalizadas con entradas, bebidas y postres en menús personalizados. Se propone introducir la noción de menús simples o compuestos, cada uno con un código único y precio calculado según la suma de los elementos con descuentos aplicados. Para gestionar esta complejidad, se sugiere implementar el patrón Composite, modelando las relaciones entre elementos y menús. Además, se continuará utilizando el patrón Builder para la creación detallada de pizzas y se ampliará la interacción con archivos CSV para almacenar y recuperar información de menús. La eficiencia en el cálculo de precios de menús es una prioridad, y se espera un diseño modular y orientado a objetos con clara separación de responsabilidades.
 
 ***
-<h3>Ejercicio4:</h3>
+<h3>Ejercicio 4:</h3>
 
 <h2>Indice</h2>
 
