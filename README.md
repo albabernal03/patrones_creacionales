@@ -27,9 +27,12 @@ Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizio
 
 En este ejercicio, la cadena "Delizioso" busca expandir su plataforma digital de creación de pizzas gourmet, ahora permitiendo a los clientes combinar sus pizzas personalizadas con entradas, bebidas y postres en menús personalizados. Se propone introducir la noción de menús simples o compuestos, cada uno con un código único y precio calculado según la suma de los elementos con descuentos aplicados. Para gestionar esta complejidad, se sugiere implementar el patrón Composite, modelando las relaciones entre elementos y menús. Además, se continuará utilizando el patrón Builder para la creación detallada de pizzas y se ampliará la interacción con archivos CSV para almacenar y recuperar información de menús. La eficiencia en el cálculo de precios de menús es una prioridad, y se espera un diseño modular y orientado a objetos con clara separación de responsabilidades.
 
-***
+
 <h3>Ejercicio 4:</h3>
 
+
+La tarea consiste en abordar los desafíos de gestionar una gran cantidad de documentos digitales en el contexto del SAMUR-Protección Civil después de su proceso de digitalización. Esto implica la creación de un sistema que maneje documentos, enlaces y carpetas, con la necesidad de garantizar un acceso rápido pero seguro, especialmente para datos sensibles. Para lograr esto, se propone el uso de dos patrones de diseño: Composite, para modelar la estructura de documentos del sistema, y Proxy, para controlar y registrar el acceso a documentos específicos. La implementación se llevará a cabo en Python, incorporando buenas prácticas de programación. Además, se deben crear funciones que faciliten la navegación, creación, modificación y eliminación de elementos en el sistema, y se deben realizar pruebas para asegurar la correcta implementación, prestando especial atención a la seguridad y al registro de acceso a los documentos.
+***
 <h2>Indice</h2>
 
 1. [Ejercicio 1](#id1)
@@ -37,6 +40,7 @@ En este ejercicio, la cadena "Delizioso" busca expandir su plataforma digital de
 3. [Implementacion del ejercicio 2 en una página web](#id3)
 4. [¿Por qué usamos elpatrón Builder?](#id4)
 5. [Ejercicio 3](#id5)
+6. [Ejercicio 4](#id6)
 
 ***
 
