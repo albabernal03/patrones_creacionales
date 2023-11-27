@@ -71,3 +71,41 @@ def preguntar_guardar_historial():
             return False
         else:
             print("Respuesta no válida. Por favor, ingresa 's' o 'n'.")
+
+def reconstruir_menu_desde_historial(nombre_archivo, usuario):
+    elementos = leer_elementos_csv(nombre_archivo, usuario)
+    menu_reconstruido = []
+
+    for elemento in elementos:
+        if isinstance(elemento, Combo):
+            combo_reconstruido = Combo(elemento.nombre)
+            for subelemento in elemento.elementos:
+                subelemento_reconstruido = reconstruir_elemento_desde_historial(subelemento, elementos)
+                combo_reconstruido.agregar_elemento(subelemento_reconstruido)
+            menu_reconstruido.append(combo_reconstruido)
+        elif isinstance(elemento, ComboPareja):
+            combo_pareja_reconstruido = ComboPareja(elemento.nombre)
+            combo_pareja_reconstruido.combo1 = reconstruir_elemento_desde_historial(elemento.combo1, elementos)
+            combo_pareja_reconstruido.combo2 = reconstruir_elemento_desde_historial(elemento.combo2, elementos)
+            menu_reconstruido.append(combo_pareja_reconstruido)
+        elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
+            elemento_reconstruido = reconstruir_elemento_desde_historial(elemento, elementos)
+            menu_reconstruido.append(elemento_reconstruido)
+
+    return menu_reconstruido
+
+
+def reconstruir_elemento_desde_historial(elemento, elementos):
+    if isinstance(elemento, Combo):
+        combo_reconstruido = Combo(elemento.nombre)
+        for subelemento in elemento.elementos:
+            subelemento_reconstruido = reconstruir_elemento_desde_historial(subelemento, elementos)
+            combo_reconstruido.agregar_elemento(subelemento_reconstruido)
+        return combo_reconstruido
+    elif isinstance(elemento, ComboPareja):
+        combo_pareja_reconstruido = ComboPareja(elemento.nombre)
+        combo_pareja_reconstruido.combo1 = reconstruir_elemento_desde_historial(elemento.combo1, elementos)
+        combo_pareja_reconstruido.combo2 = reconstruir_elemento_desde_historial(elemento.combo2, elementos)
+        return combo_pareja_reconstruido
+    elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
+        return elemento

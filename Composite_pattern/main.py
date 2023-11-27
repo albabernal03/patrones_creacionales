@@ -103,8 +103,8 @@ if __name__ == "__main__":
         print("2. Elegir combo predefinido")
         print('3. Elegir combo pareja predefinido')
         print('4.Mostrar historial de pedidos')
-        print("5. Salir")
-        eleccion = solicitar_opcion("Elige una opción (1, 2, 3, 4 o 5): ", [1, 2, 3, 4, 5])
+        print('5. Reconstruir menú desde historial')
+        eleccion = solicitar_opcion("Elige una opción (1, 2, 3, 4, 5 o 6): ", [1, 2, 3, 4, 5, 6])
 
         if eleccion == 1:
             # Solicitar al usuario que elija elementos para el combo personalizado
@@ -258,8 +258,22 @@ if __name__ == "__main__":
 
 
         elif eleccion == 5:
+            # Reconstruir menú desde historial
+            menu_reconstruido = reconstruir_menu_desde_historial('pedidos.csv', usuario)
+            if menu_reconstruido:
+                print("\nMenú reconstruido desde historial:")
+                for item in menu_reconstruido:
+                    if isinstance(item, Combo):
+                        print("\nCombo:")
+                        item.mostrar()
+                    elif isinstance(item, ComboPareja):
+                        print("\nCombo Pareja:")
+                        item.mostrar()
+                    else:
+                        print(f'{type(item).__name__}: {item.nombre} - Precio: {item.precio}')
+            else:
+                print("No hay historial de pedidos para reconstruir el menú.")
+
+        elif eleccion == 6:
             # Salir del programa
             print("Saliendo del programa...")
-            break
-
-    
