@@ -1358,6 +1358,8 @@ if __name__ == "__main__":
             # Salir del programa
             print("Saliendo del programa...")
 ```
+<h4>Diagrama UML</h4>
+
 
 
 
