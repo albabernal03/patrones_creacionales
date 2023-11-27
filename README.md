@@ -28,6 +28,7 @@ Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizio
 En este ejercicio, la cadena "Delizioso" busca expandir su plataforma digital de creación de pizzas gourmet, ahora permitiendo a los clientes combinar sus pizzas personalizadas con entradas, bebidas y postres en menús personalizados. Se propone introducir la noción de menús simples o compuestos, cada uno con un código único y precio calculado según la suma de los elementos con descuentos aplicados. Para gestionar esta complejidad, se sugiere implementar el patrón Composite, modelando las relaciones entre elementos y menús. Además, se continuará utilizando el patrón Builder para la creación detallada de pizzas y se ampliará la interacción con archivos CSV para almacenar y recuperar información de menús. La eficiencia en el cálculo de precios de menús es una prioridad, y se espera un diseño modular y orientado a objetos con clara separación de responsabilidades.
 
 ***
+<h3>Ejercicio4:</h3>
 
 <h2>Indice</h2>
 
