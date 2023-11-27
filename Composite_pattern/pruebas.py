@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 from io import StringIO
-from composite import *
+from main import *
 
 class TestMenu(unittest.TestCase):
 
