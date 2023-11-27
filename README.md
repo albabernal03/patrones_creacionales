@@ -1770,6 +1770,91 @@ if __name__ == "__main__":
 
 ```
 
+```
+#------------------------------------------------------------
+# Json
+#------------------------------------------------------------
+
+{
+    "type": "Carpeta",
+    "nombre": "Raiz",
+    "elementos": [
+      {
+        "type": "Archivo",
+        "nombre": "Archivo1",
+        "tipo": "txt",
+        "tamaño": 10
+      },
+      {
+        "type": "Carpeta",
+        "nombre": "Documentos",
+        "elementos": [
+          {
+            "type": "Archivo",
+            "nombre": "Informe.pdf",
+            "tipo": "pdf",
+            "tamaño": 25
+          },
+          {
+            "type": "Carpeta",
+            "nombre": "Fotos",
+            "elementos": [
+              {
+                "type": "Archivo",
+                "nombre": "Vacaciones.jpg",
+                "tipo": "jpg",
+                "tamaño": 15
+              },
+              {
+                "type": "Enlace",
+                "nombre": "Álbum online",
+                "url": "https://album.ejemplo.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Enlace",
+        "nombre": "Página principal",
+        "url": "https://www.ejemplo.com"
+      },
+      {
+        "type": "Carpeta",
+        "nombre": "Proyectos",
+        "elementos": [
+          {
+            "type": "Archivo",
+            "nombre": "Proyecto1.docx",
+            "tipo": "docx",
+            "tamaño": 30
+          },
+          {
+            "type": "Carpeta",
+            "nombre": "Código fuente",
+            "elementos": [
+              {
+                "type": "Archivo",
+                "nombre": "main.py",
+                "tipo": "py",
+                "tamaño": 8
+              },
+              {
+                "type": "Archivo",
+                "nombre": "utils.py",
+                "tipo": "py",
+                "tamaño": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
+
+```
+
 
 
 
