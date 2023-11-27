@@ -4,7 +4,7 @@ from entrante import Entrante
 from postre import Postre
 from combo import Combo
 from combo_pareja import ComboPareja
-from csv import *
+from csv_funciones import *
 
 
 def solicitar_opcion(mensaje, opciones):
