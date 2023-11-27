@@ -40,7 +40,8 @@ La tarea consiste en abordar los desafíos de gestionar una gran cantidad de doc
 3. [Implementacion del ejercicio 2 en una página web](#id3)
 4. [¿Por qué usamos elpatrón Builder?](#id4)
 5. [Ejercicio 3](#id5)
-6. [Ejercicio 4](#id6)
+6. [Implementacion ejercicio 3 en una página web](#id6)
+7. [Ejercicio 4](#id7)
 
 ***
 
@@ -1488,7 +1489,10 @@ if __name__ == "__main__":
 
 ```
 
-## Ejercicio 4:<a name="id6"></a>
+## Pagina web:<a name="id6"></a>
+
+***
+## Ejercicio 4:<a name="id7"></a>
 
 
 
