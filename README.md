@@ -1360,12 +1360,12 @@ if __name__ == "__main__":
 ```
 ***
 
-<h4>Diagrama UML</h4>
+<h3>Diagrama UML</h3>
 
 <img width="783" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/0bcf1ac4-dcbc-4c87-91c4-c62a08ca1da8">
 ***
 
-<h4>Justificación</h4>
+<h3>Justificación</h3>
 
 Este código implementa un patrón de diseño estructural llamado "Composite". El patrón Composite se utiliza para tratar tanto a los objetos individuales como a las composiciones de objetos de manera uniforme. En este caso, los elementos del menú (como pizzas, bebidas, etc.) se representan mediante una interfaz común llamada ComponentMenu, que tiene un método mostrar.
 
@@ -1408,7 +1408,7 @@ En resumen, este código demuestra un buen uso del patrón Composite para modela
 
 ***
 
-<h4>Pruebas unitarias</h4>
+<h3>Pruebas unitarias</h3>
 
 ```
 import unittest
