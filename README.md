@@ -801,7 +801,7 @@ En resumen, el uso del patrón Builder en este escenario ofrece una forma estruc
 ***
 
 
-<h4>Resumen</h4>
+<h3>Resumen</h3>
 
 
 ## Uso del Patrón Builder
