@@ -19,12 +19,13 @@ def ver_pedido_csv(request):
         # Abre el archivo CSV en modo lectura
         with open(csv_file_name, 'r') as csvfile:
             # Lee el contenido del archivo
-            csv_content = csvfile.read()
+            table_html = csvfile.read()
+
+        # Renderiza el contenido CSV en una plantilla HTML
+        return render(request, 'Proyectowebapp/ver_pedido_csv.html', {'table_html': table_html})
     except FileNotFoundError:
         return HttpResponse("El archivo CSV no se encuentra.")
 
-    # Renderiza el contenido CSV en una plantilla HTML
-    return render(request, 'ver_pedido_csv.html', {'csv_content': csv_content})
 
 
 def guardar_pedido_en_csv(request):
