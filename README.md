@@ -7,7 +7,7 @@ Este es el link del [repositorio](https://github.com/albabernal03/patrones_creac
 
 <h2>¿De qué trata esta tarea?</h2>
 
-<h3>Ejercicio1:</h3>
+<h3>Ejercicio 1:</h3>
 
 En este ejercicicio se nos pide que apliquemos el patron Abstract Factory para crear dos tipo de fábricas:
 
@@ -18,17 +18,21 @@ En este ejercicicio se nos pide que apliquemos el patron Abstract Factory para c
 
 Para realizar un análisis de para modularizar y estandarizar el análisis de los datos que se nos proporcionan de Activaciones del SAMUR-Protección Civil.
 
-<h3>Ejercicio 2</h3>
+<h3>Ejercicio 2:</h3>
 
 Este ejercicio implica diseñar un sistema para la cadena de pizzerías "Delizioso" que permita a los clientes personalizar sus pizzas de manera detallada. Se debe utilizar el patrón Builder para construir paso a paso las pizzas, validar las elecciones del cliente, incorporar recomendaciones basadas en elecciones anteriores, almacenar cada pizza en un archivo CSV, permitir la reconstrucción desde el archivo, asegurar flexibilidad para futuras actualizaciones, desarrollar una interfaz de usuario amigable y garantizar la seguridad de los datos. El uso del patrón Builder se justifica para lograr robustez y adaptabilidad, permitiendo la construcción flexible de pizzas complejas y facilitando futuras expansiones del sistema.
 
 
-<h3>Ejercicio3:</h3>
+<h3>Ejercicio 3:</h3>
 
 En este ejercicio, la cadena "Delizioso" busca expandir su plataforma digital de creación de pizzas gourmet, ahora permitiendo a los clientes combinar sus pizzas personalizadas con entradas, bebidas y postres en menús personalizados. Se propone introducir la noción de menús simples o compuestos, cada uno con un código único y precio calculado según la suma de los elementos con descuentos aplicados. Para gestionar esta complejidad, se sugiere implementar el patrón Composite, modelando las relaciones entre elementos y menús. Además, se continuará utilizando el patrón Builder para la creación detallada de pizzas y se ampliará la interacción con archivos CSV para almacenar y recuperar información de menús. La eficiencia en el cálculo de precios de menús es una prioridad, y se espera un diseño modular y orientado a objetos con clara separación de responsabilidades.
 
-***
 
+<h3>Ejercicio 4:</h3>
+
+
+La tarea consiste en abordar los desafíos de gestionar una gran cantidad de documentos digitales en el contexto del SAMUR-Protección Civil después de su proceso de digitalización. Esto implica la creación de un sistema que maneje documentos, enlaces y carpetas, con la necesidad de garantizar un acceso rápido pero seguro, especialmente para datos sensibles. Para lograr esto, se propone el uso de dos patrones de diseño: Composite, para modelar la estructura de documentos del sistema, y Proxy, para controlar y registrar el acceso a documentos específicos. La implementación se llevará a cabo en Python, incorporando buenas prácticas de programación. Además, se deben crear funciones que faciliten la navegación, creación, modificación y eliminación de elementos en el sistema, y se deben realizar pruebas para asegurar la correcta implementación, prestando especial atención a la seguridad y al registro de acceso a los documentos.
+***
 <h2>Indice</h2>
 
 1. [Ejercicio 1](#id1)
@@ -36,6 +40,8 @@ En este ejercicio, la cadena "Delizioso" busca expandir su plataforma digital de
 3. [Implementacion del ejercicio 2 en una página web](#id3)
 4. [¿Por qué usamos elpatrón Builder?](#id4)
 5. [Ejercicio 3](#id5)
+6. [Implementacion ejercicio 3 en una página web](#id6)
+7. [Ejercicio 4](#id7)
 
 ***
 
@@ -796,7 +802,7 @@ En resumen, el uso del patrón Builder en este escenario ofrece una forma estruc
 ***
 
 
-<h4>Resumen</h4>
+<h3>Resumen</h3>
 
 
 ## Uso del Patrón Builder
@@ -813,6 +819,1041 @@ Este enfoque estructurado ofrece flexibilidad y adaptabilidad al sistema de pers
 
 
 ## Ejercicio 3:<a name="id5"></a>
+
+```
+from abc import ABC, abstractmethod
+
+
+#------------------------------------------------------------
+# Component
+#------------------------------------------------------------
+
+class ComponentMenu(ABC):
+    '''La clase Componente base define operaciones comunes para objetos de composición,
+    ya sean simples o complejos'''
+
+    @abstractmethod
+    def mostrar(self):
+        pass
+
+```
+
+```
+
+#------------------------------------------------------------
+# Leaf
+#------------------------------------------------------------
+
+class Pizza(ComponentMenu):
+
+    '''La clase Hoja representa los elementos finales en una composición. Una hoja no tiene elementos adicionales.
+    En general, son las hojas las que realizan el trabajo real, mientras que los objetos Compuesto solo delegan 
+    en sus partes internas.'''
+
+    def __init__(self, nombre, precio):
+        self.nombre = nombre
+        self.precio = precio
+
+
+    def mostrar(self):
+        print(f'Pizza: {self.nombre} - Precio: {self.precio}')
+
+```
+```
+#------------------------------------------------------------
+# Leaf
+#------------------------------------------------------------
+
+class Bebida(ComponentMenu):
+
+    def __init__(self, nombre, precio):
+        self.nombre = nombre
+        self.precio = precio
+
+    def mostrar(self):
+        print(f'Bebida: {self.nombre} - Precio: {self.precio}')
+```
+```
+#------------------------------------------------------------
+# Leaf
+#------------------------------------------------------------
+
+class Entrante(ComponentMenu):
+        
+            def __init__(self, nombre, precio):
+                self.nombre = nombre
+                self.precio = precio
+        
+            def mostrar(self):
+                print(f'Entrante: {self.nombre} - Precio: {self.precio}')
+
+
+
+```
+```
+#------------------------------------------------------------
+# Leaf
+#------------------------------------------------------------
+
+class Postre(ComponentMenu):
+    
+        def __init__(self, nombre, precio):
+            self.nombre = nombre
+            self.precio = precio
+    
+        def mostrar(self):
+            print(f'Postre: {self.nombre} - Precio: {self.precio}')
+
+```
+```
+#------------------------------------------------------------
+# Composite
+#------------------------------------------------------------
+
+class Combo(ComponentMenu):
+
+    '''
+    La clase Compuesto representa los componentes complejos que pueden tener hijos. Por lo general, 
+    los objetos Compuesto delegan el trabajo real a sus hijos y luego "resumen" el resultado.
+    '''
+
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.elementos = []
+
+    def agregar(self, elemento):
+        self.elementos.append(elemento)
+
+    def eliminar(self, elemento):
+        self.elementos.remove(elemento)
+    
+    def mostrar(self):
+        print(f'Combo: {self.nombre}')
+
+        for elemento in self.elementos:
+            elemento.mostrar()
+
+        print(f'Precio Total del Combo: {self.calcular_precio_total()}')
+
+    def calcular_precio_total(self):
+        return sum(elemento.precio for elemento in self.elementos)
+
+```
+
+```
+#------------------------------------------------------------
+# Composite
+#------------------------------------------------------------
+
+class ComboPareja(ComponentMenu):
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.combo1 = None
+        self.combo2 = None
+
+    def personalizar(self, combo1, combo2):
+        self.combo1 = combo1
+        self.combo2 = combo2
+
+    def mostrar(self):
+        print(f'Combo Pareja: {self.nombre}')
+        if self.combo1:
+            print(f'Menu:')
+            self.combo1.mostrar()
+        if self.combo2:
+            print(f'Menu:')
+            self.combo2.mostrar()
+        print(f'Precio Total del Combo Pareja: {self.calcular_precio_total()}')
+
+    def calcular_precio_total(self):
+        total_combo1 = self.combo1.calcular_precio_total() if self.combo1 else 0
+        total_combo2 = self.combo2.calcular_precio_total() if self.combo2 else 0
+        return total_combo1 + total_combo2
+    
+```
+```
+#------------------------------------------------------------
+# CSV
+#------------------------------------------------------------
+
+
+def guardar_elemento_csv(elemento, nombre_archivo, usuario):
+    with open(nombre_archivo, 'a') as archivo:
+        if isinstance(elemento, Combo):
+            archivo.write(f'{usuario},Combo,{elemento.nombre},{elemento.calcular_precio_total()}\n')
+            for subelemento in elemento.elementos:
+                guardar_elemento_csv(subelemento, nombre_archivo, usuario)
+        elif isinstance(elemento, ComboPareja):
+            archivo.write(f'{usuario},ComboPareja,{elemento.nombre},{elemento.calcular_precio_total()}\n')
+            if elemento.combo1:
+                guardar_elemento_csv(elemento.combo1, nombre_archivo, usuario)
+            if elemento.combo2:
+                guardar_elemento_csv(elemento.combo2, nombre_archivo, usuario)
+        elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
+            archivo.write(f'{usuario},{type(elemento).__name__},{elemento.nombre},{elemento.precio}\n')
+
+def guardar_elemento_csv(elemento, nombre_archivo, usuario):
+    with open(nombre_archivo, 'a') as archivo:
+        if isinstance(elemento, Combo):
+            archivo.write(f'{usuario},Combo,{elemento.nombre},{elemento.calcular_precio_total()}\n')
+            for subelemento in elemento.elementos:
+                guardar_elemento_csv(subelemento, nombre_archivo, usuario)
+        elif isinstance(elemento, ComboPareja):
+            archivo.write(f'{usuario},ComboPareja,{elemento.nombre},{elemento.calcular_precio_total()}\n')
+            if elemento.combo1:
+                guardar_elemento_csv(elemento.combo1, nombre_archivo, usuario)
+            if elemento.combo2:
+                guardar_elemento_csv(elemento.combo2, nombre_archivo, usuario)
+        elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
+            archivo.write(f'{usuario},{type(elemento).__name__},{elemento.nombre},{elemento.precio}\n')
+
+def leer_elementos_csv(nombre_archivo, usuario):
+    elementos = []
+    combos = {}
+
+    with open(nombre_archivo, 'r') as archivo:
+        for linea in archivo:
+            usuario_archivo, tipo_elemento, nombre_elemento, precio_elemento = linea.strip().split(',')
+            if usuario_archivo == usuario:
+                if tipo_elemento == 'Combo':
+                    combo = Combo(nombre_elemento)
+                    combos[nombre_elemento] = combo
+                    elementos.append(combo)
+                elif tipo_elemento == 'ComboPareja':
+                    combo_pareja = ComboPareja(nombre_elemento)
+                    combo_pareja.combo1 = combos.get(nombre_elemento + "_1")
+                    combo_pareja.combo2 = combos.get(nombre_elemento + "_2")
+                    elementos.append(combo_pareja)
+                elif tipo_elemento in ['Pizza', 'Bebida', 'Entrante', 'Postre']:
+                    clase_elemento = globals()[tipo_elemento]
+                    elemento = clase_elemento(nombre_elemento, float(precio_elemento))
+                    elementos.append(elemento)
+
+    return elementos
+
+
+
+
+def preguntar_guardar_historial():
+    while True:
+        respuesta = input("¿Deseas guardar el historial de pedidos? (s/n): ").lower()
+        if respuesta == 's':
+            return True
+        elif respuesta == 'n':
+            return False
+        else:
+            print("Respuesta no válida. Por favor, ingresa 's' o 'n'.")
+
+def reconstruir_menu_desde_historial(nombre_archivo, usuario):
+    elementos = leer_elementos_csv(nombre_archivo, usuario)
+    menu_reconstruido = []
+
+    for elemento in elementos:
+        if isinstance(elemento, Combo):
+            combo_reconstruido = Combo(elemento.nombre)
+            for subelemento in elemento.elementos:
+                subelemento_reconstruido = reconstruir_elemento_desde_historial(subelemento, elementos)
+                combo_reconstruido.agregar_elemento(subelemento_reconstruido)
+            menu_reconstruido.append(combo_reconstruido)
+        elif isinstance(elemento, ComboPareja):
+            combo_pareja_reconstruido = ComboPareja(elemento.nombre)
+            combo_pareja_reconstruido.combo1 = reconstruir_elemento_desde_historial(elemento.combo1, elementos)
+            combo_pareja_reconstruido.combo2 = reconstruir_elemento_desde_historial(elemento.combo2, elementos)
+            menu_reconstruido.append(combo_pareja_reconstruido)
+        elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
+            elemento_reconstruido = reconstruir_elemento_desde_historial(elemento, elementos)
+            menu_reconstruido.append(elemento_reconstruido)
+
+    return menu_reconstruido
+
+
+def reconstruir_elemento_desde_historial(elemento, elementos):
+    if isinstance(elemento, Combo):
+        combo_reconstruido = Combo(elemento.nombre)
+        for subelemento in elemento.elementos:
+            subelemento_reconstruido = reconstruir_elemento_desde_historial(subelemento, elementos)
+            combo_reconstruido.agregar_elemento(subelemento_reconstruido)
+        return combo_reconstruido
+    elif isinstance(elemento, ComboPareja):
+        combo_pareja_reconstruido = ComboPareja(elemento.nombre)
+        combo_pareja_reconstruido.combo1 = reconstruir_elemento_desde_historial(elemento.combo1, elementos)
+        combo_pareja_reconstruido.combo2 = reconstruir_elemento_desde_historial(elemento.combo2, elementos)
+        return combo_pareja_reconstruido
+    elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
+        return elemento
+
+```
+```
+#------------------------------------------------------------
+# Main
+#------------------------------------------------------------
+
+def solicitar_opcion(mensaje, opciones):
+    while True:
+        try:
+            eleccion = int(input(mensaje))
+            if eleccion in opciones:
+                return eleccion
+            else:
+                print("Opción no válida. Por favor, elige una opción válida.")
+        except ValueError:
+            print("Error: Ingresa un número entero.")
+
+
+if __name__ == "__main__":
+    # Solicitar al usuario que ingrese su nombre
+    usuario = input("Introduce tu nombre de usuario: ")
+    pedidos_usuario = leer_elementos_csv('pedidos.csv', usuario)
+
+     # Crear instancias de elementos individuales (pizzas, bebidas, entrantes, postres)
+    pizza_margarita = Pizza("Margarita", 10.0)
+    pizza_pepperoni = Pizza("Pepperoni", 12.0)
+    pizza_vegetariana = Pizza("Vegetariana", 11.0)
+    pizza_hawaiana = Pizza("Hawaiana", 13.0)
+    pizza_cuatros_quesos = Pizza("Cuatro Quesos", 14.0)
+
+    bebida_cola = Bebida("Coca-Cola", 2.0)
+    bebida_agua = Bebida("Agua", 1.5)
+    bebida_fanta_de_naranja = Bebida("Fanta de Naranja", 2.0)
+    bebida_cerveza = Bebida("Cerveza", 3.5)
+    bebida_nestea=Bebida("Nestea", 2.0)
+
+    entrante_ensalada = Entrante("Ensalada", 5.0)
+    entrante_patatas = Entrante("Patatas", 4.0)
+    entrante_alitas = Entrante("Alitas de Pollo", 6.0)
+    entrante_nuggets = Entrante("Nuggets", 5.0)
+    entrante_nachos = Entrante("Nachos", 5.0)
+
+    postre_tarta_de_queso= Postre("Tarta de queso", 6.0)
+    postre_helado = Postre("Helado", 3.0)
+    postre_frutas = Postre("Frutas", 4.0)
+    postre_natillas = Postre("Natillas", 3.0)
+    postre_tarta_de_la_abuela = Postre("Tarta de la abuela", 5.0)
+
+
+    # Crear combos predefinidos
+    combo_1 = Combo("Combo 1")
+    combo_1.agregar(entrante_ensalada)
+    combo_1.agregar(pizza_margarita)
+    combo_1.agregar(bebida_cola)
+    combo_1.agregar(postre_helado)
+
+    combo_2 = Combo("Combo 2")
+    combo_2.agregar(entrante_patatas)
+    combo_2.agregar(pizza_pepperoni)
+    combo_2.agregar(bebida_agua)
+    combo_2.agregar(postre_frutas)
+
+    combo_3 = Combo("Combo 3")
+    combo_3.agregar(entrante_alitas)
+    combo_3.agregar(pizza_vegetariana)
+    combo_3.agregar(bebida_fanta_de_naranja)
+    combo_3.agregar(postre_natillas)
+
+    combo_4 = Combo("Combo 4")
+    combo_4.agregar(entrante_nuggets)
+    combo_4.agregar(pizza_hawaiana)
+    combo_4.agregar(bebida_cerveza)
+    combo_4.agregar(postre_tarta_de_la_abuela)
+
+  # Crear combos pareja predefinidos
+
+    combo_pareja_1 = ComboPareja("Combo Pareja 1")
+    combo_pareja_1.personalizar(combo_1, combo_2)
+
+    combo_pareja_2 = ComboPareja("Combo Pareja 2")
+    combo_pareja_2.personalizar(combo_3, combo_4)
+
+
+
+
+
+    # Mostrar combos predefinidos
+    while True:
+        print("\nCombos predefinidos:")
+        combo_1.mostrar()
+        combo_2.mostrar()
+        combo_3.mostrar()
+        combo_4.mostrar()
+        print("\nCombos Pareja predefinidos:")
+        combo_pareja_1.mostrar()
+        combo_pareja_2.mostrar()
+
+        print("\nOpciones:")
+        print("1. Crear combo personalizado")
+        print("2. Elegir combo predefinido")
+        print('3. Elegir combo pareja predefinido')
+        print('4.Mostrar historial de pedidos')
+        print('5. Reconstruir menú desde historial')
+        eleccion = solicitar_opcion("Elige una opción (1, 2, 3, 4, 5 o 6): ", [1, 2, 3, 4, 5, 6])
+
+        if eleccion == 1:
+            # Solicitar al usuario que elija elementos para el combo personalizado
+            print("\nElige los elementos para tu combo personalizado:")
+            eleccion_entrante = solicitar_opcion(
+                "\nOpciones de entrantes:\n1. Ensalada\n2. Patatas\n3. Alitas de Pollo\n4. Nuggets\n5. Nachos\nElige un entrante (1, 2, 3, 4 o 5): ",
+                [1, 2, 3, 4, 5]
+            )
+            eleccion_pizza = solicitar_opcion(
+                "\nOpciones de pizzas:\n1. Margarita\n2. Pepperoni\n3. Vegetariana\n4. Hawaiana\n5. Cuatro Quesos\nElige una pizza (1, 2, 3, 4 o 5): ",
+                [1, 2, 3, 4, 5]
+            )
+            eleccion_bebida = solicitar_opcion(
+                "\nOpciones de bebidas:\n1. Cola\n2. Agua\n3. Fanta de Naranja\n4. Cerveza\n5. Nestea\nElige una bebida (1, 2, 3, 4 o 5): ",
+                [1, 2, 3, 4, 5]
+            )
+            eleccion_postre = solicitar_opcion(
+                "\nOpciones de postres:\n1. Tarta de queso\n2. Helado\n3. Frutas\n4. Natillas\n5. Tarta de la abuela\nElige un postre (1, 2, 3, 4 o 5): ",
+                [1, 2, 3, 4, 5]
+            )
+
+            # Crear el combo personalizado
+            combo_personalizado = Combo("Combo Personalizado")
+            # Agregar elementos al combo personalizado según las elecciones del usuario
+            if eleccion_entrante == 1:
+                combo_personalizado.agregar(entrante_ensalada)
+            elif eleccion_entrante == 2:
+                combo_personalizado.agregar(entrante_patatas)
+            elif eleccion_entrante == 3:
+                combo_personalizado.agregar(entrante_alitas)
+            elif eleccion_entrante == 4:
+                combo_personalizado.agregar(entrante_nuggets)
+            elif eleccion_entrante == 5:
+                combo_personalizado.agregar(entrante_nachos)
+
+            if eleccion_pizza == 1:
+                combo_personalizado.agregar(pizza_margarita)
+            elif eleccion_pizza == 2:
+                combo_personalizado.agregar(pizza_pepperoni)
+            elif eleccion_pizza == 3:
+                combo_personalizado.agregar(pizza_vegetariana)
+            elif eleccion_pizza == 4:
+                combo_personalizado.agregar(pizza_hawaiana)
+            elif eleccion_pizza == 5:
+                combo_personalizado.agregar(pizza_cuatros_quesos)
+
+            if eleccion_bebida == 1:
+                combo_personalizado.agregar(bebida_cola)
+            elif eleccion_bebida == 2:
+                combo_personalizado.agregar(bebida_agua)
+            elif eleccion_bebida == 3:
+                combo_personalizado.agregar(bebida_fanta_de_naranja)
+            elif eleccion_bebida == 4:
+                combo_personalizado.agregar(bebida_cerveza)
+            elif eleccion_bebida == 5:
+                combo_personalizado.agregar(bebida_nestea)
+
+            if eleccion_postre == 1:
+                combo_personalizado.agregar(postre_tarta_de_queso)
+            elif eleccion_postre == 2:
+                combo_personalizado.agregar(postre_helado)
+            elif eleccion_postre == 3:
+                combo_personalizado.agregar(postre_frutas)
+            elif eleccion_postre == 4:
+                combo_personalizado.agregar(postre_natillas)
+            elif eleccion_postre == 5:
+                combo_personalizado.agregar(postre_tarta_de_la_abuela)
+
+            # Mostrar el combo personalizado
+            print("\nTu combo personalizado:")
+            combo_personalizado.mostrar()
+            #preguntamos si quiere guardar el historial
+            if preguntar_guardar_historial():
+                guardar_elemento_csv(combo_personalizado, 'pedidos.csv', usuario)
+            else:
+                print("No se guardará el historial de pedidos.")
+
+        elif eleccion == 2:
+            # Solicitar al usuario que elija un combo predefinido y mostrarlo
+            opciones_combos_predefinidos = [1, 2, 3]
+            eleccion_combo_predefinido = solicitar_opcion("Elige un combo predefinido (1, 2 o 3): ", opciones_combos_predefinidos)
+
+            chosen_combo = None
+
+            if eleccion_combo_predefinido == 1:
+                chosen_combo = combo_1
+            elif eleccion_combo_predefinido == 2:
+                chosen_combo = combo_2
+            elif eleccion_combo_predefinido == 3:
+                chosen_combo = combo_3
+
+            # Mostrar el combo predefinido
+            print("\nEl combo predefinido que has elegido es:")
+            chosen_combo.mostrar()
+
+            # Preguntar si quieren pedir este combo
+            if input("¿Quieres pedir este combo? (s/n): ").lower() == 's':
+                if preguntar_guardar_historial():
+                    guardar_elemento_csv(chosen_combo, 'pedidos.csv', usuario)
+                else:
+                    print("No se guardará el historial de pedidos.")
+            else:
+                print("Pedido cancelado.")
+
+        elif eleccion == 3:
+            combo_pareja_personalizado = ComboPareja("Combo Pareja Personalizado")
+
+            print("\nElige los combos para tu Combo Pareja:")
+            print("1. Combo 1")
+            print("2. Combo 2")
+            eleccion_combo1 = solicitar_opcion("Elige el Combo 1 (1 o 2): ", [1, 2])
+            eleccion_combo2 = solicitar_opcion("Elige el Combo 2 (1 o 2): ", [1, 2])
+
+            if eleccion_combo1 == 1:
+                combo_pareja_personalizado.personalizar(combo_1, None)
+            elif eleccion_combo1 == 2:
+                combo_pareja_personalizado.personalizar(combo_2, None)
+
+            if eleccion_combo2 == 1:
+                combo_pareja_personalizado.personalizar(combo_pareja_personalizado.combo1, combo_1)
+            elif eleccion_combo2 == 2:
+                combo_pareja_personalizado.personalizar(combo_pareja_personalizado.combo1, combo_2)
+
+            # Mostrar el Combo Pareja personalizado
+            print("\nTu Combo Pareja personalizado:")
+            combo_pareja_personalizado.mostrar()
+            #preguntamos si quiere guardar el historial
+            if preguntar_guardar_historial():
+                guardar_elemento_csv(combo_pareja_personalizado, 'pedidos.csv', usuario)
+            else:
+                print("No se guardará el historial de pedidos.")
+
+        elif eleccion == 4:
+    # Mostrar historial de pedidos según usuario
+            print("\nHistorial de pedidos:")
+            pedidos_usuario = leer_elementos_csv('pedidos.csv', usuario)
+
+            if pedidos_usuario:
+                print(f"\nPedidos antiguos de {usuario}:")
+                for pedido in pedidos_usuario:
+                    if isinstance(pedido, Combo):
+                        print("\nPedido Combo:")
+                        pedido.mostrar()
+                    elif isinstance(pedido, ComboPareja):
+                        print("\nPedido Combo Pareja:")
+                        pedido.mostrar()
+                    else:
+                        print(f'{type(pedido).__name__}: {pedido.nombre} - Precio: {pedido.precio}')
+            else:
+                print(f"No hay pedidos antiguos de {usuario}.")
+
+
+        elif eleccion == 5:
+            # Reconstruir menú desde historial
+            menu_reconstruido = reconstruir_menu_desde_historial('pedidos.csv', usuario)
+            if menu_reconstruido:
+                print("\nMenú reconstruido desde historial:")
+                for item in menu_reconstruido:
+                    if isinstance(item, Combo):
+                        print("\nCombo:")
+                        item.mostrar()
+                    elif isinstance(item, ComboPareja):
+                        print("\nCombo Pareja:")
+                        item.mostrar()
+                    else:
+                        print(f'{type(item).__name__}: {item.nombre} - Precio: {item.precio}')
+            else:
+                print("No hay historial de pedidos para reconstruir el menú.")
+
+        elif eleccion == 6:
+            # Salir del programa
+            print("Saliendo del programa...")
+```
+***
+
+<h3>Diagrama UML</h3>
+
+<img width="783" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/0bcf1ac4-dcbc-4c87-91c4-c62a08ca1da8">
+
+***
+
+<h3>Justificación</h3>
+
+Este código implementa un patrón de diseño estructural llamado "Composite". El patrón Composite se utiliza para tratar tanto a los objetos individuales como a las composiciones de objetos de manera uniforme. En este caso, los elementos del menú (como pizzas, bebidas, etc.) se representan mediante una interfaz común llamada ComponentMenu, que tiene un método mostrar.
+
+Aquí hay algunas decisiones de diseño notables y la aplicación del patrón Composite:
+
+1.**Interfaz Abstracta (ComponentMenu):**
+
+Se ha definido una interfaz abstracta llamada ComponentMenu que declara el método mostrar. Esta interfaz es la base tanto para los elementos individuales (Pizza, Bebida, etc.) como para las composiciones (Combo, ComboPareja).
+
+2.**Elementos Individuales (Leafs):**
+
+Las clases Pizza, Bebida, Entrante y Postre implementan la interfaz ComponentMenu. Estas son las hojas del árbol de composición y representan elementos individuales del menú.
+
+3.**Composiciones (Composite):**
+
+Las clases Combo y ComboPareja implementan la interfaz ComponentMenu y actúan como contenedores para elementos individuales o sub-combos. Estos son los nodos compuestos que pueden contener hojas o sub-combos.
+
+4.**Método Recursivo mostrar:**
+
+El método mostrar se implementa de manera recursiva en las clases Combo y ComboPareja. Esto permite que un combo muestre su contenido, ya sean elementos individuales o sub-combos.
+
+5.**Patrón Composite en Acción:**
+
+Se utiliza el patrón Composite al tratar a los elementos del menú de manera uniforme a través de la interfaz común ComponentMenu. Esto simplifica el código del cliente, ya que puede interactuar con elementos individuales y composiciones de manera consistente.
+
+6.**Persistencia en CSV:**
+
+Se proporcionan funciones para guardar y leer elementos del menú en un archivo CSV. Esto permite almacenar y recuperar historiales de pedidos para usuarios específicos.
+
+7.**Menús Predefinidos y Personalizados:**
+
+Se han creado combos y combos pareja predefinidos (combo_1, combo_2, combo_pareja_1, etc.). También se permite al usuario crear su propio combo personalizado.
+
+8.**Historial de Pedidos:**
+
+Se ofrece la opción de guardar el historial de pedidos en un archivo CSV. El historial se puede mostrar posteriormente para un usuario específico.
+
+En resumen, este código demuestra un buen uso del patrón Composite para modelar elementos del menú y combos, proporcionando una interfaz consistente para interactuar con elementos individuales y composiciones. La persistencia en CSV y la capacidad de crear combos personalizados añaden funcionalidad adicional al programa.
+
+
+***
+
+<h3>Pruebas unitarias</h3>
+
+```
+import unittest
+from unittest.mock import patch
+from io import StringIO
+from main import *
+
+class TestMenu(unittest.TestCase):
+
+    def setUp(self):
+        # Crear instancias de elementos individuales
+        self.pizza_margarita = Pizza("Margarita", 10.0)
+        self.bebida_cola = Bebida("Coca-Cola", 2.0)
+        self.entrante_ensalada = Entrante("Ensalada", 5.0)
+
+        # Crear combos predefinidos
+        self.combo_1 = Combo("Combo 1")
+        self.combo_1.agregar(self.entrante_ensalada)
+        self.combo_1.agregar(self.pizza_margarita)
+        self.combo_1.agregar(self.bebida_cola)
+
+        self.combo_2 = Combo("Combo 2")
+        self.combo_2.agregar(self.entrante_ensalada)
+        self.combo_2.agregar(self.pizza_margarita)
+        self.combo_2.agregar(self.bebida_cola)
+
+        # Crear Combo Pareja predefinido
+        self.combo_pareja_1 = ComboPareja("Combo Pareja 1")
+        self.combo_pareja_1.personalizar(self.combo_1, self.combo_2)
+
+    def test_pizza_creation(self):
+        self.assertEqual(self.pizza_margarita.nombre, "Margarita")
+        self.assertEqual(self.pizza_margarita.precio, 10.0)
+
+    def test_bebida_creation(self):
+        self.assertEqual(self.bebida_cola.nombre, "Coca-Cola")
+        self.assertEqual(self.bebida_cola.precio, 2.0)
+
+    def test_entrante_creation(self):
+        self.assertEqual(self.entrante_ensalada.nombre, "Ensalada")
+        self.assertEqual(self.entrante_ensalada.precio, 5.0)
+
+    def test_combo_creation(self):
+        self.assertEqual(self.combo_1.nombre, "Combo 1")
+        self.assertEqual(len(self.combo_1.elementos), 3)
+
+    def test_combo_pareja_creation(self):
+        self.assertEqual(self.combo_pareja_1.nombre, "Combo Pareja 1")
+        self.assertIsNotNone(self.combo_pareja_1.combo1)
+        self.assertIsNotNone(self.combo_pareja_1.combo2)
+
+    @patch("builtins.input", side_effect=["1"])
+    def test_solicitar_opcion_valida(self, mock_input):
+        opciones = [1, 2, 3]
+        eleccion = solicitar_opcion("Elige una opción (1, 2, o 3): ", opciones)
+        self.assertEqual(eleccion, 1)
+
+    @patch("builtins.input", side_effect=["4", "3"])
+    def test_solicitar_opcion_invalida_then_valida(self, mock_input):
+        opciones = [1, 2, 3]
+        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+            eleccion = solicitar_opcion("Elige una opción (1, 2, o 3): ", opciones)
+            self.assertEqual(eleccion, 3)
+            self.assertEqual(mock_stdout.getvalue().strip(), "Opción no válida. Por favor, elige una opción válida.")
+
+    @patch("builtins.input", side_effect=["a", "2"])
+    def test_solicitar_opcion_no_entero_then_valida(self, mock_input):
+        opciones = [1, 2, 3]
+        with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+            eleccion = solicitar_opcion("Elige una opción (1, 2, o 3): ", opciones)
+            self.assertEqual(eleccion, 2)
+            self.assertEqual(mock_stdout.getvalue().strip(), "Error: Ingresa un número entero.")
+
+if __name__ == "__main__":
+    unittest.main()
+
+```
+
+## Pagina web:<a name="id6"></a>
+
+***
+## Ejercicio 4:<a name="id7"></a>
+
+```
+from abc import ABC, abstractmethod
+from datetime import datetime
+import json
+
+#------------------------------------------------------------
+# Component
+#------------------------------------------------------------
+
+class Component(ABC):
+    @abstractmethod
+    def tamaño(self):
+        pass
+
+#------------------------------------------------------------
+#Leaf
+#------------------------------------------------------------
+
+class Archivo(Component):
+    def __init__(self, nombre, tipo, tamano):
+        self.nombre = nombre
+        self.tipo = tipo
+        self.tamano = tamano
+
+    def tamaño(self):
+        return self.tamano
+      
+#------------------------------------------------------------
+# Composite
+#------------------------------------------------------------
+
+class Carpeta(Component):
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.elementos = []
+
+    def tamaño(self):
+        total = 0
+        for elemento in self.elementos:
+            total += elemento.tamaño()
+        return total
+
+    def agregar(self, elemento):
+        self.elementos.append(elemento)
+
+    def eliminar(self, elemento):
+        self.elementos.remove(elemento)
+
+
+#------------------------------------------------------------
+#Leaf
+#------------------------------------------------------------
+
+class Enlace(Component):
+    def __init__(self, nombre, destino):
+        self.nombre = nombre
+        self.url = destino
+
+    def tamaño(self):
+        return 0
+    
+
+
+#------------------------------------------------------------
+# Proxy
+#------------------------------------------------------------
+
+class ComponentProxy(Component):
+    def __init__(self, real_component, access_control=[]):
+        self._real_component = real_component
+        self._access_control = access_control
+        self._access_granted = False
+        self._access_log = []
+
+    def tamaño(self):
+        if self.check_access():
+            return self._real_component.tamaño()
+        else:
+            return 0
+
+    def check_access(self) -> bool:
+        user = input("Introduce el usuario: ")
+        if user in self._access_control:
+            print(f"Proxy: {user} ha accedido.")
+            self._access_granted = True
+        else:
+            print(f"Proxy: {user} no tiene acceso.")
+        return self._access_granted
+
+    def log_access(self) -> None:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_entry = f"Se ha accedido: {timestamp}"
+        print(f"Proxy: {log_entry}")
+        self._access_log.append(log_entry)
+
+    # Forwarding attribute access to the real component
+    def __getattr__(self, attr):
+        return getattr(self._real_component, attr)
+
+
+#Funciones para interactuar con la estructura y el Proxy
+def navegar(component):
+    print(f"El tamaño de {component.nombre} es: {component.tamaño()}")
+
+def agregar(carpeta, elemento):
+    carpeta.agregar(elemento)
+
+def modificar_tamano(archivo, nuevo_tamano):
+    if isinstance(archivo, Archivo):
+        archivo.tamano = nuevo_tamano
+        print(f"El tamaño del archivo {archivo.nombre} ha sido modificado a {nuevo_tamano}")
+    else:
+        print("No se puede modificar el tamaño de una carpeta")
+
+def eliminar(carpeta, elemento):
+    carpeta.eliminar(elemento)
+
+def acceder(proxy, usuario):
+    proxy.check_access()
+    navegar(proxy)  
+
+def revocar_acceso(proxy, usuario):
+    proxy._access_granted = False
+
+def encontrar_elemento_por_nombre(component, nombre):
+    # Verifica si el componente actual tiene el nombre buscado
+    if hasattr(component, 'nombre') and component.nombre == nombre:
+        return component
+
+    # Si el componente es una carpeta, busca en sus elementos
+    if isinstance(component, Carpeta):
+        for elemento in component.elementos:
+            resultado = encontrar_elemento_por_nombre(elemento, nombre)
+            if resultado:
+                return resultado
+
+    # Si no se encuentra en el componente actual ni en sus elementos, retorna None
+    return None
+
+# Función para cargar la estructura desde un archivo JSON
+def cargar_estructura_desde_json(ruta_archivo):
+    print("Attempting to load data from:", ruta_archivo)
+    try:
+        with open(ruta_archivo, 'r') as archivo:
+            datos = json.load(archivo)
+        print("Loaded data from JSON:", datos)
+        return crear_estructura_desde_json(datos)
+    except FileNotFoundError:
+        print("File not found:", ruta_archivo)
+        return None
+    except json.JSONDecodeError as je:
+        print("JSON decoding error:", je)
+        return None
+    except Exception as e:
+        print("Error loading data from JSON:", e)
+        return None
+
+
+# Función para crear la estructura desde un diccionario
+def crear_estructura_desde_json(datos):
+    tipo_componente = datos.get('type')
+
+    if tipo_componente == 'Carpeta':
+        carpeta = Carpeta(datos['nombre'])
+        for datos_hijo in datos['elementos']:
+            componente_hijo = crear_estructura_desde_json(datos_hijo)
+            carpeta.agregar(componente_hijo)
+        return carpeta
+
+    elif tipo_componente == 'Archivo':
+        return Archivo(datos['nombre'], datos['tipo'], datos['tamaño'])
+
+    elif tipo_componente == 'Enlace':
+        return Enlace(datos['nombre'], datos['url'])
+
+    else:
+        raise ValueError(f"Unknown component type: {tipo_componente}")
+
+
+# Función recursiva para crear un componente desde un diccionario
+def crear_componente_desde_json(datos):
+    tipo_componente = datos.get('tipo')
+    if tipo_componente == 'Archivo':
+        return Archivo(datos['nombre'], datos['tipo'], datos['tamaño'])
+    elif tipo_componente == 'Carpeta':
+        carpeta = Carpeta(datos['nombre'])
+        for datos_hijo in datos['elementos']:
+            componente_hijo = crear_componente_desde_json(datos_hijo)
+            carpeta.agregar_elemento(componente_hijo)
+        return carpeta
+    elif tipo_componente == 'Enlace':
+        return Enlace(datos['nombre'], datos['url'])
+
+archivo1 = Archivo("Archivo1", "txt", 10)
+
+if __name__ == "__main__":
+    # Solicitar al usuario que ingrese su nombre
+    usuario = input("Introduce tu nombre de usuario: ")
+
+    # Crear Proxy para el archivo
+    proxy_archivo1 = ComponentProxy(archivo1, access_control=['Usuario1', 'Usuario2'])
+
+    # Verificar el acceso del usuario
+    if usuario in proxy_archivo1._access_control:
+        print(f"Bienvenido, {usuario}.")
+
+        # Cargar la estructura desde un archivo JSON
+        structure = cargar_estructura_desde_json('structure.json')
+
+        if structure:
+            # Interactuar con la estructura y el Proxy
+            navegar(structure)
+
+            # Solicitar al usuario que elija una acción
+            accion = input("¿Qué acción deseas realizar? (agregar/modificar/eliminar/nada): ")
+
+            if accion == 'agregar':
+                # Solicitar detalles para agregar un nuevo elemento
+                tipo_elemento = input("Tipo de elemento (Archivo/Carpeta/Enlace): ")
+                nombre_elemento = input("Nombre del elemento: ")
+
+                if tipo_elemento == 'Archivo':
+                    tamano_elemento = int(input("Tamaño del archivo: "))
+                    nuevo_elemento = Archivo(nombre_elemento, 'tipo_desconocido', tamano_elemento)
+                elif tipo_elemento == 'Carpeta':
+                    nuevo_elemento = Carpeta(nombre_elemento)
+                elif tipo_elemento == 'Enlace':
+                    url_elemento = input("URL del enlace: ")
+                    nuevo_elemento = Enlace(nombre_elemento, url_elemento)
+                else:
+                    print("Tipo de elemento desconocido. No se puede agregar.")
+                    nuevo_elemento = None
+
+                if nuevo_elemento:
+                    agregar(structure, nuevo_elemento)
+                    print(f"Elemento {nombre_elemento} agregado.")
+                    navegar(structure)
+
+            elif accion == 'modificar':
+                # Solicitar detalles para modificar un elemento
+                nombre_elemento = input("Nombre del elemento a modificar: ")
+                nuevo_tamano = int(input("Nuevo tamaño: "))
+                elemento_a_modificar = encontrar_elemento_por_nombre(structure, nombre_elemento)
+
+                if elemento_a_modificar:
+                    modificar_tamano(elemento_a_modificar, nuevo_tamano)
+                    print(f"Tamaño de {nombre_elemento} modificado.")
+                    navegar(structure)
+                else:
+                    print(f"No se encontró el elemento {nombre_elemento}.")
+
+            elif accion == 'eliminar':
+                # Solicitar detalles para eliminar un elemento
+                nombre_elemento = input("Nombre del elemento a eliminar: ")
+                elemento_a_eliminar = encontrar_elemento_por_nombre(structure, nombre_elemento)
+
+                if elemento_a_eliminar:
+                    eliminar(structure, elemento_a_eliminar)
+                    print(f"Elemento {nombre_elemento} eliminado.")
+                    navegar(structure)
+                else:
+                    print(f"No se encontró el elemento {nombre_elemento}.")
+
+            elif accion == 'nada':
+                print("No se realizarán cambios.")
+
+            else:
+                print("Acción no reconocida. No se realizarán cambios.")
+
+        else:
+            print("Error loading structure from JSON.")
+    else:
+        print(f"{usuario}, no tienes acceso a esta estructura.")
+
+```
+
+```
+#------------------------------------------------------------
+# Json
+#------------------------------------------------------------
+
+{
+    "type": "Carpeta",
+    "nombre": "Raiz",
+    "elementos": [
+      {
+        "type": "Archivo",
+        "nombre": "Archivo1",
+        "tipo": "txt",
+        "tamaño": 10
+      },
+      {
+        "type": "Carpeta",
+        "nombre": "Documentos",
+        "elementos": [
+          {
+            "type": "Archivo",
+            "nombre": "Informe.pdf",
+            "tipo": "pdf",
+            "tamaño": 25
+          },
+          {
+            "type": "Carpeta",
+            "nombre": "Fotos",
+            "elementos": [
+              {
+                "type": "Archivo",
+                "nombre": "Vacaciones.jpg",
+                "tipo": "jpg",
+                "tamaño": 15
+              },
+              {
+                "type": "Enlace",
+                "nombre": "Álbum online",
+                "url": "https://album.ejemplo.com"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Enlace",
+        "nombre": "Página principal",
+        "url": "https://www.ejemplo.com"
+      },
+      {
+        "type": "Carpeta",
+        "nombre": "Proyectos",
+        "elementos": [
+          {
+            "type": "Archivo",
+            "nombre": "Proyecto1.docx",
+            "tipo": "docx",
+            "tamaño": 30
+          },
+          {
+            "type": "Carpeta",
+            "nombre": "Código fuente",
+            "elementos": [
+              {
+                "type": "Archivo",
+                "nombre": "main.py",
+                "tipo": "py",
+                "tamaño": 8
+              },
+              {
+                "type": "Archivo",
+                "nombre": "utils.py",
+                "tipo": "py",
+                "tamaño": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
+
+```
 
 
 
