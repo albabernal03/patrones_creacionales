@@ -1360,6 +1360,9 @@ if __name__ == "__main__":
 ```
 <h4>Diagrama UML</h4>
 
+<img width="783" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/0bcf1ac4-dcbc-4c87-91c4-c62a08ca1da8">
+
+
 
 
 
