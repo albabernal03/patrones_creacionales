@@ -1367,6 +1367,44 @@ if __name__ == "__main__":
 
 <h4>Justificación</h4>
 
+Este código implementa un patrón de diseño estructural llamado "Composite". El patrón Composite se utiliza para tratar tanto a los objetos individuales como a las composiciones de objetos de manera uniforme. En este caso, los elementos del menú (como pizzas, bebidas, etc.) se representan mediante una interfaz común llamada ComponentMenu, que tiene un método mostrar.
+
+Aquí hay algunas decisiones de diseño notables y la aplicación del patrón Composite:
+
+1.**Interfaz Abstracta (ComponentMenu):**
+
+Se ha definido una interfaz abstracta llamada ComponentMenu que declara el método mostrar. Esta interfaz es la base tanto para los elementos individuales (Pizza, Bebida, etc.) como para las composiciones (Combo, ComboPareja).
+
+2.**Elementos Individuales (Leafs):**
+
+Las clases Pizza, Bebida, Entrante y Postre implementan la interfaz ComponentMenu. Estas son las hojas del árbol de composición y representan elementos individuales del menú.
+
+3.**Composiciones (Composite):**
+
+Las clases Combo y ComboPareja implementan la interfaz ComponentMenu y actúan como contenedores para elementos individuales o sub-combos. Estos son los nodos compuestos que pueden contener hojas o sub-combos.
+
+4.**Método Recursivo mostrar:**
+
+El método mostrar se implementa de manera recursiva en las clases Combo y ComboPareja. Esto permite que un combo muestre su contenido, ya sean elementos individuales o sub-combos.
+
+5.**Patrón Composite en Acción:**
+
+Se utiliza el patrón Composite al tratar a los elementos del menú de manera uniforme a través de la interfaz común ComponentMenu. Esto simplifica el código del cliente, ya que puede interactuar con elementos individuales y composiciones de manera consistente.
+
+6.**Persistencia en CSV:**
+
+Se proporcionan funciones para guardar y leer elementos del menú en un archivo CSV. Esto permite almacenar y recuperar historiales de pedidos para usuarios específicos.
+
+7.**Menús Predefinidos y Personalizados:**
+
+Se han creado combos y combos pareja predefinidos (combo_1, combo_2, combo_pareja_1, etc.). También se permite al usuario crear su propio combo personalizado.
+
+8.**Historial de Pedidos:**
+
+Se ofrece la opción de guardar el historial de pedidos en un archivo CSV. El historial se puede mostrar posteriormente para un usuario específico.
+
+En resumen, este código demuestra un buen uso del patrón Composite para modelar elementos del menú y combos, proporcionando una interfaz consistente para interactuar con elementos individuales y composiciones. La persistencia en CSV y la capacidad de crear combos personalizados añaden funcionalidad adicional al programa.
+
 
 ***
 
