@@ -1497,7 +1497,25 @@ Como vemos añadimos una nueva sección a la pizzeria que es para pedir combos
 
 Como se ve en la imagen si no iniciamos sesion no se puede hacer el pedido, pues asi cada pedido estará identificado con el usuario
 
+***
+Si iniciamos sesion ya vemos el carrito
+<img width="1439" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/4c1e5d25-c454-4faa-aa21-3c124a75bb6c">
 
+Ahora podemos añadir cosas al carrito y nos da tanto la opción de pedir como de guardar el pedido el cual se queda registrado en en SQL
+<img width="360" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3fc5bf0a-d4ca-4f9d-905e-756e38a416a1">
+
+***
+Todos los pedidos se crean desde la administración de la pizzeria
+<img width="630" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/c2c3f667-e275-4c87-9a5c-51011fe5551b">
+
+Como vemos también se ven los pedidos que se realizan y además estos como mencionamos se guardan en el SQL aunque tanbien desarrollamos un CSV
+
+**SQL**
+
+<img width="503" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/64c43696-6ae3-4784-8433-d3c7e9f6d5a9">
+
+**CSV**
+<img width="347" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3b75a9db-28ae-42f7-9321-257777c95c06">
 
 
 ***
