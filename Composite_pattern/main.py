@@ -176,9 +176,10 @@ if __name__ == "__main__":
             # Mostrar el combo personalizado
             print("\nTu combo personalizado:")
             combo_personalizado.mostrar()
-            total_combo_personalizado = combo_personalizado.calcular_precio()
+            total_combo_personalizado = combo_personalizado.calcular_precio_total()
 
-            if total_combo_personalizado > 50:
+            # Verificar si el total es mayor a 50 euros
+            if total_combo_personalizado > 20:
                 # Aplicar descuento del 5%
                 descuento = total_combo_personalizado * 0.05
                 total_combo_personalizado_con_descuento = total_combo_personalizado - descuento
@@ -211,6 +212,18 @@ if __name__ == "__main__":
             # Mostrar el combo predefinido
             print("\nEl combo predefinido que has elegido es:")
             chosen_combo.mostrar()
+            total_chosen_combo = chosen_combo.calcular_precio_total()
+
+            if total_chosen_combo > 20:
+                # Aplicar descuento del 5%
+                descuento = total_chosen_combo * 0.05
+                total_chosen_combo_con_descuento = total_chosen_combo- descuento
+
+                print(f"\nEl total de tu combo personalizado es {total_chosen_combo:.2f} euros.")
+                print(f"Se aplicó un descuento del 5%. Nuevo total con descuento: {total_chosen_combo_con_descuento:.2f} euros.")
+            else:
+                print(f"\nEl total de tu combo personalizado es {total_chosen_combo:.2f} euros.")
+            
 
             # Preguntar si quieren pedir este combo
             if input("¿Quieres pedir este combo? (s/n): ").lower() == 's':
@@ -243,6 +256,20 @@ if __name__ == "__main__":
             # Mostrar el Combo Pareja personalizado
             print("\nTu Combo Pareja personalizado:")
             combo_pareja_personalizado.mostrar()
+            total_combo_pareja_personalizado= combo_pareja_personalizado.calcular_precio_total()
+
+
+            if total_combo_pareja_personalizado > 20:
+                # Aplicar descuento del 5%
+                descuento = total_combo_pareja_personalizado* 0.05
+                total_combo_pareja_personalizado_con_descuento = total_combo_pareja_personalizado - descuento
+
+                print(f"\nEl total de tu combo personalizado es {total_combo_pareja_personalizado:.2f} euros.")
+                print(f"Se aplicó un descuento del 5%. Nuevo total con descuento: {total_combo_pareja_personalizado_con_descuento:.2f} euros.")
+            else:
+                print(f"\nEl total de tu combo personalizado es {total_combo_pareja_personalizado:.2f} euros.")
+            
+        
             #preguntamos si quiere guardar el historial
             if preguntar_guardar_historial():
                 guardar_elemento_csv(combo_pareja_personalizado, 'pedidos.csv', usuario)
