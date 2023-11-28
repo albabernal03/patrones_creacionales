@@ -1965,6 +1965,7 @@ if __name__ == "__main__":
 El acceso de usuarios se registra con su hora de entrada
 
 <img width="269" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/64079cc4-6387-4ffb-91ed-13728132c700">
+
 ***
 
 <h4>Justificación de Decisiones de Diseño:</h4>
