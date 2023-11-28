@@ -2037,6 +2037,11 @@ if __name__ == "__main__":
 ```
 <img width="551" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/ff0ea23e-a8e5-40f4-a43c-5a9bc131bec8">
 
+***
+
+El acceso de usuarios se registra con su hora de entrada
+
+<img width="269" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/64079cc4-6387-4ffb-91ed-13728132c700">
 
 
 
