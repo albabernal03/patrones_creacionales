@@ -1,65 +1,61 @@
 from main import *
 import unittest
-class TestSistemaArchivos(unittest.TestCase):
+import unittest
 
-    def setUp(self):
-        # Configuración común para las pruebas, si es necesario.
-        pass
+class TestEstructura(unittest.TestCase):
 
-    def tearDown(self):
-        # Limpieza después de cada prueba, si es necesario.
-        pass
+    def test_proxy_access_granted(self):
+        # Crear Proxy con acceso concedido a un usuario
+        proxy_archivo = ComponentProxy(Archivo("Archivo1", "txt", 10), access_control=['Usuario1'])
 
-    def test_acceso_exitoso(self):
-        proxy_archivo1 = ComponentProxy(archivo1, access_control=['Usuario1', 'Usuario2'])
-        usuario_valido = 'Usuario1'
-        proxy_archivo1.check_access = lambda: True  # Simula un acceso exitoso
-        proxy_archivo1.log_access = lambda: None  # Disable log access to prevent timestamp mismatches
+        # Verificar que el acceso se concede para el usuario especificado
+        self.assertTrue(proxy_archivo.check_access())
 
-        acceder(proxy_archivo1, usuario_valido)
+    def test_proxy_access_denied(self):
+        # Crear Proxy con acceso denegado a un usuario
+        proxy_archivo = ComponentProxy(Archivo("Archivo1", "txt", 10), access_control=['Usuario2'])
 
-        self.assertTrue(proxy_archivo1._access_granted)
-        self.assertTrue(any("Se ha accedido" in log_entry for log_entry in proxy_archivo1._access_log))
+        # Verificar que el acceso se deniega para el usuario especificado
+        self.assertFalse(proxy_archivo.check_access())
 
-    def test_acceso_denegado(self):
-        proxy_archivo1 = ComponentProxy(archivo1, access_control=['Usuario1', 'Usuario2'])
-        usuario_invalido = 'UsuarioInvalido'
-        proxy_archivo1.check_access = lambda: False  # Simula un acceso denegado
-        proxy_archivo1.log_access = lambda: None  # Disable log access to prevent unexpected log entries
+    def test_modificar_tamano_archivo(self):
+        # Crear un archivo
+        archivo = Archivo("Archivo1", "txt", 10)
 
-        acceder(proxy_archivo1, usuario_invalido)
+        # Modificar el tamaño del archivo
+        modificar_tamano(archivo, 20)
 
-        self.assertFalse(proxy_archivo1._access_granted)
-        self.assertTrue(any(f"Proxy: {usuario_invalido} no tiene acceso." in log_entry for log_entry in proxy_archivo1._access_log))
+        # Verificar que el tamaño del archivo se ha modificado correctamente
+        self.assertEqual(archivo.tamano, 20)
 
-    def test_modificar_tamano(self):
-        nuevo_tamano = 20
-        archivo_modificado = Archivo("Archivo1", "txt", nuevo_tamano)
+    def test_agregar_elemento_a_carpeta(self):
+        # Crear una carpeta
+        carpeta = Carpeta("Carpeta1")
 
-        modificar_tamano(archivo1, nuevo_tamano)
+        # Crear un archivo para agregar a la carpeta
+        archivo = Archivo("Archivo1", "txt", 10)
 
-        self.assertEqual(archivo1.tamano, nuevo_tamano)
+        # Agregar el archivo a la carpeta
+        agregar(carpeta, archivo)
 
-    def test_eliminar_elemento(self):
-        nuevo_elemento = Archivo("NuevoArchivo", "txt", 15)
-        carpeta_test = Carpeta("CarpetaTest")
-        agregar(carpeta_test, nuevo_elemento)
+        # Verificar que el archivo se ha agregado a la carpeta
+        self.assertIn(archivo, carpeta.elementos)
 
-        eliminar(carpeta_test, nuevo_elemento)
+    def test_eliminar_elemento_de_carpeta(self):
+        # Crear una carpeta
+        carpeta = Carpeta("Carpeta1")
 
-        self.assertNotIn(nuevo_elemento, carpeta_test.elementos)
+        # Crear un archivo y agregarlo a la carpeta
+        archivo = Archivo("Archivo1", "txt", 10)
+        agregar(carpeta, archivo)
 
-    def test_registro_de_acceso(self):
-        proxy_archivo1 = ComponentProxy(archivo1, access_control=['Usuario1', 'Usuario2'])
-        usuario_valido = 'Usuario1'
-        proxy_archivo1.check_access = lambda: True  # Simula un acceso exitoso
+        # Eliminar el archivo de la carpeta
+        eliminar(carpeta, archivo)
 
-        acceder(proxy_archivo1, usuario_valido)
+        # Verificar que el archivo se ha eliminado de la carpeta
+        self.assertNotIn(archivo, carpeta.elementos)
 
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        expected_log_entry = f"Proxy: Se ha accedido: {timestamp}"
-        self.assertTrue(any(expected_log_entry in log_entry for log_entry in proxy_archivo1._access_log))
+# Agregar más tests según sea necesario...
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -22,6 +22,11 @@ class ComponentProxy(Component):
 
     def check_access(self) -> bool:
         user = input("Introduce el usuario: ")
+
+        # Debug: Mostrar información sobre la lista de control de acceso y el usuario ingresado
+        print(f"Debug: Lista de control de acceso: {self._access_control}")
+        print(f"Debug: Usuario ingresado: {user}")
+
         if user in self._access_control:
             print(f"Proxy: {user} ha accedido.")
             self._access_granted = True
