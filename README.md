@@ -1491,6 +1491,15 @@ if __name__ == "__main__":
 
 ## Pagina web:<a name="id6"></a>
 
+Como vemos añadimos una nueva sección a la pizzeria que es para pedir combos
+
+<img width="1353" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/d29f81e7-2391-42cc-9e26-6d46d68b45e5">
+
+Como se ve en la imagen si no iniciamos sesion no se puede hacer el pedido, pues asi cada pedido estará identificado con el usuario
+
+
+
+
 ***
 ## Ejercicio 4:<a name="id7"></a>
 
