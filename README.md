@@ -2001,7 +2001,7 @@ La clase ComponentProxy implementa un proxy que verifica el acceso del usuario a
 
 **Motivación:** Se incorpora un manejo robusto de errores y excepciones para garantizar que el programa pueda gestionar situaciones imprevistas, como la carga incorrecta de datos desde un archivo JSON.
 
-**Beneficios:***
+**-Beneficios:-**
 
 **Robustez:** El manejo de errores garantiza que el programa no se bloquee o genere resultados inesperados en situaciones de error.
 Facilita la Depuración: Los mensajes de error informativos facilitan la identificación y corrección de problemas durante el desarrollo y el uso del programa.
