@@ -1515,6 +1515,7 @@ Como vemos también se ven los pedidos que se realizan y además estos como menc
 <img width="503" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/64c43696-6ae3-4784-8433-d3c7e9f6d5a9">
 
 **CSV**
+
 <img width="347" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/3b75a9db-28ae-42f7-9321-257777c95c06">
 
 
