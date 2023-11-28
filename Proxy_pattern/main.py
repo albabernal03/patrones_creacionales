@@ -83,5 +83,6 @@ if __name__ == "__main__":
 
         else:
             print("Error loading structure from JSON.")
+        proxy_archivo1.log_access(usuario)
     else:
         print(f"{usuario}, no tienes acceso a esta estructura.")

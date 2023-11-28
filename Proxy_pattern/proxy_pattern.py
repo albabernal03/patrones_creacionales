@@ -230,60 +230,59 @@ if __name__ == "__main__":
         structure = cargar_estructura_desde_json('structure.json')
 
         if structure:
-            # Interactuar con la estructura y el Proxy
+    # Interactuar con la estructura y el Proxy
             navegar(structure)
 
             # Solicitar al usuario que elija una acción
             accion = input("¿Qué acción deseas realizar? (agregar/modificar/eliminar/nada): ")
 
-           
+            if accion == 'agregar':
+                # Solicitar detalles para agregar un nuevo elemento
+                tipo_elemento = input("Tipo de elemento (Archivo/Carpeta/Enlace): ")
+                nombre_elemento = input("Nombre del elemento: ")
 
-    if accion == 'agregar':
-        # Solicitar detalles para agregar un nuevo elemento
-        tipo_elemento = input("Tipo de elemento (Archivo/Carpeta/Enlace): ")
-        nombre_elemento = input("Nombre del elemento: ")
+                if tipo_elemento == 'Archivo':
+                    tamano_elemento = int(input("Tamaño del archivo: "))
+                    nuevo_elemento = Archivo(nombre_elemento, 'tipo_desconocido', tamano_elemento)
+                elif tipo_elemento == 'Carpeta':
+                    nuevo_elemento = Carpeta(nombre_elemento)
+                elif tipo_elemento == 'Enlace':
+                    url_elemento = input("URL del enlace: ")
+                    nuevo_elemento = Enlace(nombre_elemento, url_elemento)
+                else:
+                    print("Tipo de elemento desconocido. No se puede agregar.")
+                    nuevo_elemento = None
 
-        if tipo_elemento == 'Archivo':
-            tamano_elemento = int(input("Tamaño del archivo: "))
-            nuevo_elemento = Archivo(nombre_elemento, 'tipo_desconocido', tamano_elemento)
-        elif tipo_elemento == 'Carpeta':
-            nuevo_elemento = Carpeta(nombre_elemento)
-        elif tipo_elemento == 'Enlace':
-            url_elemento = input("URL del enlace: ")
-            nuevo_elemento = Enlace(nombre_elemento, url_elemento)
+                if nuevo_elemento:
+                    agregar(structure, nuevo_elemento)
+                    print(f"Elemento {nombre_elemento} agregado.")
+                    navegar(structure)
+
+            elif accion == 'modificar':
+                # Solicitar detalles para modificar un elemento
+                nombre_elemento = input("Nombre del elemento a modificar: ")
+                nuevo_tamano = int(input("Nuevo tamaño: "))
+                elemento_a_modificar = encontrar_elemento_por_nombre(structure, nombre_elemento)
+
+                if elemento_a_modificar:
+                    modificar_tamano(elemento_a_modificar, nuevo_tamano)
+                    print(f"Tamaño de {nombre_elemento} modificado.")
+                    navegar(structure)
+                else:
+                    print(f"No se encontró el elemento {nombre_elemento}.")
+
+            elif accion == 'eliminar':
+                # Solicitar detalles para eliminar un elemento
+                nombre_elemento = input("Nombre del elemento a eliminar: ")
+                eliminar(structure, nombre_elemento)
+                navegar(structure)
+
+            elif accion == 'nada':
+                print("No se realizarán cambios.")
+                
+            else:
+                print("Acción no reconocida. No se realizarán cambios.")
+             # Log de acceso al archivo CSV
+            proxy_archivo1.log_access(usuario)
         else:
-            print("Tipo de elemento desconocido. No se puede agregar.")
-            nuevo_elemento = None
-
-        if nuevo_elemento:
-            agregar(structure, nuevo_elemento)
-            print(f"Elemento {nombre_elemento} agregado.")
-            navegar(structure)
-
-    elif accion == 'modificar':
-        # Solicitar detalles para modificar un elemento
-        nombre_elemento = input("Nombre del elemento a modificar: ")
-        nuevo_tamano = int(input("Nuevo tamaño: "))
-        elemento_a_modificar = encontrar_elemento_por_nombre(structure, nombre_elemento)
-
-        if elemento_a_modificar:
-            modificar_tamano(elemento_a_modificar, nuevo_tamano)
-            print(f"Tamaño de {nombre_elemento} modificado.")
-            navegar(structure)
-        else:
-            print(f"No se encontró el elemento {nombre_elemento}.")
-
-    elif accion == 'eliminar':
-        # Solicitar detalles para eliminar un elemento
-        nombre_elemento = input("Nombre del elemento a eliminar: ")
-        eliminar(structure, nombre_elemento)
-        navegar(structure)
-
-    elif accion == 'nada':
-        print("No se realizarán cambios.")
-        
-
-    else:
-        print("Acción no reconocida. No se realizarán cambios.")
-else:
-    print("Error loading structure from JSON.")
+            print("Error loading structure from JSON.")

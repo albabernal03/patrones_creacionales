@@ -2,6 +2,7 @@ from component import Component
 from datetime import datetime
 from carpeta import Carpeta
 from archivo import Archivo
+import csv
 
 #------------------------------------------------------------
 # Proxy
@@ -34,11 +35,19 @@ class ComponentProxy(Component):
             print(f"Proxy: {user} no tiene acceso.")
         return self._access_granted
 
-    def log_access(self) -> None:
+    def log_access(self, usuario) -> None:
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        log_entry = f"Se ha accedido: {timestamp}"
+        log_entry = f"Se ha accedido: {timestamp} por {usuario}"
         print(f"Proxy: {log_entry}")
         self._access_log.append(log_entry)
+        
+        # Guardar el log de acceso en un archivo CSV
+        with open('access_log.csv', 'a', newline='') as csvfile:
+            fieldnames = ['Timestamp', 'User']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            
+            # Escribir la entrada del log en el archivo CSV
+            writer.writerow({'Timestamp': timestamp, 'User': usuario})
 
     # Forwarding attribute access to the real component
     def __getattr__(self, attr):
