@@ -93,7 +93,7 @@ class ComponentProxy(Component):
             print(f"Proxy: {user} no tiene acceso.")
         return self._access_granted
 
-    def log_access(self) -> None:
+    def log_access(self, usuario) -> None:
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         log_entry = f"Se ha accedido: {timestamp} por {usuario}"
         print(f"Proxy: {log_entry}")
@@ -281,6 +281,7 @@ if __name__ == "__main__":
 
     elif accion == 'nada':
         print("No se realizarán cambios.")
+        
 
     else:
         print("Acción no reconocida. No se realizarán cambios.")
