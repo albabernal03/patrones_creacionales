@@ -6,7 +6,11 @@ from entrante import Entrante
 from postre import Postre
 
 def guardar_elemento_csv(elemento, nombre_archivo, usuario):
+    column_names = ["Usuario", "Tipo", "Nombre", "Precio"]
     with open(nombre_archivo, 'a') as archivo:
+        if archivo.tell() == 0:
+            archivo.write(','.join(column_names) + '\n')
+            
         if isinstance(elemento, Combo):
             archivo.write(f'{usuario},Combo,{elemento.nombre},{elemento.calcular_precio_total()}\n')
             for subelemento in elemento.elementos:
