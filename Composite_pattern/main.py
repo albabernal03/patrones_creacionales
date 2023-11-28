@@ -176,6 +176,18 @@ if __name__ == "__main__":
             # Mostrar el combo personalizado
             print("\nTu combo personalizado:")
             combo_personalizado.mostrar()
+            total_combo_personalizado = combo_personalizado.calcular_precio()
+
+            if total_combo_personalizado > 50:
+                # Aplicar descuento del 5%
+                descuento = total_combo_personalizado * 0.05
+                total_combo_personalizado_con_descuento = total_combo_personalizado - descuento
+
+                print(f"\nEl total de tu combo personalizado es {total_combo_personalizado:.2f} euros.")
+                print(f"Se aplicó un descuento del 5%. Nuevo total con descuento: {total_combo_personalizado_con_descuento:.2f} euros.")
+            else:
+                print(f"\nEl total de tu combo personalizado es {total_combo_personalizado:.2f} euros.")
+            
             #preguntamos si quiere guardar el historial
             if preguntar_guardar_historial():
                 guardar_elemento_csv(combo_personalizado, 'pedidos.csv', usuario)
