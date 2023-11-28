@@ -1531,48 +1531,6 @@ Se ofrece la opción de guardar el historial de pedidos en un archivo CSV. El hi
 
 En resumen, este código demuestra un buen uso del patrón Composite para modelar elementos del menú y combos, proporcionando una interfaz consistente para interactuar con elementos individuales y composiciones. La persistencia en CSV y la capacidad de crear combos personalizados añaden funcionalidad adicional al programa.
 
-
-<h3>Justificación de Decisiones de Diseño:</h3>
-
-**/Uso del Patrón Composite:/**
-
-**Motivación**: El patrón Composite se utiliza para tratar tanto a los componentes individuales (Archivos y Enlaces) como a las composiciones de estos componentes (Carpetas) de manera uniforme. Esto simplifica la estructura y permite realizar operaciones recursivas sobre la estructura compuesta.
-
-**Beneficios:**
-
-**Uniformidad:** Al tratar tanto a las hojas como a las composiciones de manera uniforme, se simplifica el código y se facilita la implementación de operaciones sobre la estructura completa.
-
-**Recursividad:** Permite realizar operaciones recursivas de manera sencilla, como el cálculo del tamaño total de una carpeta.
-Ejemplo de Aplicación:
-
-La función tamaño se define en la clase Component como un método abstracto. Tanto Archivo como Carpeta implementan este método, permitiendo calcular el tamaño total de una carpeta recursivamente.
-
-**/Uso del Patrón Proxy:/**
-
-**Motivación:** Se utiliza el patrón Proxy para controlar el acceso a los componentes (Archivo, Carpeta, Enlace) mediante el establecimiento de reglas de control de acceso. En este caso, se requiere que el usuario introduzca su nombre de usuario, y el acceso se concede solo a usuarios específicos.
-
-**Beneficios:**
-
-**Control de Acceso:** El proxy actúa como un intermediario que verifica si el usuario tiene acceso antes de permitir la realización de operaciones en el componente real.
-
-**Logging:** El proxy registra el acceso exitoso en un archivo CSV, proporcionando un registro de quién accedió al componente y cuándo.
-Ejemplo de Aplicación:
-
-La clase ComponentProxy implementa un proxy que verifica el acceso del usuario antes de permitir el cálculo del tamaño. Además, se registra el acceso en un archivo CSV.
-
-**Manejo de Errores y Excepciones:**
-
-**Motivación:** Se incorpora un manejo robusto de errores y excepciones para garantizar que el programa pueda gestionar situaciones imprevistas, como la carga incorrecta de datos desde un archivo JSON.
-
-**Beneficios:***
-
-**Robustez:** El manejo de errores garantiza que el programa no se bloquee o genere resultados inesperados en situaciones de error.
-Facilita la Depuración: Los mensajes de error informativos facilitan la identificación y corrección de problemas durante el desarrollo y el uso del programa.
-
-**Ejemplo de Aplicación:**
-
-En las funciones cargar_estructura_desde_json y crear_estructura_desde_json, se manejan errores relacionados con la lectura del archivo JSON para proporcionar mensajes claros en caso de problemas.
-En resumen, las decisiones de diseño se centran en la claridad, la simplicidad y la flexibilidad. El uso de patrones como Composite y Proxy contribuye a un diseño modular y extensible, mientras que el manejo de errores garantiza la robustez del programa en situaciones diversas.
 ***
 
 <h3>Pruebas unitarias</h3>
@@ -2007,8 +1965,50 @@ if __name__ == "__main__":
 El acceso de usuarios se registra con su hora de entrada
 
 <img width="269" alt="image" src="https://github.com/albabernal03/patrones_creacionales/assets/91721875/64079cc4-6387-4ffb-91ed-13728132c700">
+***
+
+<h4>Justificación de Decisiones de Diseño:</h4>
 
 
+**/Uso del Patrón Composite:/**
+
+**Motivación**: El patrón Composite se utiliza para tratar tanto a los componentes individuales (Archivos y Enlaces) como a las composiciones de estos componentes (Carpetas) de manera uniforme. Esto simplifica la estructura y permite realizar operaciones recursivas sobre la estructura compuesta.
+
+**Beneficios:**
+
+**Uniformidad:** Al tratar tanto a las hojas como a las composiciones de manera uniforme, se simplifica el código y se facilita la implementación de operaciones sobre la estructura completa.
+
+**Recursividad:** Permite realizar operaciones recursivas de manera sencilla, como el cálculo del tamaño total de una carpeta.
+Ejemplo de Aplicación:
+
+La función tamaño se define en la clase Component como un método abstracto. Tanto Archivo como Carpeta implementan este método, permitiendo calcular el tamaño total de una carpeta recursivamente.
+
+**/Uso del Patrón Proxy:/**
+
+**Motivación:** Se utiliza el patrón Proxy para controlar el acceso a los componentes (Archivo, Carpeta, Enlace) mediante el establecimiento de reglas de control de acceso. En este caso, se requiere que el usuario introduzca su nombre de usuario, y el acceso se concede solo a usuarios específicos.
+
+**Beneficios:**
+
+**Control de Acceso:** El proxy actúa como un intermediario que verifica si el usuario tiene acceso antes de permitir la realización de operaciones en el componente real.
+
+**Logging:** El proxy registra el acceso exitoso en un archivo CSV, proporcionando un registro de quién accedió al componente y cuándo.
+Ejemplo de Aplicación:
+
+La clase ComponentProxy implementa un proxy que verifica el acceso del usuario antes de permitir el cálculo del tamaño. Además, se registra el acceso en un archivo CSV.
+
+**Manejo de Errores y Excepciones:**
+
+**Motivación:** Se incorpora un manejo robusto de errores y excepciones para garantizar que el programa pueda gestionar situaciones imprevistas, como la carga incorrecta de datos desde un archivo JSON.
+
+**Beneficios:***
+
+**Robustez:** El manejo de errores garantiza que el programa no se bloquee o genere resultados inesperados en situaciones de error.
+Facilita la Depuración: Los mensajes de error informativos facilitan la identificación y corrección de problemas durante el desarrollo y el uso del programa.
+
+**Ejemplo de Aplicación:**
+
+En las funciones cargar_estructura_desde_json y crear_estructura_desde_json, se manejan errores relacionados con la lectura del archivo JSON para proporcionar mensajes claros en caso de problemas.
+En resumen, las decisiones de diseño se centran en la claridad, la simplicidad y la flexibilidad. El uso de patrones como Composite y Proxy contribuye a un diseño modular y extensible, mientras que el manejo de errores garantiza la robustez del programa en situaciones diversas.
 
 
 
