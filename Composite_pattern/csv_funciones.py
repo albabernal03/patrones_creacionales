@@ -28,21 +28,6 @@ def guardar_elemento_csv(elemento, nombre_archivo, usuario):
 
 
 
-def guardar_elemento_csv(elemento, nombre_archivo, usuario):
-    with open(nombre_archivo, 'a') as archivo:
-        if isinstance(elemento, Combo):
-            archivo.write(f'{usuario},Combo,{elemento.nombre},{elemento.calcular_precio_total()}\n')
-            for subelemento in elemento.elementos:
-                guardar_elemento_csv(subelemento, nombre_archivo, usuario)
-        elif isinstance(elemento, ComboPareja):
-            archivo.write(f'{usuario},ComboPareja,{elemento.nombre},{elemento.calcular_precio_total()}\n')
-            if elemento.combo1:
-                guardar_elemento_csv(elemento.combo1, nombre_archivo, usuario)
-            if elemento.combo2:
-                guardar_elemento_csv(elemento.combo2, nombre_archivo, usuario)
-        elif isinstance(elemento, (Pizza, Bebida, Entrante, Postre)):
-            archivo.write(f'{usuario},{type(elemento).__name__},{elemento.nombre},{elemento.precio}\n')
-
 def leer_elementos_csv(nombre_archivo, usuario):
     elementos = []
     combos = {}
