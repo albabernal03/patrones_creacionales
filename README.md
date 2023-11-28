@@ -1668,11 +1668,7 @@ class Enlace(Component):
         return 0
     
 
-from component import Component
-from datetime import datetime
-from carpeta import Carpeta
-from archivo import Archivo
-import csv
+
 
 #------------------------------------------------------------
 # Proxy
