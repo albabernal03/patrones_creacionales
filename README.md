@@ -1646,6 +1646,9 @@ Como vemos también se ven los pedidos que se realizan y además estos como menc
 ***
 ## Ejercicio 4:<a name="id7"></a>
 
+SI QUIERE ACCEDER, LOS USUARIOS CON PERMISO SON: Usuario1 y Usuario2
+
+
 ```
 from abc import ABC, abstractmethod
 from datetime import datetime
