@@ -277,3 +277,4 @@ if __name__ == "__main__":
         elif eleccion == 6:
             # Salir del programa
             print("Saliendo del programa...")
+            break
