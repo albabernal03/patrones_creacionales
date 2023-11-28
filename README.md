@@ -1975,7 +1975,7 @@ El acceso de usuarios se registra con su hora de entrada
 
 **Motivación**: El patrón Composite se utiliza para tratar tanto a los componentes individuales (Archivos y Enlaces) como a las composiciones de estos componentes (Carpetas) de manera uniforme. Esto simplifica la estructura y permite realizar operaciones recursivas sobre la estructura compuesta.
 
-**Beneficios:**
+**-Beneficios:-**
 
 **Uniformidad:** Al tratar tanto a las hojas como a las composiciones de manera uniforme, se simplifica el código y se facilita la implementación de operaciones sobre la estructura completa.
 
@@ -1988,7 +1988,7 @@ La función tamaño se define en la clase Component como un método abstracto. T
 
 **Motivación:** Se utiliza el patrón Proxy para controlar el acceso a los componentes (Archivo, Carpeta, Enlace) mediante el establecimiento de reglas de control de acceso. En este caso, se requiere que el usuario introduzca su nombre de usuario, y el acceso se concede solo a usuarios específicos.
 
-**Beneficios:**
+**-Beneficios:-**
 
 **Control de Acceso:** El proxy actúa como un intermediario que verifica si el usuario tiene acceso antes de permitir la realización de operaciones en el componente real.
 
