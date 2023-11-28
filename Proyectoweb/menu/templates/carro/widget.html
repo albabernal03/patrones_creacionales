@@ -20,6 +20,10 @@
                         <a href="{% url 'carro:agregar' value.combo_id %}" class="btn btn-sm btn-success">+</a>
                         <a href="{% url 'carro:restar' value.combo_id %}" class="btn btn-sm btn-success">-</a><br/>
                         {{ value.precio }}€
+                        {% if value.subtotal > 40 %}
+                        <br/>
+                        <span style="color: green;">(Descuento aplicado: {{ value.subtotal - importe_total_carro[key] }}€)</span>
+                    {% endif %}
                     </td>
                 </tr>
             {% endfor %}
