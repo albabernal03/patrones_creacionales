@@ -20,11 +20,7 @@
                         <a href="{% url 'carro:agregar' value.combo_id %}" class="btn btn-sm btn-success">+</a>
                         <a href="{% url 'carro:restar' value.combo_id %}" class="btn btn-sm btn-success">-</a><br/>
                         {{ value.precio }}€
-                        {{ value.subtotal }}€
-                        {% if value.descuento > 40 %}
-                            <br/>
-                            <span style="color: green;">(Descuento aplicado: {{ value.descuento }}€)</span>
-                        {% endif %}
+                        
                     </td>
                 </tr>
             {% endfor %}

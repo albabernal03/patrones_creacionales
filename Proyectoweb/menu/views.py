@@ -52,23 +52,10 @@ def guardar_pedido_en_csv(request):
 
         # Escribir cada elemento del carrito al archivo
         for combo_id, combo_data in carro.items():
-            # Calculate subtotal for each combo
-            precio = float(combo_data['precio'])
-            cantidad = int(combo_data.get('cantidad', 0))
-            subtotal = precio * cantidad
-
-            # Apply a 5% discount if the subtotal is greater than 40 euros
-            if subtotal > 40:
-                descuento = subtotal * 0.05
-            else:
-                descuento = 0
-
-            # Escribir los datos del combo al archivo
             writer.writerow({
                 'Combo ID': combo_id,
                 'Nombre': combo_data['nombre'],
-                'Precio': precio,
-                'Descuento': descuento
+                'Precio': combo_data['precio']
                 # Agregar más campos según sea necesario
             })
 
