@@ -2017,7 +2017,7 @@ En resumen, las decisiones de diseño se centran en la claridad, la simplicidad 
 
 
 
-## Pasos a seguir para levantar el seguir:<a name="id8"></a>
+## Pasos para levantar el servidor:<a name="id8"></a>
 
 ```
 #--------------------------------------
