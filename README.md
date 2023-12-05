@@ -42,6 +42,7 @@ La tarea consiste en abordar los desafíos de gestionar una gran cantidad de doc
 5. [Ejercicio 3](#id5)
 6. [Implementacion ejercicio 3 en una página web](#id6)
 7. [Ejercicio 4](#id7)
+8. [Pasos para levantar el servidor]()
 
 ***
 
