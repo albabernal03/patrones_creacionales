@@ -2019,8 +2019,18 @@ En resumen, las decisiones de diseño se centran en la claridad, la simplicidad 
 
 ## Pasos a seguir para levantar el seguir:<a name="id8"></a>
 
+```
+#--------------------------------------
+Requirements.txt
+#--------------------------------------
 
+--upgrade pip setuptools
+crispy-bootstrap4==2023.1
+Django==4.2.7
+django-browser-reload==1.12.1
+django-crispy-forms==2.1.0
 
+```
 
 
 
