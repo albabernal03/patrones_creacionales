@@ -2017,10 +2017,62 @@ En resumen, las decisiones de diseño se centran en la claridad, la simplicidad 
 
 
 
-## Pasos a seguir para levantar el seguir:<a name="id8"></a>
+## Pasos para levantar el servidor:<a name="id8"></a>
+
+```
+#--------------------------------------
+Requirements.txt
+#--------------------------------------
+
+asgiref==3.7.2
+contourpy==1.2.0
+crispy-bootstrap4==2023.1
+cycler==0.12.1
+Django==5.0
+django-crispy-forms==2.1
+fonttools==4.46.0
+kiwisolver==1.4.5
+matplotlib==3.8.2
+numpy==1.26.2
+packaging==23.2
+pandas==2.1.3
+Pillow==10.1.0
+pyparsing==3.1.1
+python-dateutil==2.8.2
+pytz==2023.3.post1
+six==1.16.0
+sqlparse==0.4.4
+typing_extensions==4.8.0
+tzdata==2023.3
 
 
+```
 
+Si necesitaramos ejecutar poner lo siguiente en la terminal:
+
+En primer lugar:
+
+```
+pip install django
+```
+
+A continuación:
+
+```
+ pip install --upgrade pip setuptools
+```
+
+Luego:
+
+```
+pip install crispy-bootstrap4
+```
+
+Por ultimo ejecutamos el manage:
+
+```
+python manage.py runserver
+```
 
 
 
