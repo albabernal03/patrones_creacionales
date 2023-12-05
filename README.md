@@ -2032,6 +2032,32 @@ django-crispy-forms==2.1.0
 
 ```
 
+Si necesitaramos ejecutar poner lo siguiente en la terminal:
+
+En primer lugar:
+
+```
+pip install django
+```
+
+A continuación:
+
+```
+ pip install --upgrade pip setuptools
+```
+
+Luego:
+
+```
+pip install crispy-bootstrap4
+```
+
+Por ultimo ejecutamos el manage:
+
+```
+python manage.py runserver
+```
+
 
 
 
